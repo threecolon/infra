@@ -1,0 +1,16 @@
+---
+apiVersion: networking.cfargotunnel.com/v1alpha1
+kind: ClusterTunnel
+metadata:
+  name: tunnel-external
+  namespace: cloudflare-operator-system
+spec:
+  newTunnel:
+    name: k8s-tunnel
+  size: 2
+  cloudflare:
+    email: ${CLOUDFLARE_EMAIL}
+    domain: ${DOMAIN_EXTERNAL}
+    secret: cloudflare-secrets
+    accountId: ${CLOUDFLARE_ACCOUNT_ID}
+  image: cloudflare/cloudflared:2024.10.1
