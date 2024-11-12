@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./lythrum/charts
+  path: ./lythrum/sources
   prune: true
   sourceRef:
     kind: GitRepository
