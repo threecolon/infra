@@ -14,3 +14,4 @@ spec:
     secret: cloudflare-secrets
     accountId: ${CLOUDFLARE_ACCOUNT_ID}
   image: cloudflare/cloudflared:2024.11.0
+  fallbackTarget: http_status:418
