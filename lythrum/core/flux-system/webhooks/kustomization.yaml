@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - github
   - service.yaml
-  - tunnel-binding.yaml
+  - tunnel.yaml
