@@ -6,7 +6,7 @@ metadata:
   namespace: cloudflare-operator-system
 spec:
   newTunnel:
-    name: k8s-tunnel
+    name: lythrum
   size: 2
   cloudflare:
     email: ${CLOUDFLARE_EMAIL}
