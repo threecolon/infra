@@ -9,6 +9,7 @@ spec:
   dependsOn:
     - name: sources
     - name: config
+    - name: crds
   path: ./lythrum/core
   prune: true
   sourceRef:
