@@ -1,0 +1,22 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cloudflare-operator
+  namespace: cloudflare-operator-system
+spec:
+  interval: 10m
+  prune: true
+  path: ./config/default
+  sourceRef:
+    kind: GitRepository
+    name: cloudflare-operator
+    namespace: flux-system
+  # remove CRDs from the kustomization
+  patches:
+    - target:
+        group: apiextensions.k8s.io
+        version: v1
+        kind: CustomResourceDefinition
+      patch: |-
+        - op: remove
