@@ -6,6 +6,8 @@ metadata:
   namespace: flux-system
 subjects:
   - name: webhook-receiver
+    spec:
+      fqdn: ${SUBDOMAIN_FLUX_WEBHOOKS}.${DOMAIN_EXTERNAL}
 tunnelRef:
   kind: ClusterTunnel
   name: tunnel-external
