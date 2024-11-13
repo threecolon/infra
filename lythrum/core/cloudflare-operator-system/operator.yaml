@@ -16,7 +16,6 @@ spec:
   patches:
     - target:
         group: apiextensions.k8s.io
-        version: v1
         kind: CustomResourceDefinition
       patch: |-
         - op: remove
