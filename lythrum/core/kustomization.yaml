@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - cloudflare-operator-system
   - flux-system
+  - kube-system
