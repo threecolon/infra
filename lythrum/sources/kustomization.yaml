@@ -5,3 +5,5 @@ resources:
   - cloudflare-operator.yaml
   - cilium.yaml
   - cnpg.yaml
+  - dragonfly-operator.yaml
+  - rook-ceph.yaml
