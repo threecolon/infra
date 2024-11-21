@@ -7,3 +7,4 @@ resources:
   - kube-system
   - cnpg-system
   - dragonfly-system
+  - rook-ceph
