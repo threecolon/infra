@@ -4,6 +4,8 @@ metadata:
   name: dragonfly-operator
   namespace: flux-system
 spec:
-  type: oci
   interval: 10m
+  type: oci
   url: oci://ghcr.io/dragonflydb/dragonfly-operator/helm
+  ref:
+    tag: v1.1.8

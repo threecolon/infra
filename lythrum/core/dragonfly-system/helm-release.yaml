@@ -9,8 +9,7 @@ spec:
   chart:
     spec:
       chart: dragonfly-operator
-      version: v1.1.8
       sourceRef:
         kind: HelmRepository
-        name: dragonfly-operator
-        namespace: flux-system
+        name: flux-system
+      version: v1.1.8
