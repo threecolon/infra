@@ -14,6 +14,6 @@ spec:
         name: rook-release
         namespace: flux-system
       version: '1.15.5'
-      values:
-        crds:
-          enabled: false
+  values:
+    crds:
+      enabled: false
