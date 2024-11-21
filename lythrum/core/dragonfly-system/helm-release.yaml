@@ -11,5 +11,6 @@ spec:
       chart: dragonfly-operator
       sourceRef:
         kind: HelmRepository
-        name: flux-system
+        name: dragonfly-operator
+        namespace: flux-system
       version: v1.1.8
