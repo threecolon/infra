@@ -7,8 +7,8 @@ metadata:
 spec:
   interval: 15m
   ref:
-    tag: v0.10.4
-  url: https://github.com/adyanth/cloudflare-operator
+    tag: v1.15.5
+  url: https://github.com/rook/rook
   ignore: |
     # exclude all
     /*
