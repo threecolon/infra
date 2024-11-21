@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - operator.hr.yaml
+  - cluster-akane-nvme.hr.yaml
