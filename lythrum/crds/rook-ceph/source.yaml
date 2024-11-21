@@ -2,7 +2,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: cloudflare-operator-crds
+  name: rook-ceph-crds
   namespace: flux-system
 spec:
   interval: 15m
