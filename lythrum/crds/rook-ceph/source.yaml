@@ -1,0 +1,16 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: cloudflare-operator-crds
+  namespace: flux-system
+spec:
+  interval: 15m
+  ref:
+    tag: v0.10.4
+  url: https://github.com/adyanth/cloudflare-operator
+  ignore: |
+    # exclude all
+    /*
+    # include crds file
+    !/deploy/examples/crds.yaml
