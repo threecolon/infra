@@ -211,4 +211,4 @@ spec:
             csi.storage.k8s.io/node-stage-secret-namespace: "{{ .Release.Namespace }}"
             csi.storage.k8s.io/fstype: ext4
     cephObjectStores: []
-    cephFilesystems: []
+    cephFileSystems: []
