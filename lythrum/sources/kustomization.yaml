@@ -9,3 +9,4 @@ resources:
   - rook-release.yaml
   - metrics-server.yaml
   - kubelet-csr-approver.yaml
+  - jetstack.yaml

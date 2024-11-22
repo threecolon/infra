@@ -8,3 +8,4 @@ resources:
   - cnpg-system
   - dragonfly-system
   - rook-ceph
+  - cert-manager
