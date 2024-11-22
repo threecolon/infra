@@ -10,3 +10,4 @@ resources:
   - metrics-server.yaml
   - kubelet-csr-approver.yaml
   - jetstack.yaml
+  - prometheus-community.yaml

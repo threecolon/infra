@@ -9,3 +9,4 @@ resources:
   - dragonfly-system
   - rook-ceph
   - cert-manager
+  - monitoring

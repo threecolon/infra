@@ -1,0 +1,16 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: prometheus-operator-operator-crds
+  namespace: flux-system
+spec:
+  interval: 15m
+  ref:
+    tag: v0.78.1
+  url: https://github.com/prometheus-operator/prometheus-operator
+  ignore: |
+    # exclude all
+    /*
+    # include crds directory
+    !/example/prometheus-operator-crd
