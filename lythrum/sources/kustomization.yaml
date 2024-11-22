@@ -7,3 +7,4 @@ resources:
   - cnpg.yaml
   - dragonfly-operator.yaml
   - rook-release.yaml
+  - metrics-server.yaml
