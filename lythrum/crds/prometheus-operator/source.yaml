@@ -2,7 +2,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: prometheus-operator-operator-crds
+  name: prometheus-operator-crds
   namespace: flux-system
 spec:
   interval: 15m
