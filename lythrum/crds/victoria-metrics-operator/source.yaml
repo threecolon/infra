@@ -1,0 +1,16 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: rook-ceph-crds
+  namespace: flux-system
+spec:
+  interval: 15m
+  ref:
+    tag: victoria-metrics-k8s-stack-0.28.4
+  url: https://github.com/VictoriaMetrics/helm-charts
+  ignore: |
+    # exclude all
+    /*
+    # include crds file
+    !/charts/victoria-metrics-operator/charts/crds/crds

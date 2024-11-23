@@ -5,3 +5,4 @@ resources:
   - cloudflare-operator
   - rook-ceph
   - prometheus-operator
+  - victoria-metrics-operator
