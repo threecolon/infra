@@ -2,7 +2,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: rook-ceph-crds
+  name: victoria-metrics-operator-crds
   namespace: flux-system
 spec:
   interval: 15m
