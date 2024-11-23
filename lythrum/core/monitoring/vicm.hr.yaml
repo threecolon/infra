@@ -45,8 +45,6 @@ spec:
       enabled: true
       crds:
         enabled: false
-        # -- added temporary, till new operator version released
-        plain: false
         cleanup:
           enabled: false
           image:
