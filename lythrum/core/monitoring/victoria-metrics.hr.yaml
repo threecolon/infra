@@ -48,7 +48,7 @@ spec:
         # -- added temporary, till new operator version released
         plain: false
         cleanup:
-          enabled: true
+          enabled: false
           image:
             repository: bitnami/kubectl
             pullPolicy: IfNotPresent
