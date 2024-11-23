@@ -299,7 +299,7 @@ spec:
           storageClassName: ceph-block-akane-nvme
           resources:
             requests:
-              storage: 20Gi
+              storage: 16Gi
       ingress:
         # -- Enable deployment of ingress for server component
         enabled: false
