@@ -1358,7 +1358,7 @@ spec:
       nameOverride: ""
       nodeSelector: {}
       operator:
-        disable_prometheus_converter: true
+        disable_prometheus_converter: false
         enable_converter_ownership: false
         prometheus_converter_add_argocd_ignore_annotations: false
         useCustomConfigReloader: false
