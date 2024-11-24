@@ -9,7 +9,6 @@ spec:
   chart:
     spec:
       chart: metrics-server
-      reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
         name: metrics-server

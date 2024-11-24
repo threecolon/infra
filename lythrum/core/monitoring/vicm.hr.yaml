@@ -9,7 +9,6 @@ spec:
   chart:
     spec:
       chart: victoria-metrics-k8s-stack
-      reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
         name: victoria-metrics

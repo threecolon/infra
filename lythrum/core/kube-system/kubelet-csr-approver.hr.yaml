@@ -9,7 +9,6 @@ spec:
   chart:
     spec:
       chart: kubelet-csr-approver
-      reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
         name: kubelet-csr-approver
