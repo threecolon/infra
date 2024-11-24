@@ -15,3 +15,6 @@ spec:
         namespace: flux-system
       version: '0.28.4'
   values:
+    victoria-metrics-operator:
+      crds:
+        enabled: false
