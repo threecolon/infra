@@ -18,8 +18,8 @@ spec:
     clusterName: akane-nvme
 
     monitoring:
-      enabled: false
-      createPrometheusRules: false
+      enabled: true
+      createPrometheusRules: true
       prometheusRule:
     cephClusterSpec:
       cephVersion:

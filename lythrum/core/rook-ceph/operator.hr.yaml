@@ -17,3 +17,8 @@ spec:
   values:
     crds:
       enabled: false
+    monitoring:
+      enabled: true
+    csi:
+      serviceMonitor:
+        enabled: true
