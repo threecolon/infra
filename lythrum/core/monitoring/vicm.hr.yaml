@@ -483,10 +483,11 @@ spec:
       nodeSelector: {}
       notifiers: {}
       persistence:
+        storageClassName: ceph-block-akane-nvme
         accessModes:
         - ReadWriteOnce
         disableWarning: false
-        enabled: false
+        enabled: true
         extraPvcLabels: {}
         finalizers:
         - kubernetes.io/pvc-protection
