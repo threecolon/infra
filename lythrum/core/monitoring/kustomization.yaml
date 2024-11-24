@@ -5,3 +5,4 @@ resources:
   - namespace.yaml
   - vicm.hr.yaml
   - grafana-operator.hr.yaml
+  - grafana
