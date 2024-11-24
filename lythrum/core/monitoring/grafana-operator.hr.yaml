@@ -13,4 +13,4 @@ spec:
         kind: HelmRepository
         name: grafana
         namespace: flux-system
-      version: 5.15.1
+      version: v5.15.1
