@@ -13,7 +13,7 @@ spec:
         - ReadWriteOnce
       resources:
         requests:
-          storage: 10Gi
+          storage: 2Gi
       storageClassName: ceph-block-nvme
   config:
     log:
