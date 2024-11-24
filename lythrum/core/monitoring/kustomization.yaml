@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - vicm.hr.yaml
+  - grafana-operator.hr.yaml
