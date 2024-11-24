@@ -310,7 +310,7 @@ spec:
         tag: 7.85.0
       enableKubeBackwardCompatibility: false
       enableServiceLinks: true
-      enabled: true
+      enabled: false
       env: {}
       envFromConfigMaps: []
       envFromSecret: ""
