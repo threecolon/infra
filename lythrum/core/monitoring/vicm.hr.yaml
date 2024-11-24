@@ -18,3 +18,13 @@ spec:
     victoria-metrics-operator:
       crds:
         enabled: false
+
+    vmsingle:
+      spec:
+        storage:
+          accessModes:
+            - ReadWriteOnce
+          storageClassName: ceph-block-akane-nvme
+          resources:
+            requests:
+              storage: 20Gi
