@@ -78,7 +78,7 @@ spec:
       defaultTimezone: utc
       enabled: true
       grafanaOperator:
-        enabled: false
+        enabled: true
         spec:
           allowCrossNamespaceImport: false
           instanceSelector:
@@ -310,7 +310,7 @@ spec:
         tag: 7.85.0
       enableKubeBackwardCompatibility: false
       enableServiceLinks: true
-      enabled: false
+      enabled: true
       env: {}
       envFromConfigMaps: []
       envFromSecret: ""
