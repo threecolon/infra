@@ -483,7 +483,7 @@ spec:
       nodeSelector: {}
       notifiers: {}
       persistence:
-        storageClassName: ceph-block-akane-nvme
+        storageClassName: ceph-block-nvme
         accessModes:
         - ReadWriteOnce
         disableWarning: false
@@ -1594,4 +1594,4 @@ spec:
           resources:
             requests:
               storage: 20Gi
-          storageClassName: ceph-block-akane-nvme
+          storageClassName: ceph-block-nvme

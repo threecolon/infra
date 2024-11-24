@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: rook-ceph-cluster-akane-nvme
+  name: rook-ceph-cluster
   namespace: rook-ceph
 spec:
   interval: 10m
@@ -15,7 +15,7 @@ spec:
         namespace: flux-system
       version: '1.15.5'
   values:
-    clusterName: akane-nvme
+    clusterName: rook-ceph
 
     monitoring:
       # -- Enable Prometheus integration, will also create necessary RBAC rules to allow Operator to create ServiceMonitors.
@@ -44,7 +44,7 @@ spec:
         image: quay.io/ceph/ceph:v18.2.4
         allowUnsupported: false
 
-      dataDirHostPath: /var/lib/rook-akane-nvme
+      dataDirHostPath: /var/lib/rook
 
       skipUpgradeChecks: false
 
@@ -197,7 +197,7 @@ spec:
             disabled: false
 
     cephBlockPools:
-      - name: ceph-blockpool-akane-nvme
+      - name: ceph-blockpool-nvme
         # see https://github.com/rook/rook/blob/master/Documentation/CRDs/Block-Storage/ceph-block-pool-crd.md#spec for available configuration
         spec:
           failureDomain: osd
@@ -206,10 +206,11 @@ spec:
             requireSafeReplicaSize: false
           parameters:
             compression_mode: aggressive
+          deviceClass: nvme
           # enableRBDStats: true
         storageClass:
           enabled: true
-          name: ceph-block-akane-nvme
+          name: ceph-block-nvme
           annotations: {}
           labels: {}
           isDefault: false
