@@ -11,3 +11,5 @@ resources:
   - kubelet-csr-approver.yaml
   - jetstack.yaml
   - victoria-metrics.yaml
+  - prometheus-community.yaml
+  - grafana.yaml
