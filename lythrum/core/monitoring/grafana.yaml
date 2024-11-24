@@ -27,6 +27,18 @@ spec:
     spec:
       template:
         spec:
+          containers:
+            - name: grafana
+              image: grafana/grafana:9.4.3
+              securityContext:
+                runAsUser: 1001
+                runAsGroup: 1001
+                runAsNonRoot: true
+                allowPrivilegeEscalation: false
+                capabilities:
+                  drop: ["ALL"]
+              readinessProbe:
+                failureThreshold: 3
           volumes:
             - name: grafana-data
               persistentVolumeClaim:
