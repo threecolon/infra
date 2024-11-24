@@ -293,9 +293,7 @@ spec:
         replicaCount: 1
         extraArgs: {}
         storage:
-          accessModes:
-            - ReadWriteOnce
-          storageClassName: ceph-block-akane-nvme
+          storageClassName: "local-path"
           resources:
             requests:
               storage: 16Gi
