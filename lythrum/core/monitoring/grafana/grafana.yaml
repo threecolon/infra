@@ -24,8 +24,8 @@ spec:
       admin_user: admin
       admin_password: ${GRAFANA_ADMIN_PASSWORD}
   ingress:
-    ingressClassName: tailscale
     spec:
+      ingressClassName: tailscale
       defaultBackend:
         service:
           name: grafana-service
