@@ -10,3 +10,4 @@ resources:
   - rook-ceph
   - cert-manager
   - monitoring
+  - tailscale-operator

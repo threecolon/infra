@@ -13,3 +13,4 @@ resources:
   - victoria-metrics.yaml
   - prometheus-community.yaml
   - grafana.yaml
+  - tailscale.yaml
