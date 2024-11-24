@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - operator.hr.yaml
-  - cluster-nvme.hr.yaml
+  - cluster.hr.yaml
