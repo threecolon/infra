@@ -23,6 +23,17 @@ spec:
     security:
       admin_user: admin
       admin_password: ${GRAFANA_ADMIN_PASSWORD}
+  ingress:
+    ingressClassName: tailscale
+    spec:
+      defaultBackend:
+        service:
+          name: grafana-service
+          port:
+            number: 3000
+      tls:
+        - hosts:
+            - gf
   deployment:
     spec:
       template:
