@@ -285,7 +285,7 @@ spec:
       # -- VMSingle annotations
       annotations: {}
       # -- Create VMSingle CR
-      enabled: true
+      enabled: false
       # -- Full spec for VMSingle CRD. Allowed values describe [here](https://docs.victoriametrics.com/operator/api#vmsinglespec)
       spec:
         port: "8429"
