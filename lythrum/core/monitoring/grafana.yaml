@@ -7,14 +7,14 @@ metadata:
   labels:
     dashboards: "grafana"
 spec:
-  persistentVolumeClaim:
-    spec:
-      accessModes:
-        - ReadWriteOnce
-      resources:
-        requests:
-          storage: 2Gi
-      storageClassName: ceph-block-nvme
+  # persistentVolumeClaim:
+  #   spec:
+  #     accessModes:
+  #       - ReadWriteOnce
+  #     resources:
+  #       requests:
+  #         storage: 2Gi
+  #     storageClassName: ceph-block-nvme
   config:
     log:
       mode: "console"
@@ -35,7 +35,7 @@ spec:
                 readOnlyRootFilesystem: false
               readinessProbe:
                 failureThreshold: 3
-          volumes:
-            - name: grafana-data
-              persistentVolumeClaim:
-                claimName: grafana-pvc
+          # volumes:
+          #   - name: grafana-data
+          #     persistentVolumeClaim:
+          #       claimName: grafana-pvc
