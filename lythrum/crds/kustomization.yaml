@@ -6,3 +6,4 @@ resources:
   - rook-ceph
   - prometheus-operator
   - victoria-metrics-operator
+  - grafana-operator

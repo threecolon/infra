@@ -1,0 +1,16 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: grafana-operator-crds
+  namespace: flux-system
+spec:
+  interval: 15m
+  ref:
+    tag: v5.15.1
+  url: https://github.com/grafana/grafana-operator
+  ignore: |
+    # exclude all
+    /*
+    # include crds file
+    !/deploy/helm/grafana-operator/crds
