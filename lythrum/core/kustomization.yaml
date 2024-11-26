@@ -11,3 +11,4 @@ resources:
   - monitoring
   - tailscale-operator
   - valkey-operator
+  - authentik
