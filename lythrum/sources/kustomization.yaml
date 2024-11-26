@@ -14,3 +14,4 @@ resources:
   - grafana.yaml
   - tailscale.yaml
   - valkey-operator.yaml
+  - authentik.yaml
