@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: valkey-operator
+  name: hyperspike
   namespace: flux-system
 spec:
   interval: 10m0s
   type: oci
-  url: oci://ghcr.io/hyperspike/valkey-operator
+  url: oci://ghcr.io/hyperspike

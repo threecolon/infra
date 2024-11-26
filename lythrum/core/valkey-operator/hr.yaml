@@ -11,6 +11,6 @@ spec:
       chart: valkey-operator
       sourceRef:
         kind: HelmRepository
-        name: valkey-operator
+        name: hyperspike
         namespace: flux-system
       version: '0.0.39'

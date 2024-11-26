@@ -13,4 +13,4 @@ resources:
   - prometheus-community.yaml
   - grafana.yaml
   - tailscale.yaml
-  - valkey-operator.yaml
+  - hyperspike.yaml
