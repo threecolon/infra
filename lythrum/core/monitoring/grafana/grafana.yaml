@@ -18,11 +18,17 @@ spec:
   ingress:
     spec:
       ingressClassName: tailscale
-      defaultBackend:
-        service:
-          name: grafana-service
-          port:
-            number: 3000
+      rules:
+        - host: grafana.example.com
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: grafana-service
+                    port:
+                      number: 3000
       tls:
         - hosts:
             - gf
