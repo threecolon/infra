@@ -5,7 +5,6 @@ resources:
   - cloudflare-operator.yaml
   - cilium.yaml
   - cnpg.yaml
-  - dragonfly-operator.yaml
   - rook-release.yaml
   - metrics-server.yaml
   - kubelet-csr-approver.yaml

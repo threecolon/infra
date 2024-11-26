@@ -6,7 +6,6 @@ resources:
   - flux-system
   - kube-system
   - cnpg-system
-  - dragonfly-system
   - rook-ceph
   - cert-manager
   - monitoring

@@ -1,9 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
-metadata:
-  name: dragonfly-operator
-  namespace: flux-system
-spec:
-  interval: 10m
-  type: oci
-  url: oci://ghcr.io/dragonflydb/dragonfly-operator/helm
