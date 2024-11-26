@@ -19,8 +19,7 @@ spec:
     spec:
       ingressClassName: tailscale
       rules:
-        - host: grafana.example.com
-          http:
+          - http:
             paths:
               - path: /
                 pathType: Prefix
