@@ -6,11 +6,7 @@ metadata:
   namespace: valkey-operator
 spec:
   interval: 10m0s
-  chart:
-    spec:
-      chart: valkey-operator
-      sourceRef:
-        kind: HelmRepository
-        name: valkey-operator
-        namespace: flux-system
-      version: '0.0.39'
+  chartRef:
+    kind: OCIRepository
+    name: valkey-operator
+    namespace: flux-system
