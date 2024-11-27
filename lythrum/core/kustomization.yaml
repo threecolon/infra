@@ -10,5 +10,5 @@ resources:
   - cert-manager
   - monitoring
   - tailscale-operator
-  - valkey-operator
+  - opstree
   - authentik
