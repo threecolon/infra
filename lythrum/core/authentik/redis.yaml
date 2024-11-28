@@ -6,7 +6,7 @@ metadata:
   namespace: authentik
 spec:
   kubernetesConfig:
-    image: docker.io/valkey/valkey:8.0.1-alpine
+    image: docker.io/redis:8.0-M02-alpine
     imagePullPolicy: IfNotPresent
   storage:
     volumeClaimTemplate:
