@@ -19,7 +19,7 @@ spec:
       secret_key: ${AUTHENTIK_SECRET_KEY}
       postgresql:
         host: postgres-rw.authentik.svc.cluster.local
-        name: default
+        name: app
         user: file:///var/run/secrets/postgres/username
         password: file:///var/run/secrets/postgres/password
       redis:
