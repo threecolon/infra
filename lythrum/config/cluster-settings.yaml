@@ -7,5 +7,7 @@ metadata:
 data:
   GITHUB_INFRA_REPO: https://github.com/threecolon/infra
   DOMAIN_EXTERNAL: estrogen.lol
+  DOMAIN_INTERNAL: snow-lenok.ts.net
   SUBDOMAIN_FLUX_WEBHOOKS: flux-webhooks
   SUBDOMAIN_AUTHENTIK: auth
+  SUBDOMAIN_GRAFANA: gf
