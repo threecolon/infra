@@ -1,0 +1,13 @@
+---
+apiVersion: networking.cfargotunnel.com/v1alpha1
+kind: TunnelBinding
+metadata:
+  name: cf-tunnel
+  namespace: authentik
+subjects:
+  - name: authentik-server
+    spec:
+      fqdn: ${SUBDOMAIN_AUTHENTIK}.${DOMAIN_EXTERNAL}
+tunnelRef:
+  kind: ClusterTunnel
+  name: tunnel-external
