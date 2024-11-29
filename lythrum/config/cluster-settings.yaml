@@ -8,4 +8,4 @@ data:
   GITHUB_INFRA_REPO: https://github.com/threecolon/infra
   DOMAIN_EXTERNAL: estrogen.lol
   SUBDOMAIN_FLUX_WEBHOOKS: flux-webhooks
-  SUBDOMAIN_AUTHENTIK: sso
+  SUBDOMAIN_AUTHENTIK: auth

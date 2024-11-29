@@ -2,7 +2,7 @@
 apiVersion: networking.cfargotunnel.com/v1alpha1
 kind: TunnelBinding
 metadata:
-  name: cf-tunnel
+  name: authentik-tunnel
   namespace: authentik
 subjects:
   - name: authentik-server
