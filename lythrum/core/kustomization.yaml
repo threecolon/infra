@@ -5,8 +5,6 @@ resources:
   - flux-system
   - kube-system
   - cnpg-system
-  - rook-ceph
-  - rook-ceph-bridget
   - cert-manager
   - monitoring
   - tailscale-operator
