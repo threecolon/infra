@@ -181,9 +181,9 @@ spec:
           erasureCoded:
             dataChunks: 3
             codingChunks: 1
+          enableRBDStats: true
           parameters:
             compression_mode: aggressive
-            enableRBDStats: true
         storageClass:
           enabled: true
           name: ceph-block-bridget-hdd
