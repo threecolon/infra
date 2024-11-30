@@ -6,7 +6,8 @@ resources:
   - kube-system
   - cnpg-system
   - cert-manager
-  - monitoring
+  # - monitoring
+
   - tailscale-operator
   - ot-operators
   - authentik
