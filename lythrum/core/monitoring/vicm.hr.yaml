@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: victoria-metrics
         namespace: flux-system
-      version: "0.28.4"
+      version: "0.29.1"
   values:
     global:
       cluster:
@@ -80,6 +80,18 @@ spec:
     grafana:
       enabled: false
       forceDeployDatasource: true
+      sidecar:
+        datasources:
+          enabled: true
+          initDatasources: true
+        dashboards:
+          provider:
+            name: default
+            orgid: 1
+          folder: /var/lib/grafana/dashboards
+          defaultFolderName: default
+          enabled: true
+          multicluster: false
     kube-state-metrics:
       enabled: true
       vmScrape:
