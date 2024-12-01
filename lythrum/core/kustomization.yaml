@@ -10,6 +10,7 @@ resources:
 
   # - rkc-bridget
   # - rkc-akane
+  - rook-ceph
   - tailscale-operator
   - ot-operators
   # - authentik
