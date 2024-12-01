@@ -1,9 +1,8 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: rook-ceph-cluster
-  namespace: rook-ceph
+  name: rkc-cluster-akanae
+  namespace: rkc-akane
 spec:
   interval: 10m
   chart:
@@ -15,8 +14,7 @@ spec:
         namespace: flux-system
       version: '1.15.5'
   values:
-    clusterName: rook-ceph
-
+    clusterName: rkc-akane
     monitoring:
       # -- Enable Prometheus integration, will also create necessary RBAC rules to allow Operator to create ServiceMonitors.
       # Monitoring requires Prometheus to be pre-installed
@@ -38,37 +36,27 @@ spec:
         labels: {}
         # -- Annotations applied to PrometheusRule
         annotations: {}
-
     cephClusterSpec:
       cephVersion:
         image: quay.io/ceph/ceph:v18.2.4
         allowUnsupported: false
-
-      dataDirHostPath: /var/lib/rook
-
+      dataDirHostPath: /var/lib/rook-akane
       skipUpgradeChecks: false
-
       continueUpgradeAfterChecksEvenIfNotHealthy: false
-
       waitTimeoutForHealthyOSDInMinutes: 10
-
       upgradeOSDRequiresHealthyPGs: false
-
       mon:
         count: 3
         allowMultiplePerNode: false
-
       mgr:
         count: 3
         allowMultiplePerNode: false
         modules:
           - name: rook
             enabled: true
-
       dashboard:
         enabled: true
         ssl: true
-
       network:
         connections:
           encryption:
@@ -76,16 +64,13 @@ spec:
           compression:
             enabled: true
           requireMsgr2: true
-
       crashCollector:
         disable: false
         daysToRetain: 30
-
       logCollector:
         enabled: true
         periodicity: daily
         maxLogSize: 500M
-
       placement:
         mon:
           tolerations:
@@ -97,7 +82,6 @@ spec:
             - key: node-role.kubernetes.io/control-plane
               operator: Exists
               effect: NoSchedule
-
       resources:
         mgr:
           limits:
@@ -151,32 +135,27 @@ spec:
           requests:
             cpu: "50m"
             memory: "50Mi"
-
       removeOSDsIfOutAndSafeToRemove: false
-
       priorityClassNames:
         mon: system-node-critical
         osd: system-node-critical
         mgr: system-cluster-critical
-
       storage:
         useAllNodes: false
         useAllDevices: false
         nodes:
           - name: akane
             devices:
-              - name: "nvme0n1"
+              - name: /dev/disk/by-id/nvme-KINGSTON_SNV2S4000G_50026B7686445413
                 config:
                   osdsPerDevice: "4"
-              - name: "nvme1n1"
+              - name: /dev/disk/by-id/nvme-KINGSTON_SNV2S4000G_50026B7686445813
                 config:
                   osdsPerDevice: "4"
-
       disruptionManagement:
         managePodBudgets: true
         osdMaintenanceTimeout: 30
         pgHealthCheckTimeout: 0
-
       healthCheck:
         daemonHealth:
           mon:
@@ -195,9 +174,8 @@ spec:
             disabled: false
           osd:
             disabled: false
-
     cephBlockPools:
-      - name: ceph-blockpool-nvme
+      - name: ceph-blockpool-akane-nvme
         # see https://github.com/rook/rook/blob/master/Documentation/CRDs/Block-Storage/ceph-block-pool-crd.md#spec for available configuration
         spec:
           failureDomain: osd
@@ -207,10 +185,10 @@ spec:
           parameters:
             compression_mode: aggressive
           deviceClass: nvme
-          # enableRBDStats: true
+          enableRBDStats: true
         storageClass:
           enabled: true
-          name: ceph-block-nvme
+          name: ceph-block-akane-nvme
           annotations: {}
           labels: {}
           isDefault: false
