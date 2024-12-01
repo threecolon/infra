@@ -1,8 +1,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: rook-ceph-cluster-bridget
-  namespace: rook-ceph-bridget
+  name: rkc-cluster-bridget
+  namespace: rkc-bridget
 spec:
   interval: 10m
   chart:
@@ -14,13 +14,14 @@ spec:
         namespace: flux-system
       version: '1.15.5'
   values:
-    clusterName: rook-ceph-bridget
+    clusterName: rkc-bridget
+    operatorNamespace: rkc-bridget
     monitoring:
       # -- Enable Prometheus integration, will also create necessary RBAC rules to allow Operator to create ServiceMonitors.
       # Monitoring requires Prometheus to be pre-installed
-      enabled: false
+      enabled: true
       # -- Whether to create the Prometheus rules for Ceph alerts
-      createPrometheusRules: false
+      createPrometheusRules: true
       # -- The namespace in which to create the prometheus rules, if different from the rook cluster namespace.
       # If you have multiple rook-ceph clusters in the same k8s cluster, choose the same namespace (ideally, namespace with prometheus
       # deployed) to set rulesNamespaceOverride for all the clusters. Otherwise, you will get duplicate alerts with multiple alert definitions.
@@ -181,7 +182,7 @@ spec:
           erasureCoded:
             dataChunks: 3
             codingChunks: 1
-          enableRBDStats: true
+          # enableRBDStats: true
           parameters:
             compression_mode: aggressive
         storageClass:
