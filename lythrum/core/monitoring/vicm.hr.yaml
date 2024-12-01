@@ -82,8 +82,10 @@ spec:
       forceDeployDatasource: true
       sidecar:
         datasources:
-          enabled: true
-          initDatasources: true
+          enabled: false
+          initDatasources: false
+          annotations: {}
+          labels: {}
         dashboards:
           provider:
             name: default
