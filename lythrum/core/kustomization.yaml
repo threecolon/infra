@@ -12,4 +12,4 @@ resources:
   - rkc-akane
   - tailscale-operator
   - ot-operators
-  - authentik
+  # - authentik
