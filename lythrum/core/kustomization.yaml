@@ -9,8 +9,7 @@ resources:
   # - monitoring
 
   - rkc-bridget
-  # - rkc-akane
-
+  - rkc-akane
   - rook-ceph
   - tailscale-operator
   - ot-operators

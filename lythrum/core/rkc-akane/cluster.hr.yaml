@@ -15,7 +15,7 @@ spec:
       version: '1.15.5'
   values:
     clusterName: rkc-akane
-    operatorNamespace: rkc-akane
+    operatorNamespace: rook-ceph
     monitoring:
       # -- Enable Prometheus integration, will also create necessary RBAC rules to allow Operator to create ServiceMonitors.
       # Monitoring requires Prometheus to be pre-installed
