@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - operator.hr.yaml
-  # - cluster.hr.yaml
+  - cluster.hr.yaml
