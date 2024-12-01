@@ -8,8 +8,9 @@ resources:
   - cert-manager
   # - monitoring
 
-  # - rkc-bridget
+  - rkc-bridget
   # - rkc-akane
+
   - rook-ceph
   - tailscale-operator
   - ot-operators
