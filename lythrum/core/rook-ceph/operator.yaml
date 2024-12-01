@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: rook-ceph-operaotr
+  name: rook-ceph-operator
   namespace: rook-ceph
 spec:
   interval: 10m
