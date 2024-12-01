@@ -47,10 +47,10 @@ spec:
       waitTimeoutForHealthyOSDInMinutes: 10
       upgradeOSDRequiresHealthyPGs: false
       mon:
-        count: 3
+        count: 2
         allowMultiplePerNode: true
       mgr:
-        count: 3
+        count: 2
         allowMultiplePerNode: true
         modules:
           - name: rook
