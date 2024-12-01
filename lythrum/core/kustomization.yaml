@@ -6,8 +6,7 @@ resources:
   - kube-system
   - cnpg-system
   - cert-manager
-  # - monitoring
-
+  - monitoring
   - rkc-bridget
   - rkc-akane
   - rook-ceph
