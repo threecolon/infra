@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: rkc-cluster-akanae
+  name: rkc-cluster-akane
   namespace: rkc-akane
 spec:
   interval: 10m
