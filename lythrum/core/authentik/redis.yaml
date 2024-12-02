@@ -11,7 +11,7 @@ spec:
   storage:
     volumeClaimTemplate:
       spec:
-        storageClassName: ceph-block-nvme
+        storageClassName: ceph-block-akane-nvme
         resources:
           requests:
             storage: 1Gi
