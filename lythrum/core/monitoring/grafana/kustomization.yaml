@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - operator.hr.yaml
   - grafana.yaml
-  - vicm-datasource.yaml
+  - vcm-datasource.yaml

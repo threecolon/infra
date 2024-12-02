@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - vcm.hr.yaml
-  # - grafana
+  - grafana
