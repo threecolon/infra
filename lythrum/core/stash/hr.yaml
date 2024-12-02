@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: stash
+  namespace: stash
+spec:
+  interval: 10m
+  chartRef:
+    kind: OCIRepository
+    name: stash
+    namespace: flux-system
+  values:
+    global:
+      license: ${APPSCODE_STASH_LICENSE}
+    features:
+      enterprise: true
