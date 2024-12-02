@@ -12,4 +12,4 @@ resources:
   - rook-ceph
   - tailscale-operator
   - ot-operators
-  # - authentik
+  - authentik
