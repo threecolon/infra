@@ -5,7 +5,7 @@ metadata:
   name: ot-redis-operator
   namespace: ot-operators
 spec:
-  interval: 10m0s
+  interval: 10m
   chart:
     spec:
       chart: redis-operator

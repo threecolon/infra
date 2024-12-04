@@ -5,5 +5,5 @@ metadata:
   name: opstree
   namespace: flux-system
 spec:
-  interval: 10m0s
+  interval: 10m
   url: https://ot-container-kit.github.io/helm-charts/
