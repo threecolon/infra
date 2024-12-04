@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: importer
+  labels:
+    app: importer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: importer
+  template:
+    metadata:
+      labels:
+        app: importer
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: bridget
+      containers:
+        - name: importer
+          image: ubuntu:22.04
+          command:
+          - "/bin/bash"
+          - "-c"
+          - >
+            apt update &&
+            apt install -y openssh-server &&
+            service ssh start &&
+            mkdir -p /root/.ssh &&
+            echo '<public_key>' > /root/.ssh/authorized_keys &&
+            tail -f /dev/null
+          ports:
+          - containerPort: 22
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "2"
+            requests:
+              memory: "1Gi"
+              cpu: "1"
+          volumeMounts:
+            - mountPath: "/data"
+              name: data-volume
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: importer-data

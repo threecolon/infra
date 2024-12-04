@@ -13,3 +13,4 @@ resources:
   - tailscale-operator
   - ot-operators
   - authentik
+  - importer
