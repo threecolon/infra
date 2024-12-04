@@ -13,4 +13,3 @@ resources:
   - tailscale-operator
   - ot-operators
   - authentik
-  - stash
