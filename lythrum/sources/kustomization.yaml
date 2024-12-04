@@ -15,4 +15,3 @@ resources:
   - tailscale.yaml
   - opstree.yaml
   - authentik.yaml
-  - stash.yaml
