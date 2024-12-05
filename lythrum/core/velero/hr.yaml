@@ -358,19 +358,7 @@ spec:
         config:
           region: us-west-004
           s3Url: https://s3.us-west-004.backblazeb2.com
-        #  s3ForcePathStyle:
-        #  kmsKeyId:
-        #  resourceGroup:
-        #  The ID of the subscription containing the storage account, if different from the cluster’s subscription. (Azure only)
-        #  subscriptionId:
-        #  storageAccount:
-        #  publicUrl:
-        #  Name of the GCP service account to use for this backup storage location. Specify the
-        #  service account here if you want to use workload identity instead of providing the key file.(GCP only)
-        #  serviceAccount:
-        #  Option to skip certificate validation or not if insecureSkipTLSVerify is set to be true, the client side should set the
-        #  flag. For Velero client Command like velero backup describe, velero backup logs needs to add the flag --insecure-skip-tls-verify
-        #  insecureSkipTLSVerify:
+          checksumAlgorithm: ""
 
         # annotations allows adding arbitrary annotations to this BackupStorageLocation resource. Optional.
         annotations: {}
