@@ -7,3 +7,4 @@ resources:
   - prometheus-operator
   - victoria-metrics-operator
   - grafana-operator
+  - volume-snapshot
