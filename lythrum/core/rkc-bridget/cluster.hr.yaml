@@ -182,7 +182,17 @@ spec:
           erasureCoded:
             dataChunks: 3
             codingChunks: 1
-          # enableRBDStats: true
+          enableRBDStats: true
+          parameters:
+            compression_mode: aggressive
+        storageClass:
+          enabled: false
+      - name: ceph-block-bridget-hdd-metadata
+        spec:
+          failureDomain: osd
+          replicated:
+            size: 3
+          enableRBDStats: true
           parameters:
             compression_mode: aggressive
         storageClass:
@@ -197,6 +207,7 @@ spec:
           mountOptions: []
           allowedTopologies: []
           parameters:
+            dataPool: ceph-blockpool-bridget-hdd
             imageFormat: "2"
             imageFeatures: layering,fast-diff,object-map,deep-flatten,exclusive-lock
             csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
