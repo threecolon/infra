@@ -25,7 +25,7 @@ spec:
           - "-c"
           - >
             apt update &&
-            apt install -y openssh-server &&
+            apt install -y openssh-server rsync &&
             service ssh start &&
             mkdir -p /root/.ssh &&
             echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO0vrHvaR08tNMQpbMQpjb8qn1rXowvn4az9WbOL+MwT lily@lighty' > /root/.ssh/authorized_keys &&
