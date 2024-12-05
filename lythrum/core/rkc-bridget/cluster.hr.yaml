@@ -196,7 +196,7 @@ spec:
           parameters:
             compression_mode: aggressive
         storageClass:
-          enabled: true
+          enabled: false
           name: ceph-block-bridget-hdd
           annotations: {}
           labels: {}
