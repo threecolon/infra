@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 15m
   ref:
-    tag: release-8.1
+    tag: v8.1.0
   url: https://github.com/kubernetes-csi/external-snapshotter
   ignore: |
     # exclude all
