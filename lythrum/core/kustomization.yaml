@@ -14,3 +14,4 @@ resources:
   - ot-operators
   - authentik
   - importer
+  - velero
