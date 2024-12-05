@@ -6,9 +6,9 @@ metadata:
 spec:
   selector:
     app: importer
-  type: LoadBalancer
-  loadBalancerClass: tailscale
+  type: NodePort
   ports:
     - protocol: TCP
       port: 22
       targetPort: 22
+      nodePort: 30222
