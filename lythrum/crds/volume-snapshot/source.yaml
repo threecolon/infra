@@ -13,4 +13,4 @@ spec:
     # exclude all
     /*
     # include crds file
-    !/client/config/crd/snapshot.storage.k8s.io_*.yaml
+    !/client/config/crd/snapshot*.yaml
