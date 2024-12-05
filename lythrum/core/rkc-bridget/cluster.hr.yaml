@@ -57,7 +57,7 @@ spec:
             enabled: true
       dashboard:
         enabled: true
-        ssl: true
+        ssl: false
       network:
         connections:
           encryption:
