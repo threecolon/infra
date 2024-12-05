@@ -356,8 +356,8 @@ spec:
         # Additional provider-specific configuration. See link above
         # for details of required/optional fields for your provider.
         config:
-          region: us-west-004
-          s3Url: https://s3.us-west-004.backblazeb2.com
+          region: ${BACKBLAZE_BACKUP_BUCKET_REGION}
+          s3Url: ${BACKBLAZE_BACKUP_BUCKET_ENDPOINT}
           checksumAlgorithm: ""
 
         # annotations allows adding arbitrary annotations to this BackupStorageLocation resource. Optional.
