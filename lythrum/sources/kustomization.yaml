@@ -16,4 +16,4 @@ resources:
   - opstree.yaml
   - authentik.yaml
   - vmware-tanzu.yaml
-  - piraeus-charts.yaml
+  - piraeus.yaml
