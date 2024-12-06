@@ -8,4 +8,3 @@ resources:
   - victoria-metrics-operator
   - grafana-operator
   - volume-snapshot
-  - snapshot-controller
