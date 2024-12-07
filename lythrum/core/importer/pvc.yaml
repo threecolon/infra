@@ -8,5 +8,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 7Ti
+      storage: 8Ti
   storageClassName: ceph-block-bridget-hdd
