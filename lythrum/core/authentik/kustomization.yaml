@@ -7,3 +7,5 @@ resources:
   - redis.yaml
   - hr.yaml
   - tunnel.yaml
+  - backblaze-credentials.secret.yaml
+  - postgres-backup.yaml
