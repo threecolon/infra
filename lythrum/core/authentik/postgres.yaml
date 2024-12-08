@@ -16,9 +16,9 @@ spec:
       endpointURL: ${BACKBLAZE_CNPG_BUCKET_ENDPOINT}
       s3Credentials:
         accessKeyId:
-          name: aws-creds
+          name: backblaze-credentials
           key: ACCESS_KEY_ID
         secretAccessKey:
-          name: aws-creds
+          name: backblaze-credentials
           key: ACCESS_SECRET_KEY
     retentionPolicy: 30d
