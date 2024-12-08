@@ -5,7 +5,7 @@ metadata:
   namespace: authentik
 spec:
   immediate: true
-  schedule: "0 0 */12 * * *"
+  schedule: "0 0 0 * * *"
   backupOwnerReference: self
   cluster:
     name: postgres
