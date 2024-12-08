@@ -365,7 +365,27 @@ spec:
 
       # Parameters for the VolumeSnapshotLocation(s). Configure multiple by adding other element(s) to the volumeSnapshotLocation slice.
       # See https://velero.io/docs/v1.6/api-types/volumesnapshotlocation/
-      volumeSnapshotLocation: []
+      volumeSnapshotLocation:
+        # name is the name of the volume snapshot location where snapshots are being taken. Required.
+      - name: rook-ceph
+        # provider is the name for the volume snapshot provider.
+        provider: csi
+        credential:
+          # name of the secret used by this volumeSnapshotLocation.
+          name:
+          # name of key that contains the secret data to be used.
+          key:
+        # Additional provider-specific configuration. See link above
+        # for details of required/optional fields for your provider.
+        config: {}
+      #    region:
+      #    apiTimeout:
+      #    resourceGroup:
+      #    The ID of the subscription where volume snapshots should be stored, if different from the cluster’s subscription. If specified, also requires `configuration.volumeSnapshotLocation.config.resourceGroup`to be set. (Azure only)
+      #    subscriptionId:
+      #    incremental:
+      #    snapshotLocation:
+      #    project:
 
       # These are server-level settings passed as CLI flags to the `velero server` command. Velero
       # uses default values if they're not passed in, so they only need to be explicitly specified
@@ -513,7 +533,7 @@ spec:
     snapshotsEnabled: true
 
     # Whether to deploy the node-agent daemonset.
-    deployNodeAgent: false
+    deployNodeAgent: true
 
     nodeAgent:
       podVolumePath: /var/lib/kubelet/pods
