@@ -17,3 +17,4 @@ resources:
   - authentik.yaml
   - vmware-tanzu.yaml
   - piraeus.yaml
+  - bitnami.yaml
