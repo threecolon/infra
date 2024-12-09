@@ -4,8 +4,8 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - postgres.yaml
-  - redis.yaml
-  - hr.yaml
+  - keydb.hr.yaml
+  - authentik.hr.yaml
   - tunnel.yaml
   - backblaze-credentials.secret.yaml
   - postgres-backup.yaml

@@ -13,7 +13,6 @@ resources:
   - prometheus-community.yaml
   - grafana.yaml
   - tailscale.yaml
-  - opstree.yaml
   - authentik.yaml
   - vmware-tanzu.yaml
   - piraeus.yaml
