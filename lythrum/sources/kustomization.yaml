@@ -18,3 +18,4 @@ resources:
   - vmware-tanzu.yaml
   - piraeus.yaml
   - bitnami.yaml
+  - mittwald.yaml
