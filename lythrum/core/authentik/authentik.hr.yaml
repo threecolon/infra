@@ -23,22 +23,35 @@ spec:
         user: file:///var/run/secrets/postgres/username
         password: file:///var/run/secrets/postgres/password
       redis:
-        host: redis.authentik.svc.cluster.local
+        host: keydb-master.authentik.svc.cluster.local
+        password: file:///var/run/secrets/keydb/keydb-password
     server:
       volumes:
         - name: postgres-creds
           secret:
             secretName: postgres-app
+        - name: keydb-creds
+          secret:
+            secretName: keydb
       volumeMounts:
         - name: postgres-creds
           mountPath: /var/run/secrets/postgres
+          readOnly: true
+        - name: keydb-creds
+          mountPath: /var/run/secrets/keydb
           readOnly: true
     worker:
       volumes:
         - name: postgres-creds
           secret:
             secretName: postgres-app
+        - name: keydb-creds
+          secret:
+            secretName: keydb
       volumeMounts:
         - name: postgres-creds
           mountPath: /var/run/secrets/postgres
+          readOnly: true
+        - name: keydb-creds
+          mountPath: /var/run/secrets/keydb
           readOnly: true
