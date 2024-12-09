@@ -29,7 +29,7 @@ spec:
       "editable": true,
       "fiscalYearStartMonth": 0,
       "graphTooltip": 0,
-      "id": 19,
+      "id": 14,
       "links": [],
       "panels": [
         {
@@ -42,11 +42,11 @@ spec:
           },
           "id": 2,
           "panels": [],
-          "title": "CLUSTER STATE",
+          "title": "Cluster State",
           "type": "row"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -128,7 +128,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "disableTextWrap": false,
               "editorMode": "code",
               "expr": "ceph_health_status{namespace=\"$namespace\"}",
@@ -149,7 +149,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -207,7 +207,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "editorMode": "code",
               "expr": "sum(irate(ceph_osd_op_w_in_bytes{namespace=\"$namespace\"}[5m]))",
               "format": "time_series",
@@ -222,7 +222,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -288,7 +288,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "editorMode": "code",
               "expr": "sum(irate(ceph_osd_op_r_out_bytes{namespace=\"$namespace\"}[5m]))",
               "format": "time_series",
@@ -303,7 +303,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -370,7 +370,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "editorMode": "code",
               "expr": "ceph_cluster_total_bytes{namespace=\"$namespace\"}",
               "format": "time_series",
@@ -386,7 +386,10 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -408,16 +411,16 @@ spec:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "rgba(245, 54, 54, 0.9)",
+                    "color": "#32ac2df7",
                     "value": null
                   },
                   {
-                    "color": "rgba(237, 129, 40, 0.89)",
-                    "value": 0.1
+                    "color": "#ed8128e3",
+                    "value": 0.75
                   },
                   {
-                    "color": "rgba(50, 172, 45, 0.97)",
-                    "value": 0.3
+                    "color": "#f53636e6",
+                    "value": 0.9
                   }
                 ]
               },
@@ -452,9 +455,9 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "editorMode": "code",
-              "expr": "(ceph_cluster_total_bytes{namespace=\"$namespace\"}-ceph_cluster_total_used_bytes{namespace=\"$namespace\"})/ceph_cluster_total_bytes{namespace=\"$namespace\"}",
+              "expr": "(ceph_cluster_total_used_bytes{namespace=\"$namespace\"})/ceph_cluster_total_bytes{namespace=\"$namespace\"}",
               "format": "time_series",
               "instant": true,
               "interval": "$interval",
@@ -468,7 +471,7 @@ spec:
           "type": "gauge"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -530,7 +533,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "editorMode": "code",
               "expr": "sum(ceph_pool_objects{namespace=\"$namespace\"})",
               "format": "time_series",
@@ -545,7 +548,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -607,7 +610,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "editorMode": "code",
               "expr": "sum(ceph_osd_op_w_in_bytes{namespace=\"$namespace\"})",
               "format": "time_series",
@@ -622,7 +625,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -684,7 +687,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_osd_op_r_out_bytes{namespace=\"$namespace\"})",
               "format": "time_series",
               "instant": false,
@@ -698,7 +701,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -754,7 +757,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "editorMode": "code",
               "expr": "count(ALERTS{alertstate=\"firing\",alertname=~\"^Ceph.+\",namespace=\"$namespace\"}) OR vector(0)",
               "format": "time_series",
@@ -770,7 +773,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -828,7 +831,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(irate(ceph_osd_op_w{namespace=\"$namespace\"}[5m]))",
               "format": "time_series",
               "instant": true,
@@ -842,7 +845,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -908,7 +911,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(irate(ceph_osd_op_r{namespace=\"$namespace\"}[5m]))",
               "format": "time_series",
               "instant": true,
@@ -922,7 +925,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -989,7 +992,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "editorMode": "code",
               "expr": "ceph_cluster_total_used_bytes{namespace=\"$namespace\"}",
               "format": "time_series",
@@ -1004,7 +1007,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1070,7 +1073,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pool_objects)",
               "format": "time_series",
               "instant": false,
@@ -1084,7 +1087,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1146,7 +1149,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "editorMode": "code",
               "expr": "sum(ceph_mon_num_sessions{namespace=\"$namespace\"})",
               "format": "time_series",
@@ -1161,7 +1164,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1228,7 +1231,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "count(ceph_mon_quorum_status{namespace=\"$namespace\"}) or vector(0)",
               "format": "time_series",
               "instant": true,
@@ -1252,11 +1255,11 @@ spec:
           },
           "id": 18,
           "panels": [],
-          "title": "OSD STATE",
+          "title": "OSD State",
           "type": "row"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1322,7 +1325,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "count(ceph_osd_up{namespace=\"$namespace\"}) - count(ceph_osd_in{namespace=\"$namespace\"})",
               "format": "time_series",
               "instant": true,
@@ -1337,7 +1340,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1403,7 +1406,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "count(ceph_osd_up{namespace=\"$namespace\"} == 0.0) OR vector(0)",
               "format": "time_series",
               "instant": true,
@@ -1418,7 +1421,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1480,7 +1483,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_osd_up{namespace=\"$namespace\"})",
               "format": "time_series",
               "instant": true,
@@ -1495,7 +1498,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1557,7 +1560,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_osd_in{namespace=\"$namespace\"})",
               "format": "time_series",
               "instant": true,
@@ -1572,7 +1575,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1638,7 +1641,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "avg(ceph_osd_numpg{namespace=\"$namespace\"})",
               "format": "time_series",
               "instant": true,
@@ -1653,7 +1656,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1719,7 +1722,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "avg(ceph_osd_apply_latency_ms{namespace=\"$namespace\"})",
               "format": "time_series",
               "instant": true,
@@ -1734,7 +1737,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1800,7 +1803,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "avg(ceph_osd_commit_latency_ms{namespace=\"$namespace\"})",
               "format": "time_series",
               "instant": true,
@@ -1815,7 +1818,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1882,7 +1885,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "avg(rate(ceph_osd_op_w_latency_sum{namespace=\"$namespace\"}[5m]) / rate(ceph_osd_op_w_latency_count{namespace=\"$namespace\"}[5m]) >= 0)",
               "format": "time_series",
               "interval": "$interval",
@@ -1895,7 +1898,7 @@ spec:
           "type": "stat"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1962,7 +1965,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "avg(rate(ceph_osd_op_r_latency_sum{namespace=\"$namespace\"}[5m])/rate(ceph_osd_op_r_latency_count{namespace=\"$namespace\"}[5m]) >= 0)",
               "format": "time_series",
               "instant": true,
@@ -1985,11 +1988,11 @@ spec:
           },
           "id": 28,
           "panels": [],
-          "title": "CLUSTER STATS",
+          "title": "Cluster Stats",
           "type": "row"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2204,7 +2207,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "ceph_cluster_total_bytes{namespace=\"$namespace\"}-ceph_cluster_total_used_bytes{namespace=\"$namespace\"}",
               "format": "time_series",
               "interval": "$interval",
@@ -2214,7 +2217,7 @@ spec:
               "step": 300
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "ceph_cluster_total_used_bytes{namespace=\"$namespace\"}",
               "format": "time_series",
               "interval": "$interval",
@@ -2224,7 +2227,7 @@ spec:
               "step": 300
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "ceph_cluster_total_bytes{namespace=\"$namespace\"}",
               "format": "time_series",
               "interval": "$interval",
@@ -2238,7 +2241,7 @@ spec:
           "type": "timeseries"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2399,7 +2402,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(irate(ceph_osd_op_w{namespace=\"$namespace\"}[5m]))",
               "format": "time_series",
               "interval": "$interval",
@@ -2409,7 +2412,7 @@ spec:
               "step": 300
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(irate(ceph_osd_op_r{namespace=\"$namespace\"}[5m]))",
               "format": "time_series",
               "interval": "$interval",
@@ -2423,7 +2426,7 @@ spec:
           "type": "timeseries"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2508,7 +2511,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(irate(ceph_osd_op_w_in_bytes{namespace=\"$namespace\"}[5m]))",
               "format": "time_series",
               "interval": "$interval",
@@ -2518,7 +2521,7 @@ spec:
               "step": 300
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(irate(ceph_osd_op_r_out_bytes{namespace=\"$namespace\"}[5m]))",
               "format": "time_series",
               "interval": "$interval",
@@ -2532,7 +2535,7 @@ spec:
           "type": "timeseries"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2611,7 +2614,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "(ceph_pool_bytes_used{namespace=\"$namespace\"}) *on (pool_id) group_left(name)(ceph_pool_metadata{namespace=\"$namespace\"})",
               "format": "time_series",
               "intervalFactor": 1,
@@ -2624,7 +2627,7 @@ spec:
           "type": "timeseries"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2699,7 +2702,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "(ceph_pool_avail_raw{namespace=\"$namespace\"}) *on (pool_id) group_left(name)(ceph_pool_metadata{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "",
@@ -2709,7 +2712,7 @@ spec:
               "refId": "A"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "(ceph_pool_stored_raw{namespace=\"$namespace\"}) *on (pool_id) group_left(name)(ceph_pool_metadata{namespace=\"$namespace\"})",
               "format": "time_series",
               "hide": false,
@@ -2724,7 +2727,7 @@ spec:
           "type": "timeseries"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2803,7 +2806,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "(ceph_pool_objects{namespace=\"$namespace\"}) *on (pool_id) group_left(name)(ceph_pool_metadata{namespace=\"$namespace\"})",
               "format": "time_series",
               "intervalFactor": 1,
@@ -2815,7 +2818,7 @@ spec:
           "type": "timeseries"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2859,7 +2862,8 @@ spec:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -2893,7 +2897,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "(ceph_pool_quota_bytes{namespace=\"$namespace\"}) *on (pool_id) group_left(name)(ceph_pool_metadata{namespace=\"$namespace\"})",
               "format": "time_series",
               "intervalFactor": 1,
@@ -2905,7 +2909,7 @@ spec:
           "type": "timeseries"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -2949,7 +2953,8 @@ spec:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -2983,7 +2988,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "(ceph_pool_quota_objects{namespace=\"$namespace\"}) *on (pool_id) group_left(name)(ceph_pool_metadata{namespace=\"$namespace\"})",
               "format": "time_series",
               "intervalFactor": 1,
@@ -2995,7 +3000,7 @@ spec:
           "type": "timeseries"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -3039,7 +3044,8 @@ spec:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -3073,7 +3079,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "count(ceph_bluestore_kv_commit_lat_count{namespace=\"$namespace\"})",
               "format": "time_series",
               "intervalFactor": 1,
@@ -3086,7 +3092,7 @@ spec:
           "type": "timeseries"
         },
         {
-          "collapsed": true,
+          "collapsed": false,
           "gridPos": {
             "h": 1,
             "w": 24,
@@ -3094,754 +3100,295 @@ spec:
             "y": 35
           },
           "id": 38,
-          "panels": [
-            {
-              "datasource": "${DS_PROMETHEUS}",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "custom": {
-                    "align": "auto",
-                    "cellOptions": {
-                      "type": "auto"
-                    },
-                    "inspect": false
-                  },
-                  "decimals": 2,
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green"
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  },
-                  "unit": "short"
-                },
-                "overrides": [
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Time"
-                    },
-                    "properties": [
-                      {
-                        "id": "displayName",
-                        "value": "Time"
-                      },
-                      {
-                        "id": "unit",
-                        "value": "time: YYYY-MM-DD HH:mm:ss"
-                      },
-                      {
-                        "id": "custom.align"
-                      }
-                    ]
-                  }
-                ]
-              },
-              "gridPos": {
-                "h": 6,
-                "w": 8,
-                "x": 0,
-                "y": 28
-              },
-              "id": 39,
-              "options": {
-                "footer": {
-                  "fields": "",
-                  "reducer": [
-                    "sum"
-                  ],
-                  "show": false
-                },
-                "showHeader": true
-              },
-              "pluginVersion": "9.1.3",
-              "targets": [
-                {
-                  "datasource": "${DS_PROMETHEUS}",
-                  "expr": "ALERTS{namespace=\"$namespace\",alertstate=\"firing\",alertname=~\"^Ceph.+\"}",
-                  "format": "table",
-                  "instant": true,
-                  "intervalFactor": 1,
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "title": "Alerts starting with Ceph",
-              "transformations": [
-                {
-                  "id": "merge",
-                  "options": {
-                    "reducer": []
-                  }
-                }
-              ],
-              "type": "table"
-            },
-            {
-              "datasource": "${DS_PROMETHEUS}",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "custom": {
-                    "align": "auto",
-                    "cellOptions": {
-                      "type": "auto"
-                    },
-                    "filterable": false,
-                    "inspect": false
-                  },
-                  "decimals": 2,
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green"
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  },
-                  "unit": "short"
-                },
-                "overrides": [
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Time"
-                    },
-                    "properties": [
-                      {
-                        "id": "displayName",
-                        "value": "Time"
-                      },
-                      {
-                        "id": "unit",
-                        "value": "time: YYYY-MM-DD HH:mm:ss"
-                      },
-                      {
-                        "id": "custom.align"
-                      }
-                    ]
-                  }
-                ]
-              },
-              "gridPos": {
-                "h": 6,
-                "w": 8,
-                "x": 8,
-                "y": 28
-              },
-              "id": 40,
-              "options": {
-                "footer": {
-                  "fields": "",
-                  "reducer": [
-                    "sum"
-                  ],
-                  "show": false
-                },
-                "showHeader": true
-              },
-              "pluginVersion": "9.1.3",
-              "targets": [
-                {
-                  "datasource": "${DS_PROMETHEUS}",
-                  "expr": "topk(5,sort_desc(ceph_osd_apply_latency_ms{namespace=\"$namespace\"} + ceph_osd_commit_latency_ms{namespace=\"$namespace\"}))",
-                  "format": "table",
-                  "instant": true,
-                  "intervalFactor": 1,
-                  "legendFormat": "_auto",
-                  "refId": "A"
-                }
-              ],
-              "title": "Top Sluggish OSDs",
-              "transformations": [
-                {
-                  "id": "merge",
-                  "options": {
-                    "reducer": []
-                  }
-                }
-              ],
-              "type": "table"
-            },
-            {
-              "datasource": "${DS_PROMETHEUS}",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "thresholds"
-                  },
-                  "custom": {
-                    "align": "auto",
-                    "cellOptions": {
-                      "type": "auto"
-                    },
-                    "inspect": false
-                  },
-                  "decimals": 2,
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green"
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  },
-                  "unit": "short"
-                },
-                "overrides": [
-                  {
-                    "matcher": {
-                      "id": "byName",
-                      "options": "Time"
-                    },
-                    "properties": [
-                      {
-                        "id": "displayName",
-                        "value": "Time"
-                      },
-                      {
-                        "id": "unit",
-                        "value": "time: YYYY-MM-DD HH:mm:ss"
-                      },
-                      {
-                        "id": "custom.align"
-                      }
-                    ]
-                  }
-                ]
-              },
-              "gridPos": {
-                "h": 6,
-                "w": 8,
-                "x": 16,
-                "y": 28
-              },
-              "id": 41,
-              "options": {
-                "footer": {
-                  "fields": "",
-                  "reducer": [
-                    "sum"
-                  ],
-                  "show": false
-                },
-                "showHeader": true
-              },
-              "pluginVersion": "9.1.3",
-              "targets": [
-                {
-                  "datasource": "${DS_PROMETHEUS}",
-                  "expr": "ceph_osd_up{namespace=\"$namespace\"} == 0",
-                  "format": "table",
-                  "instant": true,
-                  "intervalFactor": 1,
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "title": "Down OSDs",
-              "transformations": [
-                {
-                  "id": "merge",
-                  "options": {
-                    "reducer": []
-                  }
-                }
-              ],
-              "type": "table"
-            }
-          ],
+          "panels": [],
           "title": "Alerts",
           "type": "row"
         },
         {
-          "collapsed": true,
+          "datasource": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
+                "inspect": false
+              },
+              "decimals": 2,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Time"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Time"
+                  },
+                  {
+                    "id": "unit",
+                    "value": "time: YYYY-MM-DD HH:mm:ss"
+                  },
+                  {
+                    "id": "custom.align"
+                  }
+                ]
+              }
+            ]
+          },
           "gridPos": {
-            "h": 1,
-            "w": 24,
+            "h": 6,
+            "w": 8,
             "x": 0,
             "y": 36
           },
-          "id": 42,
-          "panels": [
-            {
-              "datasource": "${DS_PROMETHEUS}",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "palette-classic"
-                  },
-                  "custom": {
-                    "axisCenteredZero": false,
-                    "axisColorMode": "text",
-                    "axisLabel": "",
-                    "axisPlacement": "auto",
-                    "barAlignment": 0,
-                    "drawStyle": "line",
-                    "fillOpacity": 10,
-                    "gradientMode": "none",
-                    "hideFrom": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": false
-                    },
-                    "lineInterpolation": "linear",
-                    "lineWidth": 1,
-                    "pointSize": 5,
-                    "scaleDistribution": {
-                      "scaleDistributionLog": 2,
-                      "type": "log"
-                    },
-                    "showPoints": "never",
-                    "spanNulls": false,
-                    "stacking": {
-                      "group": "A",
-                      "mode": "none"
-                    },
-                    "thresholdsStyle": {
-                      "mode": "off"
-                    }
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green"
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  },
-                  "unit": "bytes"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 9,
-                "w": 12,
-                "x": 0,
-                "y": 29
-              },
-              "id": 43,
-              "options": {
-                "legend": {
-                  "calcs": [
-                    "mean",
-                    "max",
-                    "min"
-                  ],
-                  "displayMode": "table",
-                  "placement": "bottom",
-                  "showLegend": true
-                },
-                "tooltip": {
-                  "mode": "multi",
-                  "sort": "none"
-                }
-              },
-              "pluginVersion": "9.1.3",
-              "targets": [
-                {
-                  "datasource": "${DS_PROMETHEUS}",
-                  "expr": "node_memory_Active_anon_bytes{namespace=\"$namespace\"}",
-                  "format": "time_series",
-                  "intervalFactor": 1,
-                  "legendFormat": "{{instance}}",
-                  "refId": "A"
-                },
-                {
-                  "datasource": "${DS_PROMETHEUS}",
-                  "expr": "sum(node_memory_Active_anon_bytes{namespace=\"$namespace\"})",
-                  "format": "time_series",
-                  "intervalFactor": 1,
-                  "legendFormat": "Cluster Memory Usage",
-                  "refId": "B"
-                }
+          "id": 39,
+          "options": {
+            "cellHeight": "sm",
+            "footer": {
+              "countRows": false,
+              "fields": "",
+              "reducer": [
+                "sum"
               ],
-              "title": "Node Memory Usage",
-              "type": "timeseries"
+              "show": false
             },
+            "showHeader": true
+          },
+          "pluginVersion": "11.3.1",
+          "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "palette-classic"
-                  },
-                  "custom": {
-                    "axisCenteredZero": false,
-                    "axisColorMode": "text",
-                    "axisLabel": "",
-                    "axisPlacement": "auto",
-                    "barAlignment": 0,
-                    "drawStyle": "line",
-                    "fillOpacity": 10,
-                    "gradientMode": "none",
-                    "hideFrom": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": false
-                    },
-                    "lineInterpolation": "linear",
-                    "lineWidth": 1,
-                    "pointSize": 5,
-                    "scaleDistribution": {
-                      "scaleDistributionLog": 2,
-                      "type": "log"
-                    },
-                    "showPoints": "never",
-                    "spanNulls": false,
-                    "stacking": {
-                      "group": "A",
-                      "mode": "none"
-                    },
-                    "thresholdsStyle": {
-                      "mode": "off"
-                    }
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green"
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  },
-                  "unit": "percent"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 9,
-                "w": 12,
-                "x": 12,
-                "y": 29
-              },
-              "id": 44,
-              "options": {
-                "legend": {
-                  "calcs": [
-                    "lastNotNull",
-                    "max"
-                  ],
-                  "displayMode": "table",
-                  "placement": "right",
-                  "showLegend": true
-                },
-                "tooltip": {
-                  "mode": "multi",
-                  "sort": "none"
-                }
-              },
-              "pluginVersion": "9.1.3",
-              "targets": [
-                {
-                  "datasource": "${DS_PROMETHEUS}",
-                  "expr": "avg by(instance)(irate(node_cpu_seconds_total{namespace=\"$namespace\",job='node',mode!=\"idle\"}[$interval])) * 100",
-                  "format": "time_series",
-                  "intervalFactor": 1,
-                  "legendFormat": "{{instance}}",
-                  "refId": "A"
-                }
-              ],
-              "title": "Node CPU Usage",
-              "type": "timeseries"
-            },
-            {
-              "datasource": "${DS_PROMETHEUS}",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "palette-classic"
-                  },
-                  "custom": {
-                    "axisCenteredZero": false,
-                    "axisColorMode": "text",
-                    "axisLabel": "",
-                    "axisPlacement": "auto",
-                    "barAlignment": 0,
-                    "drawStyle": "line",
-                    "fillOpacity": 10,
-                    "gradientMode": "none",
-                    "hideFrom": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": false
-                    },
-                    "lineInterpolation": "linear",
-                    "lineWidth": 1,
-                    "pointSize": 5,
-                    "scaleDistribution": {
-                      "type": "linear"
-                    },
-                    "showPoints": "never",
-                    "spanNulls": false,
-                    "stacking": {
-                      "group": "A",
-                      "mode": "none"
-                    },
-                    "thresholdsStyle": {
-                      "mode": "off"
-                    }
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green"
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  },
-                  "unit": "decbytes"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 9,
-                "w": 12,
-                "x": 0,
-                "y": 35
-              },
-              "id": 45,
-              "options": {
-                "legend": {
-                  "calcs": [
-                    "mean",
-                    "lastNotNull",
-                    "max"
-                  ],
-                  "displayMode": "table",
-                  "placement": "right",
-                  "showLegend": true
-                },
-                "tooltip": {
-                  "mode": "multi",
-                  "sort": "none"
-                }
-              },
-              "pluginVersion": "9.1.3",
-              "targets": [
-                {
-                  "datasource": "${DS_PROMETHEUS}",
-                  "expr": "sum by (instance)(irate(node_disk_read_bytes_total{namespace=\"$namespace\"}[$interval]))",
-                  "format": "time_series",
-                  "intervalFactor": 1,
-                  "legendFormat": "{{instance}}",
-                  "refId": "A"
-                }
-              ],
-              "title": "Node Out",
-              "type": "timeseries"
-            },
-            {
-              "datasource": "${DS_PROMETHEUS}",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "palette-classic"
-                  },
-                  "custom": {
-                    "axisCenteredZero": false,
-                    "axisColorMode": "text",
-                    "axisLabel": "",
-                    "axisPlacement": "auto",
-                    "barAlignment": 0,
-                    "drawStyle": "line",
-                    "fillOpacity": 10,
-                    "gradientMode": "none",
-                    "hideFrom": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": false
-                    },
-                    "lineInterpolation": "linear",
-                    "lineWidth": 1,
-                    "pointSize": 5,
-                    "scaleDistribution": {
-                      "type": "linear"
-                    },
-                    "showPoints": "never",
-                    "spanNulls": false,
-                    "stacking": {
-                      "group": "A",
-                      "mode": "none"
-                    },
-                    "thresholdsStyle": {
-                      "mode": "off"
-                    }
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green"
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  },
-                  "unit": "decbytes"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 9,
-                "w": 12,
-                "x": 12,
-                "y": 35
-              },
-              "id": 46,
-              "options": {
-                "legend": {
-                  "calcs": [
-                    "mean",
-                    "lastNotNull",
-                    "max"
-                  ],
-                  "displayMode": "table",
-                  "placement": "right",
-                  "showLegend": true
-                },
-                "tooltip": {
-                  "mode": "multi",
-                  "sort": "none"
-                }
-              },
-              "pluginVersion": "9.1.3",
-              "targets": [
-                {
-                  "datasource": "${DS_PROMETHEUS}",
-                  "expr": "sum by (instance)(irate(node_disk_written_bytes_total{namespace=\"$namespace\"}[$interval]))",
-                  "format": "time_series",
-                  "intervalFactor": 1,
-                  "legendFormat": "{{instance}}",
-                  "refId": "A"
-                }
-              ],
-              "title": "Node In",
-              "type": "timeseries"
-            },
-            {
-              "datasource": "${DS_PROMETHEUS}",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "palette-classic"
-                  },
-                  "custom": {
-                    "axisCenteredZero": false,
-                    "axisColorMode": "text",
-                    "axisLabel": "",
-                    "axisPlacement": "auto",
-                    "barAlignment": 0,
-                    "drawStyle": "line",
-                    "fillOpacity": 10,
-                    "gradientMode": "none",
-                    "hideFrom": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": false
-                    },
-                    "lineInterpolation": "linear",
-                    "lineWidth": 1,
-                    "pointSize": 5,
-                    "scaleDistribution": {
-                      "type": "linear"
-                    },
-                    "showPoints": "never",
-                    "spanNulls": false,
-                    "stacking": {
-                      "group": "A",
-                      "mode": "none"
-                    },
-                    "thresholdsStyle": {
-                      "mode": "off"
-                    }
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green"
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  },
-                  "unit": "percent"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 9,
-                "w": 12,
-                "x": 0,
-                "y": 44
-              },
-              "id": 47,
-              "options": {
-                "legend": {
-                  "calcs": [],
-                  "displayMode": "list",
-                  "placement": "bottom",
-                  "showLegend": true
-                },
-                "tooltip": {
-                  "mode": "multi",
-                  "sort": "none"
-                }
-              },
-              "pluginVersion": "9.1.3",
-              "targets": [
-                {
-                  "datasource": "${DS_PROMETHEUS}",
-                  "expr": "(node_filesystem_free_bytes{namespace=\"$namespace\", mountpoint=\"/\", device != \"rootfs\"})*100 / (node_filesystem_size_bytes{namespace=\"$namespace\", mountpoint=\"/\", device != \"rootfs\"})",
-                  "format": "time_series",
-                  "intervalFactor": 1,
-                  "legendFormat": "{{instance}}",
-                  "range": true,
-                  "refId": "A"
-                }
-              ],
-              "title": "Free Space in root filesystem",
-              "type": "timeseries"
+              "datasource": "",
+              "expr": "ALERTS{namespace=\"$namespace\",alertstate=\"firing\",alertname=~\"^Ceph.+\"}",
+              "format": "table",
+              "instant": true,
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "refId": "A"
             }
           ],
-          "title": "Node Statistics (NodeExporter)",
-          "type": "row"
+          "title": "Alerts starting with Ceph",
+          "transformations": [
+            {
+              "id": "merge",
+              "options": {
+                "reducer": []
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
+                "filterable": false,
+                "inspect": false
+              },
+              "decimals": 2,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Time"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Time"
+                  },
+                  {
+                    "id": "unit",
+                    "value": "time: YYYY-MM-DD HH:mm:ss"
+                  },
+                  {
+                    "id": "custom.align"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 8,
+            "y": 36
+          },
+          "id": 40,
+          "options": {
+            "cellHeight": "sm",
+            "footer": {
+              "countRows": false,
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true
+          },
+          "pluginVersion": "11.3.1",
+          "targets": [
+            {
+              "datasource": "",
+              "expr": "topk(5,sort_desc(ceph_osd_apply_latency_ms{namespace=\"$namespace\"} + ceph_osd_commit_latency_ms{namespace=\"$namespace\"}))",
+              "format": "table",
+              "instant": true,
+              "intervalFactor": 1,
+              "legendFormat": "_auto",
+              "refId": "A"
+            }
+          ],
+          "title": "Top Sluggish OSDs",
+          "transformations": [
+            {
+              "id": "merge",
+              "options": {
+                "reducer": []
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
+                "inspect": false
+              },
+              "decimals": 2,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Time"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Time"
+                  },
+                  {
+                    "id": "unit",
+                    "value": "time: YYYY-MM-DD HH:mm:ss"
+                  },
+                  {
+                    "id": "custom.align"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 8,
+            "x": 16,
+            "y": 36
+          },
+          "id": 41,
+          "options": {
+            "cellHeight": "sm",
+            "footer": {
+              "countRows": false,
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true
+          },
+          "pluginVersion": "11.3.1",
+          "targets": [
+            {
+              "datasource": "",
+              "expr": "ceph_osd_up{namespace=\"$namespace\"} == 0",
+              "format": "table",
+              "instant": true,
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "title": "Down OSDs",
+          "transformations": [
+            {
+              "id": "merge",
+              "options": {
+                "reducer": []
+              }
+            }
+          ],
+          "type": "table"
         },
         {
           "collapsed": false,
@@ -3849,15 +3396,15 @@ spec:
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 37
+            "y": 42
           },
           "id": 48,
           "panels": [],
-          "title": "OBJECTS",
+          "title": "Objects",
           "type": "row"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -3901,7 +3448,8 @@ spec:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -3933,7 +3481,7 @@ spec:
             "h": 12,
             "w": 6,
             "x": 0,
-            "y": 38
+            "y": 43
           },
           "id": 49,
           "options": {
@@ -3951,7 +3499,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pool_objects)",
               "format": "time_series",
               "interval": "$interval",
@@ -3966,7 +3514,7 @@ spec:
           "type": "timeseries"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -4011,7 +3559,8 @@ spec:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -4043,7 +3592,7 @@ spec:
             "h": 12,
             "w": 8,
             "x": 6,
-            "y": 38
+            "y": 43
           },
           "id": 50,
           "options": {
@@ -4063,7 +3612,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_active{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4073,7 +3622,7 @@ spec:
               "refId": "A"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_clean{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4083,7 +3632,7 @@ spec:
               "refId": "B"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_peering{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4093,7 +3642,7 @@ spec:
               "refId": "C"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_degraded{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4104,7 +3653,7 @@ spec:
               "step": 300
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_stale{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4115,7 +3664,7 @@ spec:
               "step": 300
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_unclean_pgs{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4126,7 +3675,7 @@ spec:
               "step": 300
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_undersized{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4137,7 +3686,7 @@ spec:
               "step": 300
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_incomplete{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4147,7 +3696,7 @@ spec:
               "refId": "H"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_forced_backfill{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4157,7 +3706,7 @@ spec:
               "refId": "I"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_forced_recovery{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4167,7 +3716,7 @@ spec:
               "refId": "J"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_creating{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4177,7 +3726,7 @@ spec:
               "refId": "K"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_wait_backfill{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4187,7 +3736,7 @@ spec:
               "refId": "L"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_deep{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4197,7 +3746,7 @@ spec:
               "refId": "M"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_scrubbing{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4207,7 +3756,7 @@ spec:
               "refId": "N"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_recovering{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4217,7 +3766,7 @@ spec:
               "refId": "O"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_repair{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4227,7 +3776,7 @@ spec:
               "refId": "P"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_down{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4237,7 +3786,7 @@ spec:
               "refId": "Q"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_peered{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4247,7 +3796,7 @@ spec:
               "refId": "R"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_backfill{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4257,7 +3806,7 @@ spec:
               "refId": "S"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_remapped{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4267,7 +3816,7 @@ spec:
               "refId": "T"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_backfill_toofull{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4281,7 +3830,7 @@ spec:
           "type": "timeseries"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -4326,7 +3875,8 @@ spec:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -4358,7 +3908,7 @@ spec:
             "h": 6,
             "w": 10,
             "x": 14,
-            "y": 38
+            "y": 43
           },
           "id": 51,
           "options": {
@@ -4379,7 +3929,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_degraded{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4390,7 +3940,7 @@ spec:
               "step": 300
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_stale{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4401,7 +3951,7 @@ spec:
               "step": 300
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(ceph_pg_undersized{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -4416,7 +3966,7 @@ spec:
           "type": "timeseries"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -4461,7 +4011,8 @@ spec:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -4477,7 +4028,7 @@ spec:
             "h": 6,
             "w": 10,
             "x": 14,
-            "y": 44
+            "y": 49
           },
           "id": 52,
           "options": {
@@ -4495,7 +4046,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "sum(irate(ceph_osd_recovery_ops{namespace=\"$namespace\"}[$interval]))",
               "format": "time_series",
               "interval": "$interval",
@@ -4514,15 +4065,15 @@ spec:
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 50
+            "y": 55
           },
           "id": 53,
           "panels": [],
-          "title": "LATENCY",
+          "title": "Latency",
           "type": "row"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "custom": {
@@ -4542,7 +4093,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 51
+            "y": 56
           },
           "id": 54,
           "options": {
@@ -4572,7 +4123,7 @@ spec:
               "color": "rgba(255,0,255,0.7)"
             },
             "filterValues": {
-              "le": 1e-09
+              "le": 1e-9
             },
             "legend": {
               "show": true
@@ -4596,7 +4147,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "ceph_osd_apply_latency_ms{namespace=\"$namespace\"}",
               "format": "time_series",
               "instant": false,
@@ -4610,7 +4161,7 @@ spec:
           "type": "heatmap"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "custom": {
@@ -4630,7 +4181,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 51
+            "y": 56
           },
           "id": 55,
           "options": {
@@ -4659,7 +4210,7 @@ spec:
               "color": "rgba(255,0,255,0.7)"
             },
             "filterValues": {
-              "le": 1e-09
+              "le": 1e-9
             },
             "legend": {
               "show": true
@@ -4683,7 +4234,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "ceph_osd_commit_latency_ms{namespace=\"$namespace\"}",
               "format": "time_series",
               "instant": false,
@@ -4697,7 +4248,7 @@ spec:
           "type": "heatmap"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "custom": {
@@ -4717,7 +4268,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 59
+            "y": 64
           },
           "id": 56,
           "options": {
@@ -4746,7 +4297,7 @@ spec:
               "color": "rgba(255,0,255,0.7)"
             },
             "filterValues": {
-              "le": 1e-09
+              "le": 1e-9
             },
             "legend": {
               "show": true
@@ -4771,7 +4322,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "rate(ceph_osd_op_r_latency_sum{namespace=\"$namespace\"}[5m]) / rate(ceph_osd_op_r_latency_count{namespace=\"$namespace\"}[5m]) >= 0",
               "format": "time_series",
               "instant": false,
@@ -4785,7 +4336,7 @@ spec:
           "type": "heatmap"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "custom": {
@@ -4805,7 +4356,7 @@ spec:
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 59
+            "y": 64
           },
           "id": 57,
           "options": {
@@ -4834,7 +4385,7 @@ spec:
               "color": "rgba(255,0,255,0.7)"
             },
             "filterValues": {
-              "le": 1e-09
+              "le": 1e-9
             },
             "legend": {
               "show": true
@@ -4859,7 +4410,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "rate(ceph_osd_op_w_latency_sum{namespace=\"$namespace\"}[5m]) / rate(ceph_osd_op_w_latency_count{namespace=\"$namespace\"}[5m]) >= 0",
               "format": "time_series",
               "instant": false,
@@ -4873,7 +4424,7 @@ spec:
           "type": "heatmap"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -4917,7 +4468,8 @@ spec:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -4933,7 +4485,7 @@ spec:
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 67
+            "y": 72
           },
           "id": 58,
           "options": {
@@ -4951,7 +4503,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "avg(rate(ceph_osd_op_r_latency_sum{namespace=\"$namespace\"}[5m]) / rate(ceph_osd_op_r_latency_count{namespace=\"$namespace\"}[5m]) >= 0)",
               "format": "time_series",
               "intervalFactor": 1,
@@ -4959,7 +4511,7 @@ spec:
               "refId": "A"
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "avg(rate(ceph_osd_op_w_latency_sum{namespace=\"$namespace\"}[5m]) / rate(ceph_osd_op_w_latency_count{namespace=\"$namespace\"}[5m]) >= 0)",
               "format": "time_series",
               "intervalFactor": 1,
@@ -4971,7 +4523,7 @@ spec:
           "type": "timeseries"
         },
         {
-          "datasource": "${DS_PROMETHEUS}",
+          "datasource": "",
           "fieldConfig": {
             "defaults": {
               "color": {
@@ -5015,7 +4567,8 @@ spec:
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -5031,7 +4584,7 @@ spec:
             "h": 7,
             "w": 12,
             "x": 12,
-            "y": 67
+            "y": 72
           },
           "id": 59,
           "options": {
@@ -5052,7 +4605,7 @@ spec:
           "pluginVersion": "11.3.1",
           "targets": [
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "avg(ceph_osd_apply_latency_ms{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -5063,7 +4616,7 @@ spec:
               "step": 4
             },
             {
-              "datasource": "${DS_PROMETHEUS}",
+              "datasource": "",
               "expr": "avg(ceph_osd_commit_latency_ms{namespace=\"$namespace\"})",
               "format": "time_series",
               "interval": "$interval",
@@ -5078,362 +4631,381 @@ spec:
           "type": "timeseries"
         },
         {
-          "collapsed": true,
+          "collapsed": false,
           "gridPos": {
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 74
+            "y": 79
           },
           "id": 60,
-          "panels": [
-            {
-              "datasource": "${DS_PROMETHEUS}",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "palette-classic"
-                  },
-                  "custom": {
-                    "axisCenteredZero": false,
-                    "axisColorMode": "text",
-                    "axisLabel": "",
-                    "axisPlacement": "auto",
-                    "barAlignment": 0,
-                    "drawStyle": "line",
-                    "fillOpacity": 10,
-                    "gradientMode": "none",
-                    "hideFrom": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": false
-                    },
-                    "lineInterpolation": "linear",
-                    "lineWidth": 1,
-                    "pointSize": 5,
-                    "scaleDistribution": {
-                      "type": "linear"
-                    },
-                    "showPoints": "never",
-                    "spanNulls": false,
-                    "stacking": {
-                      "group": "A",
-                      "mode": "none"
-                    },
-                    "thresholdsStyle": {
-                      "mode": "off"
-                    }
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green"
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  },
-                  "unit": "short"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 9,
-                "w": 6,
-                "x": 0,
-                "y": 72
-              },
-              "id": 61,
-              "options": {
-                "legend": {
-                  "calcs": [],
-                  "displayMode": "list",
-                  "placement": "bottom",
-                  "showLegend": true
-                },
-                "tooltip": {
-                  "mode": "multi",
-                  "sort": "none"
-                }
-              },
-              "pluginVersion": "9.1.3",
-              "targets": [
-                {
-                  "datasource": "${DS_PROMETHEUS}",
-                  "expr": "count by (ceph_version)(ceph_osd_metadata{namespace=\"$namespace\"})",
-                  "format": "time_series",
-                  "intervalFactor": 1,
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "title": "Ceph OSD Versions",
-              "type": "timeseries"
-            },
-            {
-              "datasource": "${DS_PROMETHEUS}",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "palette-classic"
-                  },
-                  "custom": {
-                    "axisCenteredZero": false,
-                    "axisColorMode": "text",
-                    "axisLabel": "",
-                    "axisPlacement": "auto",
-                    "barAlignment": 0,
-                    "drawStyle": "line",
-                    "fillOpacity": 10,
-                    "gradientMode": "none",
-                    "hideFrom": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": false
-                    },
-                    "lineInterpolation": "linear",
-                    "lineWidth": 1,
-                    "pointSize": 5,
-                    "scaleDistribution": {
-                      "type": "linear"
-                    },
-                    "showPoints": "never",
-                    "spanNulls": false,
-                    "stacking": {
-                      "group": "A",
-                      "mode": "none"
-                    },
-                    "thresholdsStyle": {
-                      "mode": "off"
-                    }
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green"
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  },
-                  "unit": "short"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 9,
-                "w": 6,
-                "x": 6,
-                "y": 72
-              },
-              "id": 62,
-              "options": {
-                "legend": {
-                  "calcs": [],
-                  "displayMode": "list",
-                  "placement": "bottom",
-                  "showLegend": true
-                },
-                "tooltip": {
-                  "mode": "multi",
-                  "sort": "none"
-                }
-              },
-              "pluginVersion": "9.1.3",
-              "targets": [
-                {
-                  "datasource": "${DS_PROMETHEUS}",
-                  "expr": "count by (ceph_version)(ceph_mon_metadata{namespace=\"$namespace\"})",
-                  "format": "time_series",
-                  "intervalFactor": 1,
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "title": "Ceph Mon Versions",
-              "type": "timeseries"
-            },
-            {
-              "datasource": "${DS_PROMETHEUS}",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "palette-classic"
-                  },
-                  "custom": {
-                    "axisCenteredZero": false,
-                    "axisColorMode": "text",
-                    "axisLabel": "",
-                    "axisPlacement": "auto",
-                    "barAlignment": 0,
-                    "drawStyle": "line",
-                    "fillOpacity": 10,
-                    "gradientMode": "none",
-                    "hideFrom": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": false
-                    },
-                    "lineInterpolation": "linear",
-                    "lineWidth": 1,
-                    "pointSize": 5,
-                    "scaleDistribution": {
-                      "type": "linear"
-                    },
-                    "showPoints": "never",
-                    "spanNulls": false,
-                    "stacking": {
-                      "group": "A",
-                      "mode": "none"
-                    },
-                    "thresholdsStyle": {
-                      "mode": "off"
-                    }
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green"
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  },
-                  "unit": "short"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 9,
-                "w": 6,
-                "x": 12,
-                "y": 72
-              },
-              "id": 63,
-              "options": {
-                "legend": {
-                  "calcs": [],
-                  "displayMode": "list",
-                  "placement": "bottom",
-                  "showLegend": true
-                },
-                "tooltip": {
-                  "mode": "multi",
-                  "sort": "none"
-                }
-              },
-              "pluginVersion": "9.1.3",
-              "targets": [
-                {
-                  "datasource": "${DS_PROMETHEUS}",
-                  "expr": "count by (ceph_version)(ceph_mds_metadata{namespace=\"$namespace\"})",
-                  "format": "time_series",
-                  "intervalFactor": 1,
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "title": "Ceph MDS Versions",
-              "type": "timeseries"
-            },
-            {
-              "datasource": "${DS_PROMETHEUS}",
-              "fieldConfig": {
-                "defaults": {
-                  "color": {
-                    "mode": "palette-classic"
-                  },
-                  "custom": {
-                    "axisCenteredZero": false,
-                    "axisColorMode": "text",
-                    "axisLabel": "",
-                    "axisPlacement": "auto",
-                    "barAlignment": 0,
-                    "drawStyle": "line",
-                    "fillOpacity": 10,
-                    "gradientMode": "none",
-                    "hideFrom": {
-                      "legend": false,
-                      "tooltip": false,
-                      "viz": false
-                    },
-                    "lineInterpolation": "linear",
-                    "lineWidth": 1,
-                    "pointSize": 5,
-                    "scaleDistribution": {
-                      "type": "linear"
-                    },
-                    "showPoints": "never",
-                    "spanNulls": false,
-                    "stacking": {
-                      "group": "A",
-                      "mode": "none"
-                    },
-                    "thresholdsStyle": {
-                      "mode": "off"
-                    }
-                  },
-                  "thresholds": {
-                    "mode": "absolute",
-                    "steps": [
-                      {
-                        "color": "green"
-                      },
-                      {
-                        "color": "red",
-                        "value": 80
-                      }
-                    ]
-                  },
-                  "unit": "short"
-                },
-                "overrides": []
-              },
-              "gridPos": {
-                "h": 9,
-                "w": 6,
-                "x": 18,
-                "y": 72
-              },
-              "id": 64,
-              "options": {
-                "legend": {
-                  "calcs": [],
-                  "displayMode": "list",
-                  "placement": "bottom",
-                  "showLegend": true
-                },
-                "tooltip": {
-                  "mode": "multi",
-                  "sort": "none"
-                }
-              },
-              "pluginVersion": "9.1.3",
-              "targets": [
-                {
-                  "datasource": "${DS_PROMETHEUS}",
-                  "expr": "count by (ceph_version)(ceph_rgw_metadata{namespace=\"$namespace\"})",
-                  "format": "time_series",
-                  "intervalFactor": 1,
-                  "legendFormat": "",
-                  "refId": "A"
-                }
-              ],
-              "title": "Ceph RGW Versions",
-              "type": "timeseries"
-            }
-          ],
+          "panels": [],
           "title": "Ceph Versions",
           "type": "row"
+        },
+        {
+          "datasource": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 6,
+            "x": 0,
+            "y": 80
+          },
+          "id": 61,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.3.1",
+          "targets": [
+            {
+              "datasource": "",
+              "expr": "count by (ceph_version)(ceph_osd_metadata{namespace=\"$namespace\"})",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "title": "Ceph OSD Versions",
+          "type": "timeseries"
+        },
+        {
+          "datasource": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 6,
+            "x": 6,
+            "y": 80
+          },
+          "id": 62,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.3.1",
+          "targets": [
+            {
+              "datasource": "",
+              "expr": "count by (ceph_version)(ceph_mon_metadata{namespace=\"$namespace\"})",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "title": "Ceph Mon Versions",
+          "type": "timeseries"
+        },
+        {
+          "datasource": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 6,
+            "x": 12,
+            "y": 80
+          },
+          "id": 63,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.3.1",
+          "targets": [
+            {
+              "datasource": "",
+              "expr": "count by (ceph_version)(ceph_mds_metadata{namespace=\"$namespace\"})",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "title": "Ceph MDS Versions",
+          "type": "timeseries"
+        },
+        {
+          "datasource": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "barWidthFactor": 0.6,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "never",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 6,
+            "x": 18,
+            "y": 80
+          },
+          "id": 64,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "11.3.1",
+          "targets": [
+            {
+              "datasource": "",
+              "expr": "count by (ceph_version)(ceph_rgw_metadata{namespace=\"$namespace\"})",
+              "format": "time_series",
+              "intervalFactor": 1,
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "title": "Ceph RGW Versions",
+          "type": "timeseries"
         }
       ],
       "preload": false,
@@ -5462,14 +5034,14 @@ spec:
             "auto_count": 10,
             "auto_min": "1m",
             "current": {
-              "text": "$__auto",
-              "value": "$__auto"
+              "text": "5s",
+              "value": "5s"
             },
             "label": "Interval",
             "name": "interval",
             "options": [
               {
-                "selected": false,
+                "selected": true,
                 "text": "5s",
                 "value": "5s"
               },
@@ -5540,14 +5112,15 @@ spec:
           },
           {
             "current": {
-              "text": "rkc-akane",
-              "value": "rkc-akane"
+              "text": "rkc-bridget",
+              "value": "rkc-bridget"
             },
             "datasource": {
               "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
+              "uid": ""
             },
             "definition": "label_values(ceph_health_status,namespace)",
+            "label": "Cluster",
             "name": "namespace",
             "options": [],
             "query": {
@@ -5569,6 +5142,6 @@ spec:
       "timezone": "",
       "title": "Ceph Cluster",
       "uid": "tbO9LAiZK",
-      "version": 4,
+      "version": 1,
       "weekStart": ""
     }
