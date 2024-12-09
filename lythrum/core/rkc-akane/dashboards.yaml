@@ -4,6 +4,7 @@ metadata:
   name: ceph-cluster
   namespace: rkc-akane
 spec:
+  allowCrossNamespaceImport: true
   instanceSelector:
     matchLabels:
       dashboards: "grafana"
