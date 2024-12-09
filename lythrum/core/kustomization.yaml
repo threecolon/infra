@@ -16,3 +16,4 @@ resources:
   - importer
   - velero
   - snapshot-controller
+  - kubernetes-secret-generator
