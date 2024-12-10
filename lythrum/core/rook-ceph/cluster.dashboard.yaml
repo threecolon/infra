@@ -467,7 +467,7 @@ spec:
               "step": 300
             }
           ],
-          "title": "Available Capacity",
+          "title": "Used Capacity",
           "type": "gauge"
         },
         {
