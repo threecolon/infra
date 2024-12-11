@@ -7,7 +7,7 @@ spec:
   instances: 1
   storage:
     storageClass: ceph-block-akane-nvme
-    size: 8Gi
+    size: 20Gi
   monitoring:
     enablePodMonitor: true
   backup:
