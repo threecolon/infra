@@ -28,7 +28,7 @@ spec:
             apt install -y openssh-server rsync &&
             service ssh start &&
             mkdir -p /root/.ssh &&
-            echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO0vrHvaR08tNMQpbMQpjb8qn1rXowvn4az9WbOL+MwT lily@lighty' > /root/.ssh/authorized_keys &&
+            echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINGRZeMvYkU8W5miYYPM+63hPdwZiiqXMeALBKqeH81x lily@lighty' > /root/.ssh/authorized_keys &&
             tail -f /dev/null
           ports:
           - containerPort: 22
