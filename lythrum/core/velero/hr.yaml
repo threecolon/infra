@@ -440,7 +440,7 @@ spec:
       defaultSnapshotMoveData:
       # Comma separated list of velero feature flags. default: empty
       # features: EnableCSI
-      features:
+      features: EnableCSI
       # Resource requests/limits to specify for the repository-maintenance job. Optional.
       # https://velero.io/docs/v1.14/repository-maintenance/#resource-limitation
       repositoryMaintenanceJob:
