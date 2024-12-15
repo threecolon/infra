@@ -1,0 +1,284 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rook-ceph
+  namespace: rook-ceph
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: rook-ceph-cluster
+      sourceRef:
+        kind: HelmRepository
+        name: rook-release
+        namespace: flux-system
+      version: '1.15.5'
+  values:
+    clusterName: rook-ceph
+    monitoring:
+      # -- Enable Prometheus integration, will also create necessary RBAC rules to allow Operator to create ServiceMonitors.
+      # Monitoring requires Prometheus to be pre-installed
+      enabled: true
+      # -- Whether to create the Prometheus rules for Ceph alerts
+      createPrometheusRules: true
+      # -- The namespace in which to create the prometheus rules, if different from the rook cluster namespace.
+      # If you have multiple rook-ceph clusters in the same k8s cluster, choose the same namespace (ideally, namespace with prometheus
+      # deployed) to set rulesNamespaceOverride for all the clusters. Otherwise, you will get duplicate alerts with multiple alert definitions.
+      rulesNamespaceOverride:
+      # Monitoring settings for external clusters:
+      # externalMgrEndpoints: <list of endpoints>
+      # externalMgrPrometheusPort: <port>
+      # Scrape interval for prometheus
+      # interval: 10s
+      # allow adding custom labels and annotations to the prometheus rule
+      prometheusRule:
+        # -- Labels applied to PrometheusRule
+        labels: {}
+        # -- Annotations applied to PrometheusRule
+        annotations: {}
+    cephClusterSpec:
+      cephVersion:
+        image: quay.io/ceph/ceph:v18.2.4
+        allowUnsupported: false
+      dataDirHostPath: /var/lib/rook-ceph
+      skipUpgradeChecks: false
+      continueUpgradeAfterChecksEvenIfNotHealthy: false
+      waitTimeoutForHealthyOSDInMinutes: 10
+      upgradeOSDRequiresHealthyPGs: false
+      mon:
+        count: 3
+        allowMultiplePerNode: true
+      mgr:
+        count: 3
+        allowMultiplePerNode: true
+        modules:
+          - name: rook
+            enabled: true
+      dashboard:
+        enabled: true
+        ssl: false
+      network:
+        connections:
+          encryption:
+            enabled: true
+          compression:
+            enabled: true
+          requireMsgr2: true
+      crashCollector:
+        disable: false
+        daysToRetain: 30
+      logCollector:
+        enabled: true
+        periodicity: daily
+        maxLogSize: 500M
+      placement:
+        mon:
+          tolerations:
+            - key: node-role.kubernetes.io/control-plane
+              operator: Exists
+              effect: NoSchedule
+        mgr:
+          tolerations:
+            - key: node-role.kubernetes.io/control-plane
+              operator: Exists
+              effect: NoSchedule
+      resources:
+        mgr:
+          limits:
+            memory: "1Gi"
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+        mon:
+          limits:
+            memory: "2Gi"
+          requests:
+            cpu: "1000m"
+            memory: "1Gi"
+        osd:
+          limits:
+            memory: "4Gi"
+          requests:
+            cpu: "1000m"
+            memory: "4Gi"
+        prepareosd:
+          requests:
+            cpu: "500m"
+            memory: "50Mi"
+        mgr-sidecar:
+          limits:
+            memory: "100Mi"
+          requests:
+            cpu: "100m"
+            memory: "40Mi"
+        crashcollector:
+          limits:
+            memory: "60Mi"
+          requests:
+            cpu: "100m"
+            memory: "60Mi"
+        logcollector:
+          limits:
+            memory: "1Gi"
+          requests:
+            cpu: "100m"
+            memory: "100Mi"
+        cleanup:
+          limits:
+            memory: "1Gi"
+          requests:
+            cpu: "500m"
+            memory: "100Mi"
+        exporter:
+          limits:
+            memory: "128Mi"
+          requests:
+            cpu: "50m"
+            memory: "50Mi"
+      removeOSDsIfOutAndSafeToRemove: false
+      priorityClassNames:
+        mon: system-node-critical
+        osd: system-node-critical
+        mgr: system-cluster-critical
+      storage:
+        useAllNodes: false
+        useAllDevices: false
+        nodes:
+          - name: akane
+            devices:
+              - name: /dev/disk/by-id/nvme-KINGSTON_SNV2S4000G_50026B7686445413
+                config:
+                  osdsPerDevice: "4"
+                  deviceClass: akane-nvme
+              - name: /dev/disk/by-id/nvme-KINGSTON_SNV2S4000G_50026B7686445813
+                config:
+                  osdsPerDevice: "4"
+                  deviceClass: akane-nvme
+          - name: bridget
+            devices:
+              - name: /dev/disk/by-id/ata-ST14000NM0121_ZKL2PR4T
+                config:
+                  deviceClass: bridget-hdd
+              - name: /dev/disk/by-id/ata-ST14000NM0121_ZKL2QJBQ
+                config:
+                  deviceClass: bridget-hdd
+              - name: /dev/disk/by-id/ata-ST14000NM0121_ZKL2QW3D
+                config:
+                  deviceClass: bridget-hdd
+              - name: /dev/disk/by-id/scsi-36000c500ca8dd2c30000000000000000
+                config:
+                  deviceClass: bridget-hdd
+              - name: /dev/disk/by-id/scsi-36000c500ca8dd2c30001000000000000
+                config:
+                  deviceClass: bridget-hdd
+      disruptionManagement:
+        managePodBudgets: true
+        osdMaintenanceTimeout: 30
+        pgHealthCheckTimeout: 0
+      healthCheck:
+        daemonHealth:
+          mon:
+            disabled: false
+            interval: 45s
+          osd:
+            disabled: false
+            interval: 60s
+          status:
+            disabled: false
+            interval: 60s
+        livenessProbe:
+          mon:
+            disabled: false
+          mgr:
+            disabled: false
+          osd:
+            disabled: false
+    cephBlockPools:
+      - name: ceph-blockpool-akane-nvme
+        # see https://github.com/rook/rook/blob/master/Documentation/CRDs/Block-Storage/ceph-block-pool-crd.md#spec for available configuration
+        spec:
+          failureDomain: osd
+          replicated:
+            size: 1
+            requireSafeReplicaSize: false
+          parameters:
+            compression_mode: aggressive
+          deviceClass: akane-nvme
+          enableRBDStats: true
+        storageClass:
+          enabled: true
+          name: ceph-block-akane-nvme
+          annotations: {}
+          labels: {}
+          isDefault: false
+          reclaimPolicy: Delete
+          allowVolumeExpansion: true
+          volumeBindingMode: "Immediate"
+          mountOptions: []
+          allowedTopologies: []
+          parameters:
+            imageFormat: "2"
+            imageFeatures: layering,fast-diff,object-map,deep-flatten,exclusive-lock
+            csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+            csi.storage.k8s.io/provisioner-secret-namespace: "{{ .Release.Namespace }}"
+            csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+            csi.storage.k8s.io/controller-expand-secret-namespace: "{{ .Release.Namespace }}"
+            csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+            csi.storage.k8s.io/node-stage-secret-namespace: "{{ .Release.Namespace }}"
+            csi.storage.k8s.io/fstype: ext4
+      - name: ceph-blockpool-bridget-hdd
+        spec:
+          failureDomain: osd
+          erasureCoded:
+            dataChunks: 3
+            codingChunks: 1
+          enableRBDStats: true
+          parameters:
+            compression_mode: aggressive
+          deviceClass: bridget-hdd
+        storageClass:
+          enabled: false
+      - name: ceph-blockpool-bridget-hdd-metadata
+        spec:
+          failureDomain: osd
+          replicated:
+            size: 3
+          enableRBDStats: true
+          parameters:
+            compression_mode: aggressive
+          deviceClass: bridget-hdd
+        storageClass:
+          enabled: true
+          name: ceph-block-bridget-hdd
+          annotations: {}
+          labels: {}
+          isDefault: false
+          reclaimPolicy: Delete
+          allowVolumeExpansion: true
+          volumeBindingMode: "Immediate"
+          mountOptions: []
+          allowedTopologies: []
+          parameters:
+            dataPool: ceph-blockpool-bridget-hdd
+            imageFormat: "2"
+            imageFeatures: layering,fast-diff,object-map,deep-flatten,exclusive-lock
+            csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+            csi.storage.k8s.io/provisioner-secret-namespace: "{{ .Release.Namespace }}"
+            csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+            csi.storage.k8s.io/controller-expand-secret-namespace: "{{ .Release.Namespace }}"
+            csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+            csi.storage.k8s.io/node-stage-secret-namespace: "{{ .Release.Namespace }}"
+            csi.storage.k8s.io/fstype: ext4
+
+    cephBlockPoolsVolumeSnapshotClass:
+      enabled: true
+      name: ceph-block
+      isDefault: false
+      deletionPolicy: Delete
+      annotations: {}
+      labels: {}
+      # see https://rook.io/docs/rook/v1.10/Storage-Configuration/Ceph-CSI/ceph-csi-snapshot/#rbd-snapshots for available configuration
+      parameters: {}
+
+    cephObjectStores: []
+    cephFileSystems: []
