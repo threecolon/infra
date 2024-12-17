@@ -8,10 +8,6 @@ spec:
   storage:
     storageClass: ceph-block-akane-nvme
     size: 20Gi
-  bootstrap:
-    recovery:
-      backup:
-        name: postgres-backup-20241213000000
   monitoring:
     enablePodMonitor: true
   backup:
