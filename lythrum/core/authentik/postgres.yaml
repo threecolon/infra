@@ -11,7 +11,7 @@ spec:
   bootstrap:
     recovery:
       backup:
-        name: postgres-backup-20241215000000
+        name: postgres-backup-20241213000000
   monitoring:
     enablePodMonitor: true
   backup:
