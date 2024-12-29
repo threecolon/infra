@@ -18,3 +18,4 @@ resources:
   - piraeus.yaml
   - bitnami.yaml
   - mittwald.yaml
+  - nvdp.yaml

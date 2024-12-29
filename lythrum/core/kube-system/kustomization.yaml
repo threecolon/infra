@@ -6,3 +6,4 @@ resources:
   - metrics-server.hr.yaml
   - kubelet-csr-approver.hr.yaml
   - nvidia-runtime.yaml
+  - nvidia-device-plugin.hr.yaml
