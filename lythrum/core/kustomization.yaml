@@ -14,4 +14,3 @@ resources:
   - velero
   - snapshot-controller
   - kubernetes-secret-generator
-  - node-feature-discovery
