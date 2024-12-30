@@ -14,3 +14,7 @@ spec:
         namespace: flux-system
       version: '0.17.0'
   values:
+    master:
+      config:
+        extraLabelNs:
+          - nvidia.com
