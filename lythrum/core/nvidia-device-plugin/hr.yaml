@@ -16,3 +16,8 @@ spec:
   values:
     gfd:
       enabled: true
+    nfd:
+      enabled: false
+    devicePlugin:
+      enabled: false
+    runtimeClassName: nvidia
