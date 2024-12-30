@@ -19,3 +19,4 @@ resources:
   - bitnami.yaml
   - mittwald.yaml
   - nvdp.yaml
+  - nfd.yaml
