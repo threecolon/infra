@@ -18,3 +18,9 @@ spec:
       config:
         extraLabelNs:
           - nvidia.com
+    worker:
+      config:
+        sources:
+          pci:
+            deviceLabelFields:
+              - vendor
