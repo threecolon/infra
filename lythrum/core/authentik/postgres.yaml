@@ -4,7 +4,7 @@ metadata:
   name: postgres
   namespace: authentik
 spec:
-  instances: 1
+  instances: 3
   storage:
     storageClass: ceph-block-akane-nvme
     size: 20Gi
