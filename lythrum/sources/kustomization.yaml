@@ -21,3 +21,4 @@ resources:
   - nvidia-device-plugin.yaml
   - node-feature-discovery.yaml
   - intel.yaml
+  - intel-ks.yaml

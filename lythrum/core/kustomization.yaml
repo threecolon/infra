@@ -16,3 +16,4 @@ resources:
   - kubernetes-secret-generator
   - node-feature-discovery
   - nvidia-device-plugin
+  - intel-gpu-plugin
