@@ -21,9 +21,6 @@ spec:
     master:
       podAnnotations:
         backup.velero.io/backup-volumes: data
-      persistence:
-        annotations:
-          velero.io/csi-volumesnapshot-class: ceph-block-akane
     metrics:
       enabled: true
       serviceMonitor:
