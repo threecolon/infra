@@ -20,3 +20,4 @@ resources:
   - mittwald.yaml
   - nvidia-device-plugin.yaml
   - node-feature-discovery.yaml
+  - intel.yaml
