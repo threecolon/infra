@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - nfd.ks.yaml
+  - plugin.ks.yaml
