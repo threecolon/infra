@@ -12,5 +12,3 @@ spec:
     excludedResources:
       - events.k8s.io
     snapshotMoveData: true
-    uploaderConfig:
-      parallelFilesUpload: 8
