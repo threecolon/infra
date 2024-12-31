@@ -11,3 +11,10 @@ spec:
     kind: GitRepository
     name: intel-ks
     namespace: flux-system
+  patches:
+      - target:
+          kind: DaemonSet
+        patch: |-
+          - op: replace
+            path: /metadata/namespace
+            value: intel-gpu-plugin
