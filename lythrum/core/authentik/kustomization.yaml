@@ -9,3 +9,4 @@ resources:
   - tunnel.yaml
   - backblaze-credentials.secret.yaml
   - postgres-backup.yaml
+  - backup.yaml
