@@ -5,7 +5,7 @@ metadata:
   name: jellyfin-tunnel
   namespace: jellyfin
 subjects:
-  - name: jellyfin-server
+  - name: jellyfin
     spec:
       fqdn: ${SUBDOMAIN_JELLYFIN}.${DOMAIN_EXTERNAL}
 tunnelRef:
