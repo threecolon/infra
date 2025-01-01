@@ -1,0 +1,13 @@
+---
+apiVersion: networking.cfargotunnel.com/v1alpha1
+kind: TunnelBinding
+metadata:
+  name: jellyfin-tunnel
+  namespace: jellyfin
+subjects:
+  - name: jellyfin-server
+    spec:
+      fqdn: ${SUBDOMAIN_JELLYFIN}.${DOMAIN_EXTERNAL}
+tunnelRef:
+  kind: ClusterTunnel
+  name: tunnel-external
