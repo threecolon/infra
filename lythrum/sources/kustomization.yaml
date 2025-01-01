@@ -22,3 +22,4 @@ resources:
   - node-feature-discovery.yaml
   - intel.yaml
   - intel-ks.yaml
+  - jellyfin.yaml
