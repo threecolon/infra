@@ -7,7 +7,7 @@ metadata:
 spec:
   newTunnel:
     name: lythrum
-  size: 2
+  size: 3
   cloudflare:
     email: ${CLOUDFLARE_EMAIL}
     domain: ${DOMAIN_EXTERNAL}
