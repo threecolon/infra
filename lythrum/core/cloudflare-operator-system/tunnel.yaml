@@ -13,5 +13,5 @@ spec:
     domain: ${DOMAIN_EXTERNAL}
     secret: cloudflare-secrets
     accountId: ${CLOUDFLARE_ACCOUNT_ID}
-  image: cloudflare/cloudflared:2024.11.0
+  image: cloudflare/cloudflared:2024.12.2
   fallbackTarget: http_status:418
