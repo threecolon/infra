@@ -4,3 +4,4 @@ resources:
   - namespace.yaml
   - hr.yaml
   - tunnel.yaml
+  - backup.yaml

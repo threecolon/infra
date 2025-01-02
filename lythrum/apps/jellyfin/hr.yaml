@@ -47,7 +47,8 @@ spec:
       name: ""
 
     # -- Annotations to add to the pod.
-    podAnnotations: {}
+    podAnnotations:
+      backup.velero.io/backup-volumes: config
     # -- Additional labels to add to the pod.
     podLabels: {}
 
