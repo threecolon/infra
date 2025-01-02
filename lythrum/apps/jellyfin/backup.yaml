@@ -11,4 +11,7 @@ spec:
       - jellyfin
     excludedResources:
       - events.k8s.io
+      - events.k8s.io/v1
+      - events
+      - ev
     snapshotMoveData: true
