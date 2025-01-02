@@ -53,7 +53,8 @@ spec:
     podLabels: {}
 
     # -- Security context for the pod.
-    podSecurityContext: {}
+    podSecurityContext:
+      privileged: true
       # fsGroup: 2000
 
     # -- Security context for the container.
@@ -147,17 +148,16 @@ spec:
       # periodSeconds: 10
 
     # -- Additional volumes to mount in the Jellyfin pod.
-    volumes: []
-    # - name: foo
-    #   secret:
-    #     secretName: mysecret
-    #     optional: false
+    volumes:
+      - name: render-dri
+        hostPath:
+          path: /dev/dri/renderD128
+          type: CharDevice
 
     # -- Additional volume mounts for the Jellyfin container.
-    volumeMounts: []
-    # - name: foo
-    #   mountPath: "/etc/foo"
-    #   readOnly: true
+    volumeMounts:
+      - name: render-dri
+        mountPath: /dev/dri/renderD128
 
     # -- Node selector for pod scheduling.
     nodeSelector: {}
