@@ -116,7 +116,9 @@ spec:
       #      - chart-example.local
 
     # -- Resource requests and limits for the Jellyfin container.
-    resources: {}
+    resources:
+      requests:
+        gpu.intel.com/i915: 1
       # limits:
       #   cpu: 100m
       #   memory: 128Mi
