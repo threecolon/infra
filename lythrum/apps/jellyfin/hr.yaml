@@ -148,15 +148,15 @@ spec:
 
     # -- Additional volumes to mount in the Jellyfin pod.
     volumes:
-      - name: render-dri
-        hostPath:
-          path: /dev/dri/renderD128
-          type: CharDevice
+      # - name: render-dri
+      #   hostPath:
+      #     path: /dev/dri/renderD128
+      #     type: CharDevice
 
     # -- Additional volume mounts for the Jellyfin container.
     volumeMounts:
-      - name: render-dri
-        mountPath: /dev/dri/renderD128
+      # - name: render-dri
+      #   mountPath: /dev/dri/renderD128
 
     # -- Node selector for pod scheduling.
     nodeSelector: {}
