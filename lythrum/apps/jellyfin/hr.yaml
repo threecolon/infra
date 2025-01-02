@@ -53,8 +53,7 @@ spec:
     podLabels: {}
 
     # -- Security context for the pod.
-    podSecurityContext:
-      privileged: true
+    podSecurityContext: {}
       # fsGroup: 2000
 
     # -- Security context for the container.
