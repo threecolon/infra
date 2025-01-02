@@ -118,7 +118,7 @@ spec:
 
     # -- Resource requests and limits for the Jellyfin container.
     resources:
-      requests:
+      limits:
         gpu.intel.com/i915: 1
       # limits:
       #   cpu: 100m
