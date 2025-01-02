@@ -12,7 +12,7 @@ spec:
         kind: HelmRepository
         name: tailscale
         namespace: flux-system
-      version: '1.77.160'
+      version: '1.78.3'
   values:
     oauth:
       clientId: ${TAILSCALE_OAUTH_CLIENT_ID}
