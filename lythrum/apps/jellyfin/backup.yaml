@@ -10,8 +10,5 @@ spec:
     includedNamespaces:
       - jellyfin
     excludedResources:
-      - events.k8s.io
-      - events.k8s.io/v1
-      - events
-      - ev
+      - events.k8s.io/v1/Event
     snapshotMoveData: true
