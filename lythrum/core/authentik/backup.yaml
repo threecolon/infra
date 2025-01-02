@@ -9,6 +9,4 @@ spec:
   template:
     includedNamespaces:
       - authentik
-    excludedResources:
-      - events.k8s.io
     snapshotMoveData: true
