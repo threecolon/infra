@@ -314,7 +314,7 @@ spec:
         storageClass:
           enabled: false
           isDefault: false
-          name: fs-bridget-hdd
+          name: ceph-fs-bridget-hdd
           pool: ec
           reclaimPolicy: Delete
           allowVolumeExpansion: true
