@@ -19,5 +19,6 @@ spec:
     monitoring:
       enabled: true
     csi:
+      cephFSKernelMountOptions: ms_mode=secure
       serviceMonitor:
         enabled: true
