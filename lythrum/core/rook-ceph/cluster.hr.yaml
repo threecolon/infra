@@ -312,7 +312,7 @@ spec:
                 memory: "4Gi"
             priorityClassName: system-cluster-critical
         storageClass:
-          enabled: false
+          enabled: true
           isDefault: false
           name: ceph-fs-bridget-hdd
           pool: ec
