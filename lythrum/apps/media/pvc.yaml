@@ -9,5 +9,5 @@ spec:
   resources:
     requests:
       storage: 1Ti
-  storageClassName: ceph-fs-bridget-hdd
+  storageClassName: fs-bridget-hdd
   volumeMode: Filesystem
