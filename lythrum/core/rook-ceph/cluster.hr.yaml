@@ -288,6 +288,7 @@ spec:
             replicated:
               size: 3
             deviceClass: bridget-hdd
+            failureDomain: osd
           dataPools:
             - failureDomain: osd
               erasureCoded:
