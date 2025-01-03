@@ -5,6 +5,7 @@ metadata:
   namespace: tailscale-operator
 spec:
   hostname: ts-pod-cidrs
+  exitNode: true
   subnetRouter:
     advertiseRoutes:
       - "10.40.0.0/14"
