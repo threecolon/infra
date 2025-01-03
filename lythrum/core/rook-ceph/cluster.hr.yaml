@@ -290,7 +290,12 @@ spec:
             deviceClass: bridget-hdd
             failureDomain: osd
           dataPools:
-            - name: data0
+            - name: default
+              replicated:
+                size: 3
+              deviceClass: bridget-hdd
+              failureDomain: osd
+            - name: erasurecoded
               failureDomain: osd
               erasureCoded:
                 dataChunks: 3
@@ -310,7 +315,7 @@ spec:
           enabled: true
           isDefault: false
           name: ceph-fs-bridget-hdd
-          pool: data0
+          pool: erasurecoded
           reclaimPolicy: Delete
           allowVolumeExpansion: true
           volumeBindingMode: "Immediate"
