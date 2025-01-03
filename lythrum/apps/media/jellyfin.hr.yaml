@@ -197,7 +197,7 @@ spec:
         # -- Custom annotations to be added to the PVC
         annotations: {}
         # -- If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner.
-        storageClass: ceph-block-bridget-hdd
+        storageClass: ceph-fs-bridget-hdd
         ## -- Use an existing PVC for this mount
         # existingClaim: ''
 
