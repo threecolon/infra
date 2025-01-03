@@ -199,7 +199,7 @@ spec:
         # -- If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner.
         storageClass: ceph-fs-bridget-hdd
         ## -- Use an existing PVC for this mount
-        # existingClaim: ''
+        existingClaim: media
 
     # -- Configuration for metrics collection and monitoring
     metrics:
