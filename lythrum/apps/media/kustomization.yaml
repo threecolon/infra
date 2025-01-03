@@ -5,3 +5,4 @@ resources:
   - jellyfin.hr.yaml
   - tunnel.yaml
   - backup.yaml
+  - pvc.yaml
