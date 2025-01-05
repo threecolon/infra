@@ -5,6 +5,7 @@ metadata:
   namespace: flux-system
   name: cluster-settings
 data:
+  TIMEZONE: America/Los_Angeles
   GITHUB_INFRA_REPO: https://github.com/threecolon/infra
   DOMAIN_EXTERNAL: estrogen.lol
   DOMAIN_TAILSCALE: snow-lenok.ts.net
