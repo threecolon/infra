@@ -6,3 +6,4 @@ resources:
   - tunnel.yaml
   - backup.yaml
   - pvc.yaml
+  - filebrowser.hr.yaml
