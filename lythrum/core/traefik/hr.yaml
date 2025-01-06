@@ -19,6 +19,7 @@ spec:
       kubernetesGateway:
         enabled: true
     service:
+      type: ClusterIP
       annotations:
         tailscale.com/expose: 'true'
-        tailscale.com/hostname: traefik
+        tailscale.com/hostname: ${SUBDOMAIN_TRAEFIK}
