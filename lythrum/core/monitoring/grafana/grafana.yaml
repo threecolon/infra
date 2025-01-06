@@ -28,11 +28,11 @@ spec:
       root_url: https://${SUBDOMAIN_GRAFANA}.${DOMAIN_TAILSCALE}/
   service:
     metadata:
-      tailscale.com/expose: 'true'
-      tailscale.com/hostname: ${SUBDOMAIN_GRAFANA}
+      annotations:
+        tailscale.com/expose: 'true'
+        tailscale.com/hostname: ${SUBDOMAIN_GRAFANA}
     spec:
       type: ClusterIP
-      annotations:
   deployment:
     spec:
       template:
