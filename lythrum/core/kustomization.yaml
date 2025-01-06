@@ -17,3 +17,4 @@ resources:
   - node-feature-discovery
   - nvidia-device-plugin
   - intel-gpu-plugin
+  - traefik
