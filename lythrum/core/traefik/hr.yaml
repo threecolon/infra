@@ -19,4 +19,7 @@ spec:
       kubernetesGateway:
         enabled: true
     service:
-      type: ClusterIP
+      annotations:
+        tailscale.com/hostname: traefik
+      spec:
+        loadBalancerClass: tailscale
