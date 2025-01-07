@@ -17,6 +17,8 @@ spec:
   values:
     ipam:
       mode: kubernetes
+    bpf:
+      lbExternalClusterIP: true
     kubeProxyReplacement: true
     securityContext:
       capabilities:
