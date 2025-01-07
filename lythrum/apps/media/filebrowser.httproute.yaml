@@ -5,16 +5,16 @@ metadata:
   namespace: media
 spec:
   parentRefs:
-  - name: traefik-gateway
-    namespace: traefik
+    - name: traefik-gateway
+      namespace: traefik
   hostnames:
-  - fb.staging.estrogen.lol
+    - fb.staging.estrogen.lol
   rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /
-    backendRefs:
-    - name: filebrowser
-      namespace: media
-      port: 80
+    - matches:
+      - path:
+          type: PathPrefix
+          value: /
+      backendRefs:
+        - name: filebrowser
+          namespace: media
+          port: 80
