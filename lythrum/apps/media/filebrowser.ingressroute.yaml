@@ -15,19 +15,19 @@ spec:
       services:
         - name: noop@internal
 ---
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
-metadata:
-  name: filebrowser-https
-  namespace: media
-spec:
-  entryPoints:
-    - websecure
-  routes:
-    - match: Host(`fb.${DOMAIN_STAGING}`)
-      kind: Rule
-      services:
-        - name: filebrowser
-          port: 80
-  tls:
-    secretName: filebrowser-tls
+# apiVersion: traefik.io/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: filebrowser-https
+#   namespace: media
+# spec:
+#   entryPoints:
+#     - websecure
+#   routes:
+#     - match: Host(`fb.${DOMAIN_STAGING}`)
+#       kind: Rule
+#       services:
+#         - name: filebrowser
+#           port: 80
+#   tls:
+#     secretName: filebrowser-tls
