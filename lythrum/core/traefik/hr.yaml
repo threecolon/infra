@@ -16,6 +16,8 @@ spec:
       version: '33.2.1'
   values:
     providers:
+      kubernetesCRD:
+        allowCrossNamespace: true
       kubernetesGateway:
         enabled: true
     service:
