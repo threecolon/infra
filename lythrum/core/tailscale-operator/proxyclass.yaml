@@ -2,6 +2,7 @@ apiVersion: tailscale.com/v1alpha1
 kind: ProxyClass
 metadata:
   name: tailscale-tun
+  namespace: tailscale-operator
 spec:
   statefulSet:
     pod:
