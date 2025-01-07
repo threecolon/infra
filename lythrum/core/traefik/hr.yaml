@@ -22,6 +22,8 @@ spec:
         enabled: false
       kubernetesGateway:
         enabled: true
+    gateway:
+      namespacePolicy: All
     service:
       type: ClusterIP
       annotations:
