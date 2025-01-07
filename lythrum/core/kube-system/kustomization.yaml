@@ -5,3 +5,4 @@ resources:
   - cilium.hr.yaml
   - metrics-server.hr.yaml
   - kubelet-csr-approver.hr.yaml
+  - generic-device-plugin.ks.yaml
