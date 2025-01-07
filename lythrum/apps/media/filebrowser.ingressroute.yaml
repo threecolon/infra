@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`fb.${DOMAIN_STAGING}`)
+    - match: Host(`fb.${DOMAIN_INTERNAL}`)
       kind: Rule
       middlewares:
         - name: redirect-https
@@ -25,7 +25,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`fb.${DOMAIN_STAGING}`)
+    - match: Host(`fb.${DOMAIN_INTERNAL}`)
       kind: Rule
       services:
         - name: filebrowser
