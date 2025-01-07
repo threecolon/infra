@@ -8,11 +8,15 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`fb.${DOMAIN_STAGING}`)
+    - match: Host(`fb.${DOMAIN_STAGING}`) && EntryPoint(`web`)
       kind: Rule
       middlewares:
         - name: redirect-https
           namespace: traefik
+      services:
+        - name: noop@internal
+    - match: Host(`fb.${DOMAIN_STAGING}`) && EntryPoint(`websecure`)
+      kind: Rule
       services:
         - name: filebrowser
           port: 80
