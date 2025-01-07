@@ -18,5 +18,12 @@ spec:
       patch: |-
         - op: add
           path: /spec/template/spec/containers/0/args/-
+          value: --device
+        - op: add
+          path: /spec/template/spec/containers/0/args/-
           value: |
-            --device='{"name": "tun", "groups": [{"paths": [{"path": "/dev/net/tun"}]}, "count": 1000]}'
+            name: tun
+            groups:
+              - count: 1000
+                paths:
+                  - path: /dev/net/tun
