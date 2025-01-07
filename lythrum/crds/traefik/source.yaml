@@ -1,0 +1,16 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: traefik-crds
+  namespace: flux-system
+spec:
+  interval: 15m
+  ref:
+    tag: v3.2.2
+  url: https://github.com/traefik/traefik
+  ignore: |
+    # exclude all
+    /*
+    # include crds directory
+    !/docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml

@@ -9,3 +9,4 @@ resources:
   - grafana-operator
   - volume-snapshot
   - gateway-api
+  - traefik
