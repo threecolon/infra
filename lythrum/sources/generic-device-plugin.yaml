@@ -1,0 +1,11 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: generic-device-plugin
+  namespace: flux-system
+spec:
+  interval: 10m
+  ref:
+    commit: 36bfc606bba2064de6ede0ff2764cbb52edff70d
+  url: https://github.com/squat/generic-device-plugin
