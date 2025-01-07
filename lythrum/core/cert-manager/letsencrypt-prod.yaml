@@ -15,7 +15,4 @@ spec:
             apiTokenSecretRef:
               name: cloudflare-credentials
               key: key
-        selector:
-          dnsNames:
-            - '*.${DOMAIN_INTERNAL}'
 
