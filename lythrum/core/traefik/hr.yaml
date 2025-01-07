@@ -19,11 +19,14 @@ spec:
       kubernetesCRD:
         allowCrossNamespace: true
       kubernetesIngress:
-        enabled: false
+        enabled: true
       kubernetesGateway:
         enabled: true
     gateway:
       namespacePolicy: All
+    ingressRoute:
+      dashboard:
+        enabled: true
     service:
       type: ClusterIP
       annotations:
