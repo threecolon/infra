@@ -6,9 +6,9 @@ metadata:
 spec:
   acme:
     email: ${LETSENCRYPT_EMAIL}
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: letsencrypt-staging-issuer-key
+      name: letsencrypt-prod-issuer-key
     solvers:
       - dns01:
           cloudflare:
@@ -17,4 +17,5 @@ spec:
               key: key
         selector:
           dnsNames:
-            - '*.${DOMAIN_STAGING}'
+            - '*.${DOMAIN_INTERNAL}'
+
