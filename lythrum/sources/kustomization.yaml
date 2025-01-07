@@ -25,4 +25,4 @@ resources:
   - jellyfin.yaml
   - bjw-s.yaml
   - traefik.yaml
-  - generic-device-plugin
+  - generic-device-plugin.yaml
