@@ -19,6 +19,8 @@ spec:
       mode: kubernetes
     bpf:
       lbExternalClusterIP: true
+    socketLB:
+      hostNamespaceOnly: true
     kubeProxyReplacement: true
     securityContext:
       capabilities:
