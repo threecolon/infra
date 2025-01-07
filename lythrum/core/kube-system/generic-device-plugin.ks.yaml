@@ -11,3 +11,20 @@ spec:
     kind: GitRepository
     name: generic-device-plugin
     namespace: flux-system
+  patches:
+    - target:
+        kind: DaemonSet
+      patch: |-
+        apiVersion: apps/v1
+        kind: DaemonSet
+        metadata:
+          name: generic-device-plugin
+          namespace: kube-system
+        spec:
+          template:
+            spec:
+              containers:
+              - $patch: merge
+                name: generic-device-plugin
+                args:
+                - --device='{"name": "tun", "groups": [{"paths": [{"path": "/dev/net/tun"}]}, "count": 1000]}'
