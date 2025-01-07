@@ -14,17 +14,9 @@ spec:
   patches:
     - target:
         kind: DaemonSet
+        name: generic-device-plugin
       patch: |-
-        apiVersion: apps/v1
-        kind: DaemonSet
-        metadata:
-          name: generic-device-plugin
-          namespace: kube-system
-        spec:
-          template:
-            spec:
-              containers:
-              - $patch: merge
-                name: generic-device-plugin
-                args:
-                - --device='{"name": "tun", "groups": [{"paths": [{"path": "/dev/net/tun"}]}, "count": 1000]}'
+        - op: add
+          path: /spec/template/spec/containers/0/args/-
+          value: |
+            --device='{"name": "tun", "groups": [{"paths": [{"path": "/dev/net/tun"}]}, "count": 1000]}'
