@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: filebrower
+  namespace: media
+spec:
+  secretName: filebrowser-tls
+  dnsNames:
+    - fb.${DOMAIN_STAGING}
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-staging

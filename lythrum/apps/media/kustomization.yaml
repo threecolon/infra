@@ -7,4 +7,5 @@ resources:
   - backup.yaml
   - pvc.yaml
   - filebrowser.hr.yaml
-  - filebrowser.httproute.yaml
+  - filebrowser.ingressroute.yaml
+  - filebrowser.cert.yaml
