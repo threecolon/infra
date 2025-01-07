@@ -5,10 +5,14 @@ metadata:
   namespace: media
 spec:
   entryPoints:
+    - web
     - websecure
   routes:
     - match: Host(`fb.${DOMAIN_STAGING}`)
       kind: Rule
+      middlewares:
+        - name: redirect-https
+          namespace: traefik
       services:
         - name: filebrowser
           port: 80

@@ -4,4 +4,5 @@ kind: Kustomization
 resources:
   - hr.yaml
   - namespace.yaml
-  - authentik-middleware.yaml
+  - authentik.middleware.yaml
+  - redirect-https.middleware.yaml
