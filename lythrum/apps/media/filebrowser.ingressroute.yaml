@@ -28,7 +28,9 @@ spec:
     - match: Host(`fb.${DOMAIN_INTERNAL}`)
       kind: Rule
       services:
-        - name: filebrowser
-          port: 80
+        # - name: filebrowser
+        #   port: 80
+        - name: noop@internal
+          kind: TraefikService
   tls:
     secretName: filebrowser-tls
