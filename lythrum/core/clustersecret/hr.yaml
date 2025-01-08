@@ -12,5 +12,5 @@ spec:
         kind: HelmRepository
         name: clustersecret
         namespace: flux-system
-      version: '0.2.0'
+      version: '0.4.5'
   values:
