@@ -27,6 +27,9 @@ spec:
   routes:
     - match: Host(`fb.${DOMAIN_INTERNAL}`)
       kind: Rule
+      middlewares:
+        - name: authentik
+          namespace: traefik
       services:
         - name: filebrowser
           port: 80
