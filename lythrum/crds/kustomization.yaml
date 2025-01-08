@@ -10,3 +10,4 @@ resources:
   - volume-snapshot
   - gateway-api
   - traefik
+  - clustersecret

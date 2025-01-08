@@ -1,0 +1,16 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: clustersecret-crds
+  namespace: flux-system
+spec:
+  interval: 15m
+  ref:
+    tag: '0.0.12'
+  url: https://github.com/zakkg3/ClusterSecret/
+  ignore: |
+    # exclude all
+    /*
+    # include crds directory
+    !/yaml/01_crd.yaml
