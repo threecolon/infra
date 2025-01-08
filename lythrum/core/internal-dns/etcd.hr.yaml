@@ -17,3 +17,5 @@ spec:
   values:
     global:
       defaultStorageClass: ceph-block-akane-nvme
+    pdb:
+      create: false
