@@ -138,7 +138,7 @@ spec:
           - name: prometheus
             parameters: 0.0.0.0:9153
           - name: etcd
-            parameters: ${DOMAIN_EXTERNAL}
+            parameters: ${DOMAIN_INTERNAL} ${DOMAIN_EXTERNAL}
             configBlock: |-
               credentials root {$ETCD_PASSWORD}
               endpoint http://etcd:2379
