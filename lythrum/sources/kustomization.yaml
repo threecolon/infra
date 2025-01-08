@@ -28,3 +28,4 @@ resources:
   - generic-device-plugin.yaml
   - coredns.yaml
   - clustersecret.yaml
+  - external-dns.yaml
