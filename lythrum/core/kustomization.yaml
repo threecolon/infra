@@ -19,3 +19,4 @@ resources:
   - intel-gpu-plugin
   - traefik
   - dns
+  - clustersecret
