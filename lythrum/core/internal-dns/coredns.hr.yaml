@@ -137,6 +137,11 @@ spec:
           # Serves a /metrics endpoint on :9153, required for serviceMonitor
           - name: prometheus
             parameters: 0.0.0.0:9153
+          - name: etcd
+            parameters: ${DOMAIN_EXTERNAL}
+            configBlock: |-
+              credentials root {$ETCD_PASSWORD}
+              endpoint http://etcd:2379
           - name: cache
             parameters: 30
           - name: loop
