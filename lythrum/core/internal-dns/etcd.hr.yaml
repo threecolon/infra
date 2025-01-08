@@ -15,7 +15,9 @@ spec:
         namespace: flux-system
       version: '10.7.1'
   values:
-    global:
-      defaultStorageClass: ceph-block-akane-nvme
+    persistence:
+      enabled: true
+      storageClass: ceph-block-akane-nvme
+      size: 1Gi
     pdb:
       create: false
