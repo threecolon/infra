@@ -26,7 +26,9 @@ spec:
       dashboard:
         enabled: true
     service:
-      type: ClusterIP
+      type: LoadBalancer
+      spec:
+        loadBalancerClass: tailscale
       annotations:
         tailscale.com/expose: 'true'
         tailscale.com/hostname: traefik
