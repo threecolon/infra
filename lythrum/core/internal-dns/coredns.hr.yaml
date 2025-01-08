@@ -118,39 +118,30 @@ spec:
     # Default zone is what Kubernetes recommends:
     # https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options
     servers:
-    - zones:
-      - zone: .
-      port: 53
-      # -- expose the service on a different port
-      # servicePort: 5353
-      # If serviceType is nodePort you can specify nodePort here
-      # nodePort: 30053
-      # hostPort: 53
-      plugins:
-      - name: errors
-      # Serves a /health endpoint on :8080, required for livenessProbe
-      - name: health
-        configBlock: |-
-          lameduck 5s
-      # Serves a /ready endpoint on :8181, required for readinessProbe
-      - name: ready
-      # Required to query kubernetes API for data
-      - name: kubernetes
-        parameters: cluster.local in-addr.arpa ip6.arpa
-        configBlock: |-
-          pods insecure
-          fallthrough in-addr.arpa ip6.arpa
-          ttl 30
-      # Serves a /metrics endpoint on :9153, required for serviceMonitor
-      - name: prometheus
-        parameters: 0.0.0.0:9153
-      - name: forward
-        parameters: . /etc/resolv.conf
-      - name: cache
-        parameters: 30
-      - name: loop
-      - name: reload
-      - name: loadbalance
+      - zones:
+          - zone: .
+        port: 53
+        # -- expose the service on a different port
+        # servicePort: 5353
+        # If serviceType is nodePort you can specify nodePort here
+        # nodePort: 30053
+        # hostPort: 53
+        plugins:
+          - name: errors
+          # Serves a /health endpoint on :8080, required for livenessProbe
+          - name: health
+            configBlock: |-
+              lameduck 5s
+          # Serves a /ready endpoint on :8181, required for readinessProbe
+          - name: ready
+          # Serves a /metrics endpoint on :9153, required for serviceMonitor
+          - name: prometheus
+            parameters: 0.0.0.0:9153
+          - name: cache
+            parameters: 30
+          - name: loop
+          - name: reload
+          - name: loadbalance
 
     # Complete example with all the options:
     # - zones:                 # the `zones` block can be left out entirely, defaults to "."
@@ -278,14 +269,12 @@ spec:
 
     # optional array of environment variables for coredns container
     # possible usecase: provides username and password for etcd user authentications
-    env: []
-    # - name: WHATEVER_ENV
-    #   value: whatever
-    # - name: SOME_SECRET_ENV
-    #   valueFrom:
-    #     secretKeyRef:
-    #       name: some-secret-name
-    #       key: secret-key
+    env:
+      - name: ETCD_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: etcd
+            key: etcd-root-password
 
     # To support legacy deployments using CoreDNS with the "k8s-app: kube-dns" label selectors.
     # See https://github.com/coredns/helm/blob/master/charts/coredns/README.md#adopting-existing-coredns-resources
