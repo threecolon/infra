@@ -337,7 +337,7 @@ spec:
     ## @param extraEnvVars An array to add extra env vars
     ##
     extraEnvVars:
-      - name: ETCD_USER
+      - name: ETCD_USERNAME
         value: root
       - name: ETCD_PASSWORD
         valueFrom:
