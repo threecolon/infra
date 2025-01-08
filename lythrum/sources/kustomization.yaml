@@ -26,3 +26,5 @@ resources:
   - bjw-s.yaml
   - traefik.yaml
   - generic-device-plugin.yaml
+  - coredns.yaml
+  - clustersecret.yaml
