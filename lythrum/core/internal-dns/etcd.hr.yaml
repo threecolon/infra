@@ -1,0 +1,16 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: etcd
+  namespace: internal-dns
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: etcd
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+      version: '10.7.1'
