@@ -62,6 +62,7 @@ spec:
               SERVER_CITIES: ${MULLVAD_CITIES}
             securityContext:
               privileged: true
+              runAsUser: 0
               capabilities:
                 add:
                   - NET_ADMIN
