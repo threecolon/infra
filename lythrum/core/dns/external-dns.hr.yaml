@@ -288,7 +288,7 @@ spec:
     registry: "txt"
     ## @param txtPrefix When using the TXT registry, a prefix for ownership records that avoids collision with CNAME entries (optional)<CNAME record> (Mutual exclusive with txt-suffix)
     ##
-    txtPrefix: "metadata"
+    txtPrefix: "metadata-"
     ## @param txtSuffix When using the TXT registry, a suffix for ownership records that avoids collision with CNAME entries (optional)<CNAME record>.suffix (Mutual exclusive with txt-prefix)
     ##
     txtSuffix: ""
