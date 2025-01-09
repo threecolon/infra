@@ -120,9 +120,10 @@ spec:
     ## @param sources [array] K8s resources type to be observed for new DNS entries by ExternalDNS
     ##
     sources:
+      - traefik-proxy
       # - crd
-      - service
-      - ingress
+      # - service
+      # - ingress
       # - contour-httpproxy
     ## @param provider DNS provider where the DNS records will be created.
     ## Available providers are:
