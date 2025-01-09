@@ -18,6 +18,13 @@ spec:
   values:
     controllers:
       qbittorrent:
+
+        pod:
+          securityContext:
+            fsGroup: 1000
+            fsGroupChangePolicy: "OnRootMismatch"
+          terminationGracePeriodSeconds: 120
+
         containers:
           app:
             image:
@@ -38,15 +45,20 @@ spec:
                 spec:
                   failureThreshold: 30
                   periodSeconds: 10
-            securityContext:
-              runAsUser: 1000
-              runAsGroup: 1000
-              fsGroup: 1000
             resources:
               requests:
                 cpu: 100m
               limits:
                 memory: 8Gi
+            securityContext:
+              runAsUser: 1000
+              runAsGroup: 1000
+              runAsNonRoot: true
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
 
           gluetun:
             dependsOn: app
@@ -82,12 +94,15 @@ spec:
                 value: "8080"
               - name: PORT_FORWARDED
                 value: /tmp/gluetun/forwarded_port
-
-    defaultPodOptions:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
+            securityContext:
+              runAsUser: 1000
+              runAsGroup: 1000
+              runAsNonRoot: true
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
 
     service:
       app:
