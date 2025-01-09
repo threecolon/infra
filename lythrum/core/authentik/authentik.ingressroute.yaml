@@ -8,7 +8,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: Host(`${SUBDOMAIN_AUTHENTIK}.${DOMAIN_INTERNAL}`)
+      match: Host(`${SUBDOMAIN_AUTHENTIK}.${DOMAIN_EXTERNAL}`)
       middlewares:
         - name: redirect-https
           namespace: traefik
@@ -28,7 +28,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`${SUBDOMAIN_AUTHENTIK}.${DOMAIN_INTERNAL}`)
+      match: Host(`${SUBDOMAIN_AUTHENTIK}.${DOMAIN_EXTERNAL}`)
       services:
         - name: authentik-server
           port: 80

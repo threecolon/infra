@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: authentik-tls
   dnsNames:
-    - ${SUBDOMAIN_AUTHENTIK}.${DOMAIN_INTERNAL}
+    - ${SUBDOMAIN_AUTHENTIK}.${DOMAIN_EXTERNAL}
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod
