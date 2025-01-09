@@ -4,7 +4,7 @@ metadata:
   name: jellyfin
   namespace: media
 spec:
-  secretName: jellyifn-tls
+  secretName: jellyfin-tls
   dnsNames:
     - ${SUBDOMAIN_JELLYFIN}.${DOMAIN_EXTERNAL}
   issuerRef:
