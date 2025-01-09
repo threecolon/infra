@@ -19,7 +19,7 @@ spec:
       kubernetesCRD:
         allowCrossNamespace: true
       kubernetesIngress:
-        enabled: false
+        enabled: true
       kubernetesGateway:
         enabled: false
     ingressRoute:
