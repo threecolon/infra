@@ -64,18 +64,19 @@ spec:
         selector: {}
 
     service:
-    # clusterIP: ""
-    # clusterIPs: []
-    # loadBalancerIP: ""
-    # loadBalancerClass: ""
-    # externalIPs: []
-    # externalTrafficPolicy: ""
-    # ipFamilyPolicy: ""
-    # trafficDistribution: PreferClose
+      # clusterIP: ""
+      # clusterIPs: []
+      # loadBalancerIP: ""
+      # externalIPs: []
+      # externalTrafficPolicy: ""
+      # ipFamilyPolicy: ""
+      # trafficDistribution: PreferClose
       # The name of the Service
       # If not set, a name is generated using the fullname template
       name: ""
-      annotations: {}
+      loadBalancerClass: tailscale
+      annotations:
+        tailscale.com/hostname: dns
       # Pod selector
       selector: {}
 
