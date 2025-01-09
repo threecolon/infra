@@ -60,14 +60,15 @@ spec:
               WIREGUARD_PRIVATE_KEY: ${MULLVAD_PRIVATE_KEY}
               WIREGUARD_ADDRESSES: ${MULLVAD_ADDRESSES}
               SERVER_CITIES: ${MULLVAD_CITIES}
+            resources:
+              limits:
+                squat.ai/tun: "1"
+            restartPolicy: Always
             securityContext:
-              privileged: true
-              runAsUser: 0
               capabilities:
                 add:
                   - NET_ADMIN
-                  - NET_RAW
-                  - SYS_ADMIN
+              allowPrivilegeEscalation: false
 
           port-forward:
             dependsOn: gluetun
