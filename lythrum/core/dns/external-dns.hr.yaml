@@ -121,8 +121,8 @@ spec:
     ##
     sources:
       - traefik-proxy
+      - service
       # - crd
-      # - service
       # - ingress
       # - contour-httpproxy
     ## @param provider DNS provider where the DNS records will be created.
