@@ -39,13 +39,8 @@ spec:
                   failureThreshold: 30
                   periodSeconds: 10
             securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              runAsNonRoot: true
-              runAsUser: 1000
-              runAsGroup: 1000
-              fsGroup: 1000
-              capabilities: { drop: ["ALL"] }
+              runAsUser: 568
+              runAsGroup: 568
             resources:
               requests:
                 cpu: 100m
