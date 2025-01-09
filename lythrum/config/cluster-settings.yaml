@@ -24,4 +24,4 @@ data:
   BACKBLAZE_CNPG_BUCKET_REGION: us-west-004
   BACKBLAZE_CNPG_BUCKET_ENDPOINT: https://s3.us-west-004.backblazeb2.com
   CNPG_AUTHENTIK_BACKUP_PATH: authentik
-  MULLVAD_CITIES: San Jose
+  MULLVAD_CITIES: San Jose CA
