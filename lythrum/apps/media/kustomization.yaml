@@ -3,7 +3,9 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - jellyfin.hr.yaml
-  - tunnel.yaml
+  - jellyfin.ingressroute.yaml
+  - jellyfin.cert.yaml
+  - jellyfin.tunnel.yaml
   - backup.yaml
   - pvc.yaml
   - filebrowser.hr.yaml

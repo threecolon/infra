@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: jellyfin
+  namespace: media
+spec:
+  secretName: jellyifn-tls
+  dnsNames:
+    - ${SUBDOMAIN_JELLYFIN}.${DOMAIN_EXTERNAL}
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod

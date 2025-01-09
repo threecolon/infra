@@ -1,0 +1,36 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: jellyfin-http
+  namespace: media
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`${SUBDOMAIN_JELLYFIN}.${DOMAIN_EXTERNAL}`)
+      middlewares:
+        - name: redirect-https
+          namespace: traefik
+      services:
+        - name: noop@internal
+          kind: TraefikService
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: jellyfin-https
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/target: traefik.${DOMAIN_INTERNAL}
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`${SUBDOMAIN_JELLYFIN}.${DOMAIN_EXTERNAL}`)
+      services:
+        - name: jellyfin
+          port: 8096
+  tls:
+    secretName: jellyfin-tls
