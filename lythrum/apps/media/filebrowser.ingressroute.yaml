@@ -22,7 +22,7 @@ metadata:
   name: filebrowser-https
   namespace: media
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: traefik.traefik.svc.cluster.local
+    external-dns.alpha.kubernetes.io/target: traefik.traefik.svc.cluster.local
 spec:
   entryPoints:
     - websecure
