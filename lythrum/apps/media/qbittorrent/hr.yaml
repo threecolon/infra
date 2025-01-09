@@ -79,6 +79,7 @@ spec:
                 value: /tmp/gluetun/forwarded_port
 
     defaultPodOptions:
+      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
@@ -104,18 +105,7 @@ spec:
         storageClass: ceph-block-akane-nvme
         accessMode: ReadWriteOnce
         size: 1Gi
-        advancedMounts:
-          qbittorent:
-            app:
-              - path: /media
-
-
       media:
         existingClaim: media
-        advancedMounts:
-          qbittorent:
-            app:
-              - path: /media
-
       tmp:
         type: emptyDir
