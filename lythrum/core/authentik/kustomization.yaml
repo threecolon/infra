@@ -6,7 +6,9 @@ resources:
   - postgres.yaml
   - keydb.hr.yaml
   - authentik.hr.yaml
-  - tunnel.yaml
+  - authentik.cert.yaml
+  - authentik.ingressroute.yaml
+  - authentik.tunnel.yaml
   - backblaze-credentials.secret.yaml
   - postgres-backup.yaml
   - backup.yaml
