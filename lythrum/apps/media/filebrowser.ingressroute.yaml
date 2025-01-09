@@ -21,6 +21,8 @@ kind: IngressRoute
 metadata:
   name: filebrowser-https
   namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/target: fb.${DOMAIN_INTERNAL}
 spec:
   entryPoints:
     - websecure
