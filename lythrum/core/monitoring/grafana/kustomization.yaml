@@ -4,4 +4,6 @@ kind: Kustomization
 resources:
   - operator.hr.yaml
   - grafana.yaml
+  - grafana.cert.yaml
+  - grafana.ingressroute.yaml
   - vcm-datasource.yaml
