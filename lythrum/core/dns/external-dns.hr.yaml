@@ -288,7 +288,7 @@ spec:
     registry: "txt"
     ## @param txtPrefix When using the TXT registry, a prefix for ownership records that avoids collision with CNAME entries (optional)<CNAME record> (Mutual exclusive with txt-suffix)
     ##
-    txtPrefix: ""
+    txtPrefix: "metadata"
     ## @param txtSuffix When using the TXT registry, a suffix for ownership records that avoids collision with CNAME entries (optional)<CNAME record>.suffix (Mutual exclusive with txt-prefix)
     ##
     txtSuffix: ""
@@ -318,7 +318,7 @@ spec:
     txtEncrypt:
       ## @param txtEncrypt.enabled Enable TXT record encrypencryption
       ##
-      enabled: false
+      enabled: true
       ## @param txtEncrypt.aesKey 32-byte AES-256-GCM encryption key.
       ## ref: https://github.com/kubernetes-sigs/external-dns/blob/master/docs/registry/txt.md#generating-the-txt-encryption-key
       ## Note: If txtEncrypt.enabled is enabled and txtEncrypt.aesKey is not set a default key will be generated.
