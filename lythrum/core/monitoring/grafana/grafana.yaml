@@ -25,7 +25,7 @@ spec:
       api_url: "https://${SUBDOMAIN_AUTHENTIK}.${DOMAIN_EXTERNAL}/application/o/userinfo/"
       role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
     server:
-      root_url: https://${SUBDOMAIN_GRAFANA}.${DOMAIN_TAILSCALE}/
+      root_url: https://${SUBDOMAIN_GRAFANA}.${DOMAIN_INTERNAL}/
   deployment:
     spec:
       template:
