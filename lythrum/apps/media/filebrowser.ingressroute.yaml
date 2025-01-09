@@ -8,7 +8,7 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: Host(`fb.${DOMAIN_INTERNAL}`)
+      match: Host(`${SUBDOMAIN_MEDIA_FILEBROWSER}.${DOMAIN_INTERNAL}`)
       middlewares:
         - name: redirect-https
           namespace: traefik
@@ -28,7 +28,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`fb.${DOMAIN_INTERNAL}`)
+      match: Host(`${SUBDOMAIN_MEDIA_FILEBROWSER}.${DOMAIN_INTERNAL}`)
       priority: 10
       middlewares:
         - name: authentik
@@ -37,7 +37,7 @@ spec:
         - name: filebrowser
           port: 80
     - kind: Rule
-      match: "Host(`fb.${DOMAIN_INTERNAL}`) && PathPrefix(`/outpost.goauthentik.io/`)"
+      match: "Host(`${SUBDOMAIN_MEDIA_FILEBROWSER}.${DOMAIN_INTERNAL}`) && PathPrefix(`/outpost.goauthentik.io/`)"
       priority: 15
       services:
         - namespace: authentik
