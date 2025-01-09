@@ -331,7 +331,8 @@ spec:
     ## @param extraArgs Extra arguments to be passed to external-dns
     ##
     extraArgs:
-      traefik-disable-legacy: '1'
+      traefik-disable-legacy:
+
     ##extraArgs:
     ##  rfc2136-zone:
     ##    - extra-zone1.com
