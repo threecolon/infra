@@ -9,8 +9,8 @@ data:
   GITHUB_INFRA_REPO: https://github.com/threecolon/infra
   DOMAIN_EXTERNAL: estrogen.lol
   DOMAIN_TAILSCALE: snow-lenok.ts.net
-  DOMAIN_STAGING: staging.estrogen.lol
-  DOMAIN_INTERNAL: internal.estrogen.lol
+  DOMAIN_STAGING: stg.estrogen.lol
+  DOMAIN_INTERNAL: int.estrogen.lol
   SUBDOMAIN_FLUX_WEBHOOKS: flux-webhooks
   SUBDOMAIN_AUTHENTIK: auth
   SUBDOMAIN_GRAFANA: gf
