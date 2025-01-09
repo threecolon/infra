@@ -105,16 +105,16 @@ spec:
         accessMode: ReadWriteOnce
         size: 1Gi
         advancedMounts:
-          app:
-            qbittorent:
+          qbittorent:
+            app:
               - path: /media
 
 
       media:
         existingClaim: media
         advancedMounts:
-          app:
-            qbittorent:
+          qbittorent:
+            app:
               - path: /media
 
       tmp:
