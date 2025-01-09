@@ -32,3 +32,4 @@ spec:
       annotations:
         tailscale.com/expose: 'true'
         tailscale.com/hostname: traefik
+        external-dns.alpha.kubernetes.io/hostname: traefik.${DOMAIN_INTERNAL}
