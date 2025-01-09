@@ -17,7 +17,7 @@ spec:
       version: '3.6.0'
   values:
     controllers:
-      qbittorent:
+      qbittorrent:
         containers:
           app:
             image:
@@ -90,17 +90,17 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
 
-    # service:
-    #   app:
-    #     controller: qbittorrent
-    #     type: ClusterIP
-    #     ports:
-    #       http:
-    #         port: *port
-    #       bittorrent:
-    #         enabled: true
-    #         port: *torrentPort
-    #         protocol: TCP
+    service:
+      app:
+        controller: qbittorrent
+        type: ClusterIP
+        ports:
+          http:
+            port: *port
+          bittorrent:
+            enabled: true
+            port: *torrentPort
+            protocol: TCP
 
     persistence:
       config:
