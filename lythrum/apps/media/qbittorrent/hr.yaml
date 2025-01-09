@@ -63,7 +63,6 @@ spec:
             resources:
               limits:
                 squat.ai/tun: "1"
-            restartPolicy: Always
             securityContext:
               capabilities:
                 add:
