@@ -141,8 +141,11 @@ spec:
           - name: etcd
             parameters: ${DOMAIN_INTERNAL} ${DOMAIN_EXTERNAL}
             configBlock: |-
+              fallthrough
               credentials root {$ETCD_PASSWORD}
               endpoint http://etcd:2379
+          - name: forward
+            parameters: . 1.1.1.1:53 1.0.0.1:53
           - name: cache
             parameters: 30
           - name: loop
