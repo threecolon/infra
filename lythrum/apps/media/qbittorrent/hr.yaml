@@ -61,6 +61,7 @@ spec:
               WIREGUARD_ADDRESSES: ${MULLVAD_ADDRESSES}
               SERVER_CITIES: ${MULLVAD_CITIES}
             securityContext:
+              allowPrivilegeEscalation: true
               capabilities:
                 add:
                   - NET_ADMIN
