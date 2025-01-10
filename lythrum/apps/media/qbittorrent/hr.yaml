@@ -35,10 +35,13 @@ spec:
               QBT_TORRENTING_PORT: &qbtTorrentPort '50413'
             probes:
               liveness:
+                port: *qbtWebPort
                 enabled: true
               readiness:
+                port: *qbtWebPort
                 enabled: true
               startup:
+                port: *qbtWebPort
                 enabled: true
                 spec:
                   failureThreshold: 30
