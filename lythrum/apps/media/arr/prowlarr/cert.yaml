@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: prowlarr
+  namespace: media
+spec:
+  secretName: prowlarr-tls
+  dnsNames:
+    - ${SUBDOMAIN_PROWLARR}.${DOMAIN_INTERNAL}
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
