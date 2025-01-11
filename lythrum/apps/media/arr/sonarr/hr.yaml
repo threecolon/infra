@@ -20,6 +20,9 @@ spec:
       sonarr:
         pod:
           securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
             fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
           terminationGracePeriodSeconds: 120
@@ -43,25 +46,20 @@ spec:
             probes:
               liveness:
                 enabled: true
-                port: web
               readiness:
                 enabled: true
-                port: web
               startup:
                 enabled: true
-                port: web
                 spec:
                   failureThreshold: 30
                   periodSeconds: 5
             resources:
               requests:
-                cpu: 100m
+                cpu: 20m
+                memory: 400Mi
               limits:
-                memory: 8Gi
+                memory: 2Gi
             securityContext:
-              runAsUser: 1000
-              runAsGroup: 1000
-              runAsNonRoot: true
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities:
