@@ -1,0 +1,13 @@
+---
+apiVersion: networking.cfargotunnel.com/v1alpha1
+kind: TunnelBinding
+metadata:
+  name: whoami
+  namespace: traefik
+subjects:
+  - name: whoami
+    spec:
+      fqdn: whoami.${DOMAIN_EXTERNAL}
+tunnelRef:
+  kind: ClusterTunnel
+  name: tunnel-external
