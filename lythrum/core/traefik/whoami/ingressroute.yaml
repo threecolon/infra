@@ -1,7 +1,7 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: whoami
+  name: whoami-http
   namespace: traefik
 spec:
   entryPoints:
@@ -19,7 +19,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: whoami
+  name: whoami-https
   namespace: traefik
   annotations:
     external-dns.alpha.kubernetes.io/target: traefik.${DOMAIN_INTERNAL}
