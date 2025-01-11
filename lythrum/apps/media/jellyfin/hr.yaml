@@ -53,11 +53,21 @@ spec:
     podLabels: {}
 
     # -- Security context for the pod.
-    podSecurityContext: {}
+    podSecurityContext:
+      fsGroup: 1000
+      fsGroupChangePolicy: "OnRootMismatch"
       # fsGroup: 2000
 
     # -- Security context for the container.
-    securityContext: {}
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      runAsNonRoot: true
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop:
+          - ALL
       # capabilities:
       #   drop:
       #   - ALL
