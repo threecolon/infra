@@ -1,0 +1,36 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: whoami
+  namespace: traefik
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`whoami.${DOMAIN_EXTERNAL}`)
+      middlewares:
+        - name: redirect-https
+          namespace: traefik
+      services:
+        - name: noop@internal
+          kind: TraefikService
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: whoami
+  namespace: traefik
+  annotations:
+    external-dns.alpha.kubernetes.io/target: traefik.${DOMAIN_INTERNAL}
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`whoami.${DOMAIN_EXTERNAL}`)
+      services:
+        - name: whoami
+          port: web
+  tls:
+    secretName: whoami-tls

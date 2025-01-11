@@ -6,3 +6,4 @@ resources:
   - namespace.yaml
   - authentik.middleware.yaml
   - redirect-https.middleware.yaml
+  - whoami
