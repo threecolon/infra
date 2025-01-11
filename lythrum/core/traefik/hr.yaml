@@ -53,7 +53,7 @@ spec:
             limits:
               squat.ai/tun: "1"
           securityContext:
-            allowPrivilegeEscalation: false
+            privileged: true
             capabilities:
               add:
                 - NET_ADMIN
