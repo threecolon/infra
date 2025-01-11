@@ -71,7 +71,7 @@ spec:
 
     podSecurityContext:
       fsGroup: 1000
-      fsGroupChangePolicy: true
+      fsGroupChangePolicy: OnRootMismatch
 
     service:
       enabled: false
