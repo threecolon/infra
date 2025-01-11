@@ -36,10 +36,13 @@ spec:
             probes:
               liveness:
                 enabled: true
+                port: *qbtWebPort
               readiness:
                 enabled: true
+                port: *qbtWebPort
               startup:
                 enabled: true
+                port: *qbtWebPort
                 spec:
                   failureThreshold: 30
                   periodSeconds: 5
