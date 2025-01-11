@@ -58,6 +58,21 @@ spec:
               add:
                 - NET_ADMIN
                 - NET_RAW
+
+    securityContext:
+      capabilities:
+        drop:
+          - ALL
+      runAsUser: 1000
+      runAsGroup: 1000
+      runAsNonRoot: true
+      readOnlyRootFilesystem: true
+      allowPrivilegeEscalation: false
+
+    podSecurityContext:
+      fsGroup: 1000
+      fsGroupChangePolicy: true
+
     service:
       enabled: false
       # type: LoadBalancer
