@@ -32,7 +32,7 @@ spec:
           imagePullPolicy: Always
           env:
             - name: TS_KUBE_SECRET
-              value: tailscale
+              value: tailscale-auth
             - name: TS_HOSTNAME
               value: traefik
             - name: TS_USERSPACE
