@@ -25,7 +25,7 @@ spec:
             runAsNonRoot: true
             fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
-          terminationGracePeriodSeconds: 120
+          terminationGracePeriodSeconds: 60
 
         containers:
           app:
