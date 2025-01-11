@@ -70,6 +70,9 @@ spec:
       allowPrivilegeEscalation: false
 
     podSecurityContext:
+      runAsUser: null
+      runAsGroup: null
+      runAsNonRoot: null
       fsGroup: 1000
       fsGroupChangePolicy: OnRootMismatch
 
