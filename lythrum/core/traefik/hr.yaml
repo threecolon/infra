@@ -24,7 +24,14 @@ spec:
         enabled: false
     ingressRoute:
       dashboard:
-        enabled: true
+        enabled: false
+
+    ports:
+      web:
+        port: 80
+      websecure:
+        port: 443
+
     deployment:
       additionalContainers:
         - name: tailscale
