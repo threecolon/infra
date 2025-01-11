@@ -25,11 +25,45 @@ spec:
     ingressRoute:
       dashboard:
         enabled: true
+    deployment:
+      additionalContainers:
+        - name: tailscale
+          image: ghcr.io/tailscale/tailscale:v1.78.3
+          imagePullPolicy: Always
+          env:
+            - name: TS_KUBE_SECRET
+              value: tailscale
+            - name: TS_HOSTNAME
+              value: traefik
+            - name: TS_USERSPACE
+              value: "false"
+            - name: TS_DEBUG_FIREWALL_MODE
+              value: auto
+            - name: TS_AUTHKEY
+              value: ${TAILSCALE_AUTHKEY}
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_UID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.uid
+          resources:
+            limits:
+              squat.ai/tun: "1"
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              add:
+                - NET_ADMIN
+                - NET_RAW
     service:
-      type: LoadBalancer
-      spec:
-        loadBalancerClass: tailscale
-      annotations:
-        tailscale.com/expose: 'true'
-        tailscale.com/hostname: traefik
-        external-dns.alpha.kubernetes.io/hostname: traefik.${DOMAIN_INTERNAL}
+      enabled: false
+      # type: LoadBalancer
+      # spec:
+      #   loadBalancerClass: tailscale
+      # annotations:
+      #   tailscale.com/expose: 'true'
+      #   tailscale.com/hostname: traefik
+      #   external-dns.alpha.kubernetes.io/hostname: traefik.${DOMAIN_INTERNAL}
