@@ -29,20 +29,25 @@ spec:
             image:
               repository: ghcr.io/onedr0p/qbittorrent
               tag: '5.0.3'
+            ports:
+              - name: web
+                containerPort: &qbtWebPort 8080
+              - name: torrent
+                containerPort: &qbtTorrentPort 50413
             env:
               TZ: ${TIMEZONE}
-              QBT_WEBUI_PORT: &qbtWebPort 80
-              QBT_TORRENTING_PORT: &qbtTorrentPort 50413
+              QBT_WEBUI_PORT: *qbtWebPort
+              QBT_TORRENTING_PORT: *qbtTorrentPort
             probes:
               liveness:
                 enabled: true
-                port: *qbtWebPort
+                port: web
               readiness:
                 enabled: true
-                port: *qbtWebPort
+                port: web
               startup:
                 enabled: true
-                port: *qbtWebPort
+                port: web
                 spec:
                   failureThreshold: 30
                   periodSeconds: 5
@@ -118,7 +123,7 @@ spec:
         ports:
           http:
             port: *qbtWebPort
-          bittorrent:
+          torrent:
             enabled: true
             port: *qbtTorrentPort
             protocol: TCP
