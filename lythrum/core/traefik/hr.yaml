@@ -29,7 +29,7 @@ spec:
       additionalContainers:
         - name: tailscale
           image: ghcr.io/tailscale/tailscale:v1.78.3
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           env:
             - name: TS_KUBE_SECRET
               value: tailscale-auth
