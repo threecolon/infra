@@ -34,7 +34,7 @@ spec:
               tag: 'v3.3.21'
             ports:
               - name: web
-                containerPort: &port 9191
+                containerPort: &port 8191
             env:
               TZ: ${TIMEZONE}
               LANG: en_US
