@@ -144,7 +144,7 @@ spec:
             configBlock: |-
               except ${DOMAIN_EXTERNAL}
           - name: forward
-            parameters: ${DOMAIN_EXTERNAL}
+            parameters: ${DOMAIN_EXTERNAL} 1.1.1.1:53
             configBlock: |-
               except ${DOMAIN_INTERNAL}
           - name: cache
