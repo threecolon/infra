@@ -138,11 +138,17 @@ spec:
               fallthrough
               credentials root {$ETCD_PASSWORD}
               endpoint http://etcd:2379
+          - name: loop
           - name: forward
             parameters: . 100.100.100.100:53
+            configBlock: |-
+              except ${DOMAIN_EXTERNAL}
+          - name: forward
+            parameters: ${DOMAIN_EXTERNAL}
+            configBlock: |-
+              except ${DOMAIN_INTERNAL}
           - name: cache
             parameters: 30
-          - name: loop
           - name: reload
           - name: loadbalance
 
