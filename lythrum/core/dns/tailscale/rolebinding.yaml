@@ -5,7 +5,7 @@ metadata:
   namespace: dns
 subjects:
   - kind: ServiceAccount
-    name: traefik
+    name: coredns
 roleRef:
   kind: Role
   name: tailscale
