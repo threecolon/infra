@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - hr.yaml
   - cert.yaml
-  - ingressroute.yaml
+  # - ingressroute.yaml

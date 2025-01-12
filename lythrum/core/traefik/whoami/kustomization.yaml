@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
   - deployment.yaml
   - service.yaml
-  - ingressroute.yaml
+  # - ingressroute.yaml
   - cert.yaml
   - tunnel.yaml
