@@ -65,6 +65,7 @@ spec:
 
     service:
       name: ""
+      type: ClusterIP
       annotations: {}
       # Pod selector
       selector: {}
