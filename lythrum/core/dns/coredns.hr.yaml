@@ -103,7 +103,12 @@ spec:
     priorityClassName: ""
 
     # Configure the pod level securityContext.
-    podSecurityContext: {}
+    podSecurityContext:
+      runAsUser: null
+      runAsGroup: null
+      runAsNonRoot: null
+      fsGroup: 1000
+      fsGroupChangePolicy: OnRootMismatch
 
     # Configure SecurityContext for Pod.
     # Ensure that required linux capability to bind port number below 1024 is assigned (`CAP_NET_BIND_SERVICE`).
@@ -253,7 +258,38 @@ spec:
     #      *.example.com. IN A   192.168.99.102
 
     # optional array of sidecar containers
-    extraContainers: []
+    extraContainers:
+      - name: tailscale
+        image: ghcr.io/tailscale/tailscale:v1.78.3
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: TS_KUBE_SECRET
+            value: tailscale-auth
+          - name: TS_HOSTNAME
+            value: coredns
+          - name: TS_USERSPACE
+            value: "false"
+          - name: TS_DEBUG_FIREWALL_MODE
+            value: auto
+          - name: TS_AUTHKEY
+            value: ${TAILSCALE_AUTHKEY}
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: POD_UID
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.uid
+        resources:
+          limits:
+            squat.ai/tun: "1"
+        securityContext:
+          capabilities:
+            add:
+              - NET_ADMIN
+              - NET_RAW
+
     # - name: some-container-name
     #   image: some-image:latest
     #   imagePullPolicy: Always

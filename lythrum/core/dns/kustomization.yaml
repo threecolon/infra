@@ -6,3 +6,4 @@ resources:
   - coredns.hr.yaml
   - external-dns.hr.yaml
   - namespace.yaml
+  - tailscale
