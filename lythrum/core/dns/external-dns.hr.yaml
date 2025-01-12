@@ -281,7 +281,7 @@ spec:
     logFormat: text
     ## @param policy Modify how DNS records are synchronized between sources and providers (options: sync, upsert-only )
     ##
-    policy: sync
+    policy: upsert-only
     ## @param registry Registry method to use (options: txt, aws-sd, dynamodb, noop)
     ## ref: https://github.com/kubernetes-sigs/external-dns/blob/master/docs/registry/registry.md
     ##
@@ -295,7 +295,7 @@ spec:
     ## @param txtOwnerId A name that identifies this instance of ExternalDNS. Currently used by registry types: txt & aws-sd (optional)
     ## But other registry types might be added in the future.
     ##
-    txtOwnerId: ""
+    txtOwnerId: "lythrum-coredns"
     ## @param forceTxtOwnerId (backward compatibility) When using the non-TXT registry, it will pass the value defined by `txtOwnerId` down to the application (optional)
     ## This setting added for backward compatibility for
     ## customers who already used bitnami/external-dns helm chart
