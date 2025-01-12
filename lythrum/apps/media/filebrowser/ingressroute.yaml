@@ -22,7 +22,7 @@ metadata:
   name: filebrowser-https
   namespace: media
   annotations:
-    external-dns.alpha.kubernetes.io/target: something.test.local
+    external-dns.alpha.kubernetes.io/target: traefik.${DOMAIN_TAILSCALE}
 spec:
   entryPoints:
     - websecure
