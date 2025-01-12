@@ -47,7 +47,7 @@ spec:
     podAnnotations: {}
     #  cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
 
-    serviceType: "LoadBalancer"
+    serviceType: ClusterIP
 
     prometheus:
       service:
@@ -65,7 +65,6 @@ spec:
 
     service:
       name: ""
-      type: ClusterIP
       annotations: {}
       # Pod selector
       selector: {}
