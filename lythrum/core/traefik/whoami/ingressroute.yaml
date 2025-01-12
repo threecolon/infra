@@ -22,7 +22,7 @@ metadata:
   name: whoami-https
   namespace: traefik
   annotations:
-    external-dns.alpha.kubernetes.io/target: traefik.${DOMAIN_TAILSCALE}
+    external-dns.alpha.kubernetes.io/target: something.test.local
 spec:
   entryPoints:
     - websecure
