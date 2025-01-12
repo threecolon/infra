@@ -136,7 +136,7 @@ spec:
               credentials root {$ETCD_PASSWORD}
               endpoint http://etcd:2379
           - name: forward
-            parameters: . 1.1.1.1:53 1.0.0.1:53
+            parameters: . 100.100.100.100:53
           - name: cache
             parameters: 30
           - name: loop
