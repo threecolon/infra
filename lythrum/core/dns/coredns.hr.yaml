@@ -64,7 +64,10 @@ spec:
         selector: {}
 
     service:
-      enabled: false
+      name: ""
+      annotations: {}
+      # Pod selector
+      selector: {}
 
     serviceAccount:
       create: true
