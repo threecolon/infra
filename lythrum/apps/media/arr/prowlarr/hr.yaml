@@ -42,7 +42,11 @@ spec:
               PROWLARR__LOG_LEVEL: info
               PROWLARR__ANALYTICS_ENABLED: "False"
               PROWLARR__AUTHENTICATION_METHOD: External
-              PROWLARR__API_KEY: TEST_VALUE
+              PROWLARR__API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: prowlarr-api-key
+                    key: key
             probes:
               liveness:
                 enabled: true
