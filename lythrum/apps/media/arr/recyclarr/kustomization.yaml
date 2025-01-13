@@ -6,6 +6,6 @@ configMapGenerator:
   - name: recyclarr-config
     namespace: media
     files:
-      - config/config.yaml
+      - config/recyclarr.yaml
 configurations:
   - kustomizeconfig.yaml

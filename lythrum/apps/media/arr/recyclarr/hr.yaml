@@ -61,8 +61,8 @@ spec:
         type: configMap
         name: recyclarr-config
         globalMounts:
-          - path: /config/config.yml
-            subPath: config.yaml
+          - path: /config/recyclarr.yaml
+            subPath: recyclarr.yaml
       cache:
         storageClass: ceph-block-akane-nvme
         accessMode: ReadWriteOnce
