@@ -36,7 +36,6 @@ sonarr:
     # See: https://recyclarr.dev/wiki/yaml/config-reference/quality-definition/
     quality_definition:
       type: series
-      preferred_ratio: 0.2
 
     # See: https://recyclarr.dev/wiki/yaml/config-reference/quality-profiles/
     # quality_profiles: []
