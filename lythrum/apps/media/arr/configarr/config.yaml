@@ -6,6 +6,15 @@ sonarr:
     base_url: http://sonarr:8989
     api_key: !env SONARR_API_KEY
 
+    media_naming:
+      series: jellyfin
+      season: default
+      episodes:
+        rename: true
+        standard: default
+        daily: default
+        anime: default
+
     quality_definition:
       type: series
 

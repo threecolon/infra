@@ -6,6 +6,6 @@ configMapGenerator:
   - name: configarr-config
     namespace: media
     files:
-      - config.yml
+      - config.yaml
 configurations:
   - kustomizeconfig.yaml

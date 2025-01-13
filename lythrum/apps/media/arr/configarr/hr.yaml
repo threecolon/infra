@@ -74,4 +74,4 @@ spec:
         name: configarr-config
         globalMounts:
           - path: /app/config/config.yml
-            subPath: config.yml
+            subPath: config.yaml
