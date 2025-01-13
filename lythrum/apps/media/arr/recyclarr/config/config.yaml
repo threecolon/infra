@@ -1,0 +1,76 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/recyclarr/recyclarr/master/schemas/config-schema.json
+
+# An empty starter config to use with Recyclarr. Update the values below as needed for your
+# instance. You will be required to update the `api_key` and `base_url` for each instance you want
+# to use.
+#
+# If you'd rather use pre-built configuration instead of building your own from scratch, see these
+# pages:
+# - Config Templates: https://recyclarr.dev/wiki/guide-configs/
+# - CLI Command: https://recyclarr.dev/wiki/cli/config/list/templates/
+#
+# This file WILL NOT WORK as it currently is. You need to read the documentation and build this
+# configuration from scratch. Note that there's no "one size fits all" configuration. Please refer
+# to the TRaSH Guides to understand how to build the appropriate configuration based on your
+# hardware setup and capabilities.
+#
+# For more details on the configuration, see the Configuration Reference on the wiki here:
+# https://recyclarr.dev/wiki/yaml/config-reference/
+#
+# Want a more flexible file layout?
+# See: https://recyclarr.dev/wiki/file-structure/
+
+# Configuration specific to Sonarr. For Radarr, the layout is the same.
+# See: https://recyclarr.dev/wiki/yaml/config-reference/basic/
+sonarr:
+  series:
+    base_url: !env_var SONARR_URL
+    api_key: !env_var SONARR_API_KEY
+
+    include:
+      # Comment out any of the following includes to disable them
+      - template: sonarr-quality-definition-series
+      - template: sonarr-v4-quality-profile-web-1080p-alternative
+      - template: sonarr-v4-custom-formats-web-1080p
+
+    # See: https://recyclarr.dev/wiki/yaml/config-reference/quality-definition/
+    quality_definition:
+      type: series
+      preferred_ratio: 0.5
+
+    # See: https://recyclarr.dev/wiki/yaml/config-reference/quality-profiles/
+    # quality_profiles: []
+
+    # See: https://recyclarr.dev/wiki/yaml/config-reference/custom-formats/
+    delete_old_custom_formats: true
+    replace_existing_custom_formats: true
+    custom_formats:
+      - trash_ids:
+          - 32b367365729d530ca1c124a0b180c64 # Bad Dual Groups
+          - 82d40da2bc6923f41e14394075dd4b03 # No-RlsGroup
+          - e1a997ddb54e3ecbfe06341ad323c458 # Obfuscated
+          - 06d66ab109d4d2eddb2794d21526d140 # Retags
+          - 1b3994c551cbb92a2c781af061f4ab44 # Scene
+        assign_scores_to:
+          - name: WEB-1080p
+
+      - trash_ids:
+      #  Uncomment the next six lines to allow x265 HD releases with HDR/DV
+      #     - 47435ece6b99a0b477caf360e79ba0bb # x265 (HD)
+      #   assign_scores_to:
+      #     - name: WEB-1080p
+      #       score: 0
+      # - trash_ids:
+      #     - 9b64dff695c2115facf1b6ea59c9bd07 # x265 (no HDR/DV)
+        assign_scores_to:
+          - name: WEB-1080p
+
+    # See: https://recyclarr.dev/wiki/yaml/config-reference/media-naming/
+    media_naming:
+      series: jellyfin
+      season: default
+      episodes:
+        rename: true
+        standard: default
+        daily: default
+        anime: default

@@ -35,6 +35,13 @@ spec:
             env:
               TZ: ${TIMEZONE}
               CRON_SCHEDULE: 0 * * * *
+
+              SONARR_URL: http://sonarr:8989
+              SONARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sonarr-api-key
+                    key: key
             resources:
               requests:
                 cpu: 50m
@@ -50,12 +57,23 @@ spec:
                   - ALL
 
     persistence:
-      tmp:
-        type: emptyDir
       config:
-        enabled: false
         type: configMap
         name: recyclarr-config
         globalMounts:
           - path: /config/config.yml
-            subPath: config.yaml
+            subPath: config/config.yaml
+      cache:
+        storageClass: ceph-block-akane-nvme
+        accessMode: ReadWriteOnce
+        size: 128Mi
+        globalMounts:
+          - path: /config/cache
+      repositories:
+        storageClass: ceph-block-akane-nvme
+        accessMode: ReadWriteOnce
+        size: 512Mi
+        globalMounts:
+          - path: /config/repositories
+      tmp:
+        type: emptyDir
