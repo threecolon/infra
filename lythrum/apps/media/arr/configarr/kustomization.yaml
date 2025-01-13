@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - cron.yaml
+  - hr.yaml
 configMapGenerator:
   - name: configarr-config
     files:
