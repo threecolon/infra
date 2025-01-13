@@ -1,0 +1,77 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: configarr
+  namespace: media
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: app-template
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      version: '3.6.0'
+  values:
+    controllers:
+      configarr:
+        type: cronjob
+        cronjob:
+          schedule: "0 * * * *"
+          failedJobsHistory: 1
+          successfulJobsHistory: 1
+          backoffLimit: 6
+          concurrencyPolicy: Forbid
+          startingDeadlineSeconds: 30
+          suspend: false
+
+        pod:
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
+            fsGroup: 1000
+            fsGroupChangePolicy: "OnRootMismatch"
+          terminationGracePeriodSeconds: 60
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/raydak-labs/configarr
+              tag: 'v1.6.0'
+            tty: true
+            env:
+              SONARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sonarr-api-key
+                    key: key
+            resources:
+              requests:
+                cpu: 50m
+                memory: 128Mi
+              limits:
+                cpu: 100m
+                memory: 256Mi
+            securityContext:
+              allowPrivilegeEscalation: false
+              capabilities:
+                drop:
+                  - ALL
+
+    persistence:
+      repos:
+        storageClass: ceph-block-akane-nvme
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        globalMounts:
+          - path: /app/repos
+      config:
+        type: configMap
+        name: configarr-config
+        globalMounts:
+          - path: /app/config
+            subPath: config.yaml

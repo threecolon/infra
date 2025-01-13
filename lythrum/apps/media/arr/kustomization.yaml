@@ -4,3 +4,4 @@ resources:
   - flaresolverr
   - prowlarr
   - sonarr
+  - configarr
