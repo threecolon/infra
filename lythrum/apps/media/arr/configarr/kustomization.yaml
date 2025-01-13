@@ -4,6 +4,7 @@ resources:
   - hr.yaml
 configMapGenerator:
   - name: configarr-config
+    namespace: media
     files:
       - config.yaml
 configurations:
