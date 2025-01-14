@@ -38,23 +38,62 @@ sonarr:
     delete_old_custom_formats: true
     replace_existing_custom_formats: true
     custom_formats:
+      # block
       - trash_ids:
           - 32b367365729d530ca1c124a0b180c64 # Bad Dual Groups
           - 82d40da2bc6923f41e14394075dd4b03 # No-RlsGroup
           - e1a997ddb54e3ecbfe06341ad323c458 # Obfuscated
           - 06d66ab109d4d2eddb2794d21526d140 # Retags
           - 1b3994c551cbb92a2c781af061f4ab44 # Scene
+          - 23297a736ca77c0fc8e70f8edd7ee56c # Upscaled
+          - 85c61753df5da1fb2aab6f2a47426b09 # BR-DISK
+          - 9c11cd3f07101cdba90a2d81cf0e56b4 # LQ
+          - e2315f990da2e2cbfc9fa5b7a6fcfe48 # LQ (Release Title)
+          - fbcb31d8dabd2a319072b84fc0b7249c # Extras
+          - 9b27ab6498ec0f31a3353992e19434ca # DV (WEBDL)
         assign_scores_to:
           - name: WEB-1080p
+            score: -10000
 
+      # -20
       - trash_ids:
-      #  Uncomment the next six lines to allow x265 HD releases with HDR/DV
-      #     - 47435ece6b99a0b477caf360e79ba0bb # x265 (HD)
-      #   assign_scores_to:
-      #     - name: WEB-1080p
-      #       score: 0
-      # - trash_ids:
-      #     - 9b64dff695c2115facf1b6ea59c9bd07 # x265 (no HDR/DV)
+          - cddfb4e32db826151d97352b8e37c648 # x264
+          - bd6dd5e043aa27ff4696a08d011c7d96 # mono audio
+        assign_scores_to:
+          - name: WEB-1080p
+            score: -20
+
+      # zero
+      - trash_ids:
+          - 47435ece6b99a0b477caf360e79ba0bb # x265 (HD)
+        assign_scores_to:
+          - name: WEB-1080p
+            score: 0
+
+      # +10
+      - trash_ids:
+          - 3bc5f395426614e155e585a2f056cdf1 # Season Pack
+        assign_scores_to:
+          - name: WEB-1080p
+            score: 10
+
+      # +100
+      - trash_ids:
+          - c9eafd50846d299b862ca9bb6ea91950 # x265
+          - 15a05bc7c1a36e2b57fd628f8977e2fc # av1
+          - 90501962793d580d011511155c97e4e5 # vp9
+        assign_scores_to:
+          - name: WEB-1080p
+            score: 100
+
+      # defaults
+      - trash_ids:
+          - fbcb31d8dabd2a319072b84fc0b7249c # Hybrid
+          - b735f09d3c025cbb7d75a5d38325b73b # Remaster
+          - ec8fa7296b64e8cd390a1600981f3923 # Repack/Proper
+          - eb3d5cc0a2be0db205fb823640db6a3c # Repack v2
+          - 44e7c4de10ae50265753082e5dc76047 # Repack v3
+          - d7c747094a7c65f4c2de083c24899e8b # Freeleech
         assign_scores_to:
           - name: WEB-1080p
 
