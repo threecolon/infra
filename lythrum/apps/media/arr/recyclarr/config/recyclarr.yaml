@@ -56,6 +56,8 @@ sonarr:
         assign_scores_to:
           - name: WEB-1080p
             score: -10000
+          - name: Remux-1080p - Anime
+            score: -10000
 
       # -20
       - trash_ids:
@@ -64,6 +66,8 @@ sonarr:
         assign_scores_to:
           - name: WEB-1080p
             score: -20
+          - name: Remux-1080p - Anime
+            score: -20
 
       # zero
       - trash_ids:
@@ -71,12 +75,16 @@ sonarr:
         assign_scores_to:
           - name: WEB-1080p
             score: 0
+          - name: Remux-1080p - Anime
+            score: 0
 
       # +10
       - trash_ids:
           - 3bc5f395426614e155e585a2f056cdf1 # Season Pack
         assign_scores_to:
           - name: WEB-1080p
+            score: 10
+          - name: Remux-1080p - Anime
             score: 10
 
       # +100
@@ -86,6 +94,8 @@ sonarr:
           - 90501962793d580d011511155c97e4e5 # vp9
         assign_scores_to:
           - name: WEB-1080p
+            score: 100
+          - name: Remux-1080p - Anime
             score: 100
 
       # defaults
@@ -98,19 +108,20 @@ sonarr:
           - d7c747094a7c65f4c2de083c24899e8b # Freeleech
         assign_scores_to:
           - name: WEB-1080p
+          - name: Remux-1080p - Anime
 
       ### Anime
       - trash_ids:
         - 026d5aadd1a6b4e550b134cb6c72b3ca # Uncensored
         assign_scores_to:
           - name: Remux-1080p - Anime
-            score: 0
+            score: 100
 
       - trash_ids:
           - b2550eb333d27b75833e25b8c2557b38 # 10bit
         assign_scores_to:
           - name: Remux-1080p - Anime
-            score: 0
+            score: 50
 
     # See: https://recyclarr.dev/wiki/yaml/config-reference/media-naming/
     media_naming:
