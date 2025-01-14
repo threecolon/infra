@@ -30,6 +30,8 @@ sonarr:
     include:
       - template: sonarr-v4-quality-profile-web-1080p-alternative
       - template: sonarr-v4-custom-formats-web-1080p
+      - template: sonarr-v4-quality-profile-anime
+      - template: sonarr-v4-custom-formats-animes
 
     # See: https://recyclarr.dev/wiki/yaml/config-reference/quality-profiles/
     # quality_profiles: []
@@ -96,6 +98,19 @@ sonarr:
           - d7c747094a7c65f4c2de083c24899e8b # Freeleech
         assign_scores_to:
           - name: WEB-1080p
+
+      ### Anime
+      - trash_ids:
+        - 026d5aadd1a6b4e550b134cb6c72b3ca # Uncensored
+        assign_scores_to:
+          - name: Remux-1080p - Anime
+            score: 0
+
+      - trash_ids:
+          - b2550eb333d27b75833e25b8c2557b38 # 10bit
+        assign_scores_to:
+          - name: Remux-1080p - Anime
+            score: 0
 
     # See: https://recyclarr.dev/wiki/yaml/config-reference/media-naming/
     media_naming:
