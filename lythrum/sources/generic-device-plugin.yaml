@@ -5,7 +5,8 @@ metadata:
   name: generic-device-plugin
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 24h
   ref:
+    branch: main
     commit: 36bfc606bba2064de6ede0ff2764cbb52edff70d
   url: https://github.com/squat/generic-device-plugin
