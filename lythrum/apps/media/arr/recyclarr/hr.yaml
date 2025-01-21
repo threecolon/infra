@@ -42,6 +42,13 @@ spec:
                   secretKeyRef:
                     name: sonarr-api-key
                     key: key
+
+              RADARR_URL: http://radarr:7878
+              RADARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: radarr-api-key
+                    key: key
             resources:
               requests:
                 cpu: 50m

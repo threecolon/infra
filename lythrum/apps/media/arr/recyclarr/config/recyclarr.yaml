@@ -132,3 +132,20 @@ sonarr:
         standard: default
         daily: default
         anime: default
+
+radarr:
+  hd-bluray-web:
+    base_url: !env_var RADARR_URL
+    api_key: !env_var RADARR_API_KEY
+
+    include:
+      # Comment out any of the following includes to disable them
+      - template: radarr-quality-definition-movie
+      - template: radarr-quality-profile-hd-bluray-web
+      - template: radarr-custom-formats-hd-bluray-web
+
+    media_naming:
+      folder: jellyfin-imdb
+      movie:
+        rename: true
+        standard: jellyfin-imdb
