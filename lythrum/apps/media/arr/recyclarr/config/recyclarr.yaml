@@ -87,11 +87,19 @@ sonarr:
           - name: Remux-1080p - Anime
             score: 10
 
+      # + 110
+      - trash_ids:
+          - 15a05bc7c1a36e2b57fd628f8977e2fc # av1
+          - 90501962793d580d011511155c97e4e5 # vp9
+        assign_scores_to:
+          - name: WEB-1080p
+            score: 110
+          - name: Remux-1080p - Anime
+            score: 110
+
       # +100
       - trash_ids:
           - c9eafd50846d299b862ca9bb6ea91950 # x265
-          - 15a05bc7c1a36e2b57fd628f8977e2fc # av1
-          - 90501962793d580d011511155c97e4e5 # vp9
         assign_scores_to:
           - name: WEB-1080p
             score: 100
@@ -149,3 +157,66 @@ radarr:
       movie:
         rename: true
         standard: jellyfin-imdb
+
+    delete_old_custom_formats: true
+    replace_existing_custom_formats: true
+    custom_formats:
+      # block
+      - trash_ids:
+          - ed38b889b31be83fda192888e2286d83 # BR-DISK
+          - e6886871085226c3da1830830146846c # Generated Dynamic HDR
+          - 90a6f9a284dff5103f6346090e6280c8 # LQ
+          - e204b80c87be9497a8a6eaff48f72905 # LQ (Release Title)
+          - b8cd450cbfa689c0259a01d9e29ba3d6 # 3D
+          - bfd8eb01832d646a0a89c4deb46f8564 # Upscaled
+          - 0a3f082873eb454bde444150b70253cc # Extras
+          - b6832f586342ef70d9c128d40c07b872 # Bad Dual Groups
+          - 923b6abef9b17f937fab56cfcf89e1f1 # DV (WEBDL)
+          - 90cedc1fea7ea5d11298bebd3d1d3223 # EVO (no WEBDL)
+          - ae9b7c9ebde1f3bd336a8cbd1ec4c5e5 # No-RlsGroup
+          - 7357cf5161efbf8c4d5d0c30b4815ee2 # Obfuscated
+          - 5c44f52a8714fdd79bb4d98e2673be1f # Retags
+        assign_scores_to:
+          - name: HD Bluray + WEB
+            score: -10000
+
+      # -20
+      - trash_ids:
+          - 2899d84dc9372de3408e6d8cc18e9666 # x264
+          - b124be9b146540f8e62f98fe32e49a2a # mono audio
+        assign_scores_to:
+          - name: HD Bluray + WEB
+            score: -20
+
+      # zero
+      - trash_ids:
+          - dc98083864ea246d05a42df0d05f81cc # x265 (HD)
+        assign_scores_to:
+          - name: HD Bluray + WEB
+            score: 0
+
+      # + 110
+      - trash_ids:
+          - cae4ca30163749b891686f95532519bd # av1
+          - ae4cfaa9283a4f2150ac3da08e388723 # vp9
+        assign_scores_to:
+          - name: HD Bluray + WEB
+            score: 100
+
+      # +100
+      - trash_ids:
+          - 9170d55c319f4fe40da8711ba9d8050d # x265
+        assign_scores_to:
+          - name: HD Bluray + WEB
+            score: 100
+
+      # defaults
+      - trash_ids:
+          - fbcb31d8dabd2a319072b84fc0b7249c # Hybrid
+          - 570bc9ebecd92723d2d21500f4be314c # Remaster
+          - e7718d7a3ce595f289bfee26adc178f5 # Repack/Proper
+          - ae43b294509409a6a13919dedd4764c4 # Repack v2
+          - 5caaaa1c08c1742aa4342d8c4cc463f2 # Repack v3
+          - 0d91270a7255a1e388fa85e959f359d8 # Freeleech
+        assign_scores_to:
+          - name: HD Bluray + WEB
