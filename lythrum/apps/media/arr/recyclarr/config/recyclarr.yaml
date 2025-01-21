@@ -222,7 +222,7 @@ radarr:
 
       # defaults
       - trash_ids:
-          - fbcb31d8dabd2a319072b84fc0b7249c # Hybrid
+          - 0f12c086e289cf966fa5948eac571f44 # Hybrid
           - 570bc9ebecd92723d2d21500f4be314c # Remaster
           - e7718d7a3ce595f289bfee26adc178f5 # Repack/Proper
           - ae43b294509409a6a13919dedd4764c4 # Repack v2
