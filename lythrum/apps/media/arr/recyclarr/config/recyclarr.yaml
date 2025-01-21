@@ -150,6 +150,8 @@ radarr:
       # Comment out any of the following includes to disable them
       - template: radarr-quality-profile-hd-bluray-web
       - template: radarr-custom-formats-hd-bluray-web
+      - template: radarr-quality-profile-anime
+      - template: radarr-custom-formats-anime
 
     media_naming:
       folder: jellyfin-imdb
@@ -178,6 +180,8 @@ radarr:
         assign_scores_to:
           - name: HD Bluray + WEB
             score: -10000
+          - name: Remux-1080p - Anime
+            score: -10000
 
       # -20
       - trash_ids:
@@ -186,12 +190,16 @@ radarr:
         assign_scores_to:
           - name: HD Bluray + WEB
             score: -20
+          - name: Remux-1080p - Anime
+            score: -20
 
       # zero
       - trash_ids:
           - dc98083864ea246d05a42df0d05f81cc # x265 (HD)
         assign_scores_to:
           - name: HD Bluray + WEB
+            score: 0
+          - name: Remux-1080p - Anime
             score: 0
 
       # + 110
@@ -201,12 +209,15 @@ radarr:
         assign_scores_to:
           - name: HD Bluray + WEB
             score: 100
-
+          - name: Remux-1080p - Anime
+            score: 100
       # +100
       - trash_ids:
           - 9170d55c319f4fe40da8711ba9d8050d # x265
         assign_scores_to:
           - name: HD Bluray + WEB
+            score: 100
+          - name: Remux-1080p - Anime
             score: 100
 
       # defaults
@@ -219,3 +230,17 @@ radarr:
           - 0d91270a7255a1e388fa85e959f359d8 # Freeleech
         assign_scores_to:
           - name: HD Bluray + WEB
+          - name: Remux-1080p - Anime
+
+      ### Anime
+      - trash_ids:
+        - 064af5f084a0a24458cc8ecd3220f93f  # Uncensored
+        assign_scores_to:
+          - name: Remux-1080p - Anime
+            score: 100
+
+      - trash_ids:
+          - a5d148168c4506b55cf53984107c396e  # 10bit
+        assign_scores_to:
+          - name: Remux-1080p - Anime
+            score: 50
