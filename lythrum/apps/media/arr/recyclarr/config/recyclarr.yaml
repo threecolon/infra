@@ -148,7 +148,6 @@ radarr:
 
     include:
       # Comment out any of the following includes to disable them
-      - template: radarr-quality-definition-movie
       - template: radarr-quality-profile-hd-bluray-web
       - template: radarr-custom-formats-hd-bluray-web
 
