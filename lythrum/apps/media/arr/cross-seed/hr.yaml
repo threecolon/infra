@@ -1,0 +1,73 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cross-seed
+  namespace: media
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: app-template
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      version: '3.6.0'
+  values:
+    controllers:
+      cross-seed:
+        pod:
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
+            fsGroup: 1000
+            fsGroupChangePolicy: OnRootMismatch
+          terminationGracePeriodSeconds: 60
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/cross-seed/cross-seed
+              tag: 6.9.1
+            args:
+              - daemon
+              - -v
+            env: []
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
+            resources:
+              requests:
+                cpu: 50m
+                memory: 128Mi
+              limits:
+                cpu: 100m
+                memory: 256Mi
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
+
+    persistence:
+      # config:
+      #   type: configMap
+      #   name: cross-seed-config
+      #   globalMounts:
+      #     - path: /config/config.js
+      #       subPath: config.js
+      media:
+        existingClaim: media
+      tmp:
+        type: emptyDir
