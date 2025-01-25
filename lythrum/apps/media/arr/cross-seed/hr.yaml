@@ -67,6 +67,8 @@ spec:
       #   globalMounts:
       #     - path: /config/config.js
       #       subPath: config.js
+      config:
+        type: emptyDir
       media:
         existingClaim: media
       tmp:
