@@ -88,7 +88,7 @@ spec:
 
     service:
       app:
-        controller: cross-seeds
+        controller: cross-seed
         type: ClusterIP
         ports:
           http:
