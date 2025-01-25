@@ -35,7 +35,33 @@ spec:
             args:
               - daemon
               - -v
-            env: []
+            ports:
+              - name: http
+                containerPort: &port 2468
+            env:
+              CROSS_SEED_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: cross-seed-api-key
+                    key: key
+              CROSS_SEED_PROWLARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: prowlarr-api-key
+                    key: key
+              CROSS_SEED_RADARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: radarr-api-key
+                    key: key
+              CROSS_SEED_SONARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sonarr-api-key
+                    key: key
+              CROSS_SEED_TORZNAB_URLS: >-
+                http://prowlarr:9696/5/api?apikey=PROWLARR_API_KEY&extended=1&t=search
+                http://prowlarr:9696/1/api?apikey=PROWLARR_API_KEY&extended=1&t=search
             probes:
               liveness:
                 enabled: true
@@ -60,15 +86,21 @@ spec:
                 drop:
                   - ALL
 
+    service:
+      app:
+        controller: cross-seeds
+        type: ClusterIP
+        ports:
+          http:
+            port: *port
+
     persistence:
-      # config:
-      #   type: configMap
-      #   name: cross-seed-config
-      #   globalMounts:
-      #     - path: /config/config.js
-      #       subPath: config.js
       config:
-        type: emptyDir
+        type: configMap
+        name: cross-seed-config
+        globalMounts:
+          - path: /config/config.js
+            subPath: config.js
       media:
         existingClaim: media
       tmp:
