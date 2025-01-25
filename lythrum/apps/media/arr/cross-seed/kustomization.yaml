@@ -6,6 +6,9 @@ resources:
 configMapGenerator:
   - name: cross-seed-config
     namespace: media
+    options:
+      annotations:
+        kustomize.toolkit.fluxcd.io/substitute: disabled
     files:
       - config/config.js
 configurations:
