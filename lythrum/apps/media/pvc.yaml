@@ -8,6 +8,6 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 2Ti
+      storage: 3Ti
   storageClassName: fs-bridget-hdd
   volumeMode: Filesystem
