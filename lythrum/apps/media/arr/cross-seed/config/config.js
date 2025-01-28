@@ -102,7 +102,7 @@ module.exports = {
 	 * Supply your username and password inside the url like so:
 	 * "http://username:password@localhost:8080"
 	 */
-	qbittorrentUrl: undefined,
+	qbittorrentUrl: "http://qbittorrent:8080",
 
 	/**
 	 * The url of your Transmission RPC interface.
@@ -186,7 +186,7 @@ module.exports = {
 	 *
 	 * https://www.cross-seed.org/docs/basics/options#linkdirs
 	 */
-	linkDirs: [],
+	linkDirs: ["/media/cross_seed"],
 
 	/**
 	 * cross-seed will use links of this type to inject data-based matches into

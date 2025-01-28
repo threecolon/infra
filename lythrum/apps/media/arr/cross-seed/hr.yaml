@@ -60,7 +60,7 @@ spec:
                     name: sonarr-api-key
                     key: key
               CROSS_SEED_TORZNAB_URLS: >-
-                http://prowlarr:9696/5/api?apikey=PROWLARR_API_KEY&extended=1&t=search
+                http://prowlarr:9696/5/api?apikey=PROWLARR_API_KEY&extended=1&t=search,
                 http://prowlarr:9696/1/api?apikey=PROWLARR_API_KEY&extended=1&t=search
             probes:
               liveness:
