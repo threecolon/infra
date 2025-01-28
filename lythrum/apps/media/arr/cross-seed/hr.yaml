@@ -96,6 +96,10 @@ spec:
 
     persistence:
       config:
+        storageClass: ceph-block-akane-nvme
+        accessMode: ReadWriteOnce
+        size: 1Gi
+      config-file:
         type: configMap
         name: cross-seed-config
         globalMounts:
