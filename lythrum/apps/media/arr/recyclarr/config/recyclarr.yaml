@@ -142,7 +142,7 @@ sonarr:
         anime: default
 
 radarr:
-  hd-bluray-web:
+  movie:
     base_url: !env_var RADARR_URL
     api_key: !env_var RADARR_API_KEY
 
