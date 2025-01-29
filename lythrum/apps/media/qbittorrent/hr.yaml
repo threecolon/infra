@@ -133,6 +133,8 @@ spec:
         storageClass: ceph-block-akane-nvme
         accessMode: ReadWriteOnce
         size: 1Gi
+      torrents:
+        existingClaim: torrents
       media:
         existingClaim: media
       tmp:

@@ -3,7 +3,8 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - backup.yaml
-  - pvc.yaml
+  - media.pvc.yaml
+  - torrents.pvc.yaml
   - jellyfin
   - filebrowser
   - qbittorrent

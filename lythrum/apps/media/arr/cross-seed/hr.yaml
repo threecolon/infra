@@ -105,6 +105,8 @@ spec:
         globalMounts:
           - path: /config/config.js
             subPath: config.js
+      torrents:
+        existingClaim: torrents
       media:
         existingClaim: media
       tmp:
