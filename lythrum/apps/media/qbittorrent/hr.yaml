@@ -92,7 +92,7 @@ spec:
               VPN_PORT_FORWARDING_PROVIDER: protonvpn
               FIREWALL_INPUT_PORTS: *qbtWebPort
               FIREWALL_OUTBOUND_SUBNETS: 10.96.0.0/12,10.244.0.0/16
-              DOT: 'off'
+              DNS_KEEP_NAMESERVER: 'on'
               PUBLICIP_API: cloudflare
             resources:
               limits:
