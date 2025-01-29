@@ -30,9 +30,6 @@ spec:
     - kind: Rule
       match: Host(`${SUBDOMAIN_AUTOBRR}.${DOMAIN_INTERNAL}`)
       priority: 10
-      middlewares:
-        - name: authentik
-          namespace: traefik
       services:
         - name: autobrr
           port: 7474
