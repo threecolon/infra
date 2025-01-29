@@ -186,7 +186,7 @@ module.exports = {
 	 *
 	 * https://www.cross-seed.org/docs/basics/options#linkdirs
 	 */
-	linkDirs: ["/media/downloads/cross-seed"],
+	linkDirs: ["/media/cross-seed-link"],
 
 	/**
 	 * cross-seed will use links of this type to inject data-based matches into
