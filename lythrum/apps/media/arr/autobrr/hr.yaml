@@ -59,7 +59,7 @@ spec:
 
     service:
       app:
-        controller: cross-seed
+        controller: autobrr
         type: ClusterIP
         ports:
           http:
@@ -70,12 +70,6 @@ spec:
         storageClass: ceph-block-akane-nvme
         accessMode: ReadWriteOnce
         size: 1Gi
-      config-file:
-        type: configMap
-        name: autobrr-config
-        globalMounts:
-          - path: /config/config.toml
-            subPath: config.toml
       media:
         existingClaim: media
         globalMounts:
