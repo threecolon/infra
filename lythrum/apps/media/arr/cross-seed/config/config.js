@@ -247,7 +247,7 @@ module.exports = {
 	 * and more API hits to your indexers.
 	 * https://www.cross-seed.org/docs/tutorials/data-based-matching#setting-up-data-based-matching
 	 */
-	maxDataDepth: 3,
+	maxDataDepth: 5,
 
 	/**
 	 * Directory containing .torrent files. This is unnecessary with useClientTorrents.
@@ -303,7 +303,7 @@ module.exports = {
 	 *
 	 *     includeNonVideos: true
 	 */
-	includeNonVideos: false,
+	includeNonVideos: true,
 	includeEpisodes: true,
 
 	/**
@@ -421,7 +421,7 @@ module.exports = {
 	 *
 	 * Set to null for no limit.
 	 */
-	searchLimit: 400,
+	searchLimit: 16000,
 
 	/**
 	 * Ignore torrents or data containing these properties:
