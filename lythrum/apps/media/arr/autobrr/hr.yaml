@@ -1,0 +1,88 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: autobrr
+  namespace: media
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: app-template
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      version: '3.6.0'
+  values:
+    controllers:
+      autobrr:
+        pod:
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
+            fsGroup: 1000
+            fsGroupChangePolicy: OnRootMismatch
+          terminationGracePeriodSeconds: 60
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/autobrr/autobrr
+              tag: v1.57.0
+            ports:
+              - name: http
+                containerPort: &port 7474
+            env:
+              TZ: ${TIMEZONE}
+              AUTOBRR__PORT: *port
+              AUTOBRR__OIDC_ENABLED: true
+              AUTOBRR__OIDC_ISSUER: https://auth.estrogen.lol/application/o/autobrr/
+              AUTOBRR__OIDC_CLIENT_ID: ${AUTHENTIK_AUTOBRR_CLIENT_ID}
+              AUTOBRR__OIDC_CLIENT_SECRET: ${AUTHENTIK_AUTOBRR_CLIENT_SECRET}
+              AUTOBRR__OIDC_REDIRECT_URL: https://autobrr.int.estrogen.lol/api/auth/oidc/callback
+            resources:
+              requests:
+                cpu: 50m
+                memory: 128Mi
+              limits:
+                cpu: 100m
+                memory: 256Mi
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
+
+    service:
+      app:
+        controller: cross-seed
+        type: ClusterIP
+        ports:
+          http:
+            port: *port
+
+    persistence:
+      config:
+        storageClass: ceph-block-akane-nvme
+        accessMode: ReadWriteOnce
+        size: 1Gi
+      config-file:
+        type: configMap
+        name: autobrr-config
+        globalMounts:
+          - path: /config/config.toml
+            subPath: config.toml
+      media:
+        existingClaim: media
+        globalMounts:
+          - readOnly: true
+      log:
+        type: emptyDir
+        globalMounts:
+          - path: /config/log
+      tmp:
+        type: emptyDir

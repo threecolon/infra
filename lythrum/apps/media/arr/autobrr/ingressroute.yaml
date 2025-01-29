@@ -1,0 +1,40 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: autobrr-http
+  namespace: media
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`${SUBDOMAIN_AUTOBRR}.${DOMAIN_INTERNAL}`)
+      middlewares:
+        - name: redirect-https
+          namespace: traefik
+      services:
+        - name: noop@internal
+          kind: TraefikService
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: autobrr-https
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/target: traefik.${DOMAIN_TAILSCALE}
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`${SUBDOMAIN_AUTOBRR}.${DOMAIN_INTERNAL}`)
+      priority: 10
+      middlewares:
+        - name: authentik
+          namespace: traefik
+      services:
+        - name: autobrr
+          port: 7474
+  tls:
+    secretName: autobrr-tls
