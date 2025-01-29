@@ -157,7 +157,7 @@ module.exports = {
 	 * or for Windows users
 	 *     dataDirs: ["C:\\My Data\\Downloads\\Movies"],
 	 */
-	dataDirs: [],
+	dataDirs: ["/media/downloads"],
 
 	/**
 	 * Defines what qBittorrent or Deluge category to set on linked torrents
@@ -186,7 +186,7 @@ module.exports = {
 	 *
 	 * https://www.cross-seed.org/docs/basics/options#linkdirs
 	 */
-	linkDirs: ["/media/cross_seed"],
+	linkDirs: ["/media/downloads/cross-seed"],
 
 	/**
 	 * cross-seed will use links of this type to inject data-based matches into
@@ -226,7 +226,7 @@ module.exports = {
 	 * https://www.cross-seed.org/docs/basics/options#matchmode
 	 * https://www.cross-seed.org/docs/basics/faq-troubleshooting#my-partial-matches-from-related-searches-are-missing-the-same-data-how-can-i-only-download-it-once
 	 */
-	matchMode: "safe",
+	matchMode: "partial",
 
 	/**
 	 * Skip rechecking on injection if unnecessary. Certain matches, such as partial,
@@ -266,7 +266,7 @@ module.exports = {
 	 *
 	 * If you are a Windows user you need to put double '\' (e.g. "C:\\output")
 	 */
-	outputDir: "/media/cross_seed_torrents",
+	outputDir: "/torrents/cross-seed",
 
 	/**
 	 * Whether to include single episode torrents in search/webhook/rss.
@@ -274,7 +274,7 @@ module.exports = {
 	 * This setting does not affect matching episodes from announce. Read more about usage:
 	 * https://www.cross-seed.org/docs/v6-migration#updated-includesingleepisodes-behavior
 	 */
-	includeSingleEpisodes: false,
+	includeSingleEpisodes: true,
 
 	/**
 	 * Include torrents/data comprised of non-video files.
@@ -304,6 +304,7 @@ module.exports = {
 	 *     includeNonVideos: true
 	 */
 	includeNonVideos: false,
+	includeEpisodes: true,
 
 	/**
 	 * Match season packs from the individual episodes you already have.
@@ -370,7 +371,7 @@ module.exports = {
 	 * "Movies", this will automatically inject cross-seeds to
 	 * "Movies.cross-seed".
 	 */
-	duplicateCategories: false,
+	duplicateCategories: true,
 
 	/**
 	 * Run rss scans on a schedule.

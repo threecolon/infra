@@ -38,6 +38,13 @@ spec:
               TZ: ${TIMEZONE}
               QBT_WEBUI_PORT: *qbtWebPort
               QBT_TORRENTING_PORT: *qbtTorrentPort
+              XSEED_HOST: cross-seed
+              XSEED_PORT: 2468
+              XSEED_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: cross-seed-api-key
+                    key: key
             probes:
               liveness:
                 enabled: true
