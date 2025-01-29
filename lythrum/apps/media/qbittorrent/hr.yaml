@@ -79,6 +79,7 @@ spec:
               repository: ghcr.io/qdm12/gluetun
               tag: v3.40.0
             env:
+              TZ: ${TIMEZONE}
               VPN_SERVICE_PROVIDER: custom
               VPN_TYPE: wireguard
               VPN_INTERFACE: wg0
@@ -92,8 +93,10 @@ spec:
               VPN_PORT_FORWARDING_PROVIDER: protonvpn
               FIREWALL_INPUT_PORTS: *qbtWebPort
               FIREWALL_OUTBOUND_SUBNETS: 10.96.0.0/12,10.244.0.0/16
-              DNS_KEEP_NAMESERVER: 'on'
-              PUBLICIP_API: cloudflare
+              DOT: "off"
+              DNS_ADDRESS: "10.96.0.10"
+              PUBLICIP_ENABLED: 'true'
+              PUBLICIP_API: ipinfo
             resources:
               limits:
                 squat.ai/tun: "1"
