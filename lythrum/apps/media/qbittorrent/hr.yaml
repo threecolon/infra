@@ -20,9 +20,11 @@ spec:
       qbittorrent:
         pod:
           securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
             fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
-          terminationGracePeriodSeconds: 60
 
         containers:
           app:
@@ -64,9 +66,6 @@ spec:
               limits:
                 memory: 8Gi
             securityContext:
-              runAsUser: 1000
-              runAsGroup: 1000
-              runAsNonRoot: true
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities:
@@ -101,6 +100,8 @@ spec:
               limits:
                 squat.ai/tun: "1"
             securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
               capabilities:
                 add:
                   - NET_ADMIN
@@ -118,9 +119,21 @@ spec:
               CRON_SCHEDULE: "*/5 * * * *"
               LOG_TIMESTAMP: false
             securityContext:
-              runAsUser: 1000
-              runAsGroup: 1000
-              runAsNonRoot: true
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop:
+                  - ALL
+
+          vuetorrent-git-sync:
+            image:
+              repository: registry.k8s.io/git-sync/git-sync
+              tag: v4.4.0
+            env:
+              GITSYNC_REPO: https://github.com/VueTorrent/VueTorrent
+              GITSYNC_REF: latest-release
+              GITSYNC_ROOT: /tmp/vuetorrent
+            securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities:
