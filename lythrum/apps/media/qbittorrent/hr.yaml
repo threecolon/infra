@@ -100,8 +100,6 @@ spec:
               limits:
                 squat.ai/tun: "1"
             securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
               capabilities:
                 add:
                   - NET_ADMIN
