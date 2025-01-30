@@ -25,7 +25,8 @@ spec:
             runAsNonRoot: true
             fsGroup: 1000
             fsGroupChangePolicy: OnRootMismatch
-          terminationGracePeriodSeconds: 60
+          annotations:
+            backup.velero.io/backup-volumes: config
 
         containers:
           app:
@@ -82,9 +83,7 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              capabilities:
-                drop:
-                  - ALL
+              capabilities: { drop: ["ALL"] }
 
     service:
       app:

@@ -23,6 +23,9 @@ spec:
             fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
 
+          annotations:
+            backup.velero.io/backup-volumes: config,torrents
+
         containers:
           app:
             image:
@@ -68,9 +71,7 @@ spec:
               runAsNonRoot: true
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              capabilities:
-                drop:
-                  - ALL
+              capabilities: { drop: ["ALL"] }
 
           gluetun:
             dependsOn: app
@@ -122,9 +123,7 @@ spec:
               runAsNonRoot: true
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              capabilities:
-                drop:
-                  - ALL
+              capabilities: { drop: ["ALL"] }
 
           vuetorrent-git-sync:
             image:
@@ -140,9 +139,7 @@ spec:
               runAsNonRoot: true
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              capabilities:
-                drop:
-                  - ALL
+              capabilities: { drop: ["ALL"] }
     service:
       app:
         controller: qbittorrent
