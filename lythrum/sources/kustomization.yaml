@@ -29,3 +29,4 @@ resources:
   - coredns.yaml
   - clustersecret.yaml
   - external-dns.yaml
+  - external-secrets.yaml
