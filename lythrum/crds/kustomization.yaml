@@ -11,3 +11,4 @@ resources:
   - gateway-api
   - traefik
   - clustersecret
+  - external-secrets
