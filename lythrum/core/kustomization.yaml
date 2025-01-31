@@ -20,3 +20,4 @@ resources:
   - traefik
   - dns
   - clustersecret
+  - external-secrets
