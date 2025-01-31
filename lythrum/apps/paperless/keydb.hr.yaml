@@ -1,0 +1,23 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: keydb
+  namespace: paperless
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: keydb
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+      version: '0.2.0'
+  values:
+    architecture: standalone
+    global:
+      storageClass: ceph-block-akane-nvme
+    master:
+      podAnnotations:
+        backup.velero.io/backup-volumes: data

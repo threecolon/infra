@@ -1,0 +1,24 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres
+  namespace: paperless
+spec:
+  instances: 1
+  storage:
+    storageClass: ceph-block-akane-nvme
+    size: 8Gi
+  backup:
+    barmanObjectStore:
+      wal:
+        compression: bzip2
+      destinationPath: s3://${BACKBLAZE_CNPG_BUCKET_NAME}/${CNPG_AUTHENTIK_BACKUP_PATH}
+      endpointURL: ${BACKBLAZE_CNPG_BUCKET_ENDPOINT}
+      s3Credentials:
+        accessKeyId:
+          name: backblaze-credentials
+          key: ACCESS_KEY_ID
+        secretAccessKey:
+          name: backblaze-credentials
+          key: ACCESS_SECRET_KEY
+    retentionPolicy: 14d
