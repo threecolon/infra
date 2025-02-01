@@ -78,6 +78,24 @@ spec:
                     name: paperless
                     key: secret_key
               PAPERLESS_URL: https://${SUBDOMAIN_PAPERLESS}.${DOMAIN_INTERNAL}
+
+              PAPERLESS_APPS: allauth.socialaccount.providers.openid_connect
+              PAPERLESS_SOCIALACCOUNT_PROVIDERS: >-
+                {
+                  "openid_connect": {
+                    "APPS": [
+                      {
+                        "provider_id": "authentik",
+                        "name": "Authentik",
+                        "client_id": "${AUTHENTIK_PAPERLESS_CLIENT_ID}",
+                        "secret": "${AUTHENTIK_PAPERLESS_CLIENT_SECRET}",
+                        "settings": {
+                          "server_url": "https://${SUBDOMAIN_AUTHENTIK}.${DOMAIN_EXTERNAL}/application/o/paperless/.well-known/openid-configuration"
+                        }
+                      }
+                    ]
+                  }
+                }
             resources:
               requests:
                 cpu: 100m
