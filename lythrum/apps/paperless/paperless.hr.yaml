@@ -42,6 +42,7 @@ spec:
 
               PAPERLESS_DATA_DIR: /data
               PAPERLESS_MEDIA_ROOT: /documents
+              SUPERVISORD_WORKING_DIR: /tmp/supervisord
 
               A_REDIS_PASSWORD:
                 valueFrom:
