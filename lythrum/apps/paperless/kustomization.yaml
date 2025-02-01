@@ -10,3 +10,5 @@ resources:
   - postgres-backup.yaml
   - paperless.secret.yaml
   - paperless.hr.yaml
+  - cert.yaml
+  - ingressroute.yaml
