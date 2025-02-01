@@ -33,12 +33,6 @@ spec:
             image:
               repository: ghcr.io/paperless-ngx/paperless-ngx
               tag: '2.14.7'
-            command:
-              - /bin/sh
-              - -c
-              - |
-                export PAPERLESS_REDIS=redis://:${REDIS_PASSWORD}@keydb-master:6379
-                exec /usr/local/bin/paperless_cmd.sh
             ports:
               - name: http
                 containerPort: &port 8000
@@ -54,6 +48,7 @@ spec:
                   secretKeyRef:
                     name: keydb
                     key: keydb-password
+              PAPERLESS_REDIS: redis://:$(REDIS_PASSWORD)@keydb-master:6379
 
               PAPERLESS_DBHOST:
                 valueFrom:
