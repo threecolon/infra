@@ -43,12 +43,12 @@ spec:
               PAPERLESS_DATA_DIR: /data
               PAPERLESS_MEDIA_ROOT: /documents
 
-              _REDIS_PASSWORD:
+              A_REDIS_PASSWORD:
                 valueFrom:
                   secretKeyRef:
                     name: keydb
                     key: keydb-password
-              PAPERLESS_REDIS: redis://:$(_REDIS_PASSWORD)@keydb-master:6379
+              PAPERLESS_REDIS: redis://:$(A_REDIS_PASSWORD)@keydb-master:6379
 
               PAPERLESS_DBHOST:
                 valueFrom:
