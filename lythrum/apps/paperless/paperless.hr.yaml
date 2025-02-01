@@ -37,7 +37,7 @@ spec:
               - /bin/sh
               - -c
               - |
-                export PAPERLESS_REDIS=redis://:$(REDIS_PASSWORD)@keydb-master:6379
+                export PAPERLESS_REDIS=redis://:${REDIS_PASSWORD}@keydb-master:6379
                 exec /usr/local/bin/paperless_cmd.sh
             ports:
               - name: http
