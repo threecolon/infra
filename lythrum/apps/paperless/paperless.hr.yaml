@@ -106,3 +106,7 @@ spec:
         existingClaim: documents
       tmp:
         type: emptyDir
+      tmp-supervisord:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp/supervisord
