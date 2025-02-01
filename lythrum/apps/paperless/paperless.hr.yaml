@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: autobrr
+  name: paperless
   namespace: media
 spec:
   interval: 10m
@@ -17,7 +17,7 @@ spec:
       version: '3.6.0'
   values:
     controllers:
-      autobrr:
+      paperless:
         pod:
           securityContext:
             runAsUser: 1000
@@ -90,7 +90,7 @@ spec:
 
     service:
       app:
-        controller: autobrr
+        controller: paperless
         type: ClusterIP
         ports:
           http:
