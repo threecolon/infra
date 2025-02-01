@@ -82,6 +82,7 @@ spec:
               PAPERLESS_DISABLE_REGULAR_LOGIN: 'true'
               PAPERLESS_REDIRECT_LOGIN_TO_SSO: 'true'
               PAPERLESS_APPS: allauth.socialaccount.providers.openid_connect
+              PAPERLESS_LOGOUT_REDIRECT_URL: https://${SUBDOMAIN_AUTHENTIK}.${DOMAIN_EXTERNAL}/application/o/paperless/end-session/
               PAPERLESS_SOCIALACCOUNT_PROVIDERS: >-
                 {
                   "openid_connect": {
