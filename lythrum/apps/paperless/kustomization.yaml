@@ -3,7 +3,10 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - backup.yaml
+  - documents.pvc.yaml
   - backblaze-credentials.secret.yaml
   - keydb.hr.yaml
   - postgres.yaml
   - postgres-backup.yaml
+  - paperless.secret.yaml
+  - paperless.hr.yaml

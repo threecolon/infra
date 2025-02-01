@@ -1,0 +1,107 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: autobrr
+  namespace: media
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: app-template
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+      version: '3.6.0'
+  values:
+    controllers:
+      autobrr:
+        pod:
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
+            fsGroup: 1000
+            fsGroupChangePolicy: OnRootMismatch
+          annotations:
+            backup.velero.io/backup-volumes: documents,data
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/paperless-ngx/paperless-ngx
+              tag: '2.14.7'
+            ports:
+              - name: http
+                containerPort: &port 8000
+            env:
+              TZ: ${TIMEZONE}
+              PAPERLESS_PORT: *port
+
+              PAPERLESS_DATA_DIR: /data
+              PAPERLESS_MEDIA_ROOT: /documents
+
+              REDIS_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: keydb
+                    key: keydb-password
+              PAPERLESS_REDIS: redis://:$(REDIS_PASSWORD)@keydb-master:6379
+
+              PAPERLESS_DBHOST:
+                valueFrom:
+                  secretKeyRef:
+                    name: &pgsecret postgres-app
+                    key: host
+              PAPERLESS_DBNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: *pgsecret
+                    key: dbname
+              PAPERLESS_DBUSER:
+                valueFrom:
+                  secretKeyRef:
+                    name: *pgsecret
+                    key: username
+              PAPERLESS_DBPASS:
+                valueFrom:
+                  secretKeyRef:
+                    name: *pgsecret
+                    key: password
+
+              PAPERLESS_SECRET_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: paperless
+                    key: secret_key
+              PAPERLESS_URL: https://${SUBDOMAIN_PAPERLESS}.${DOMAIN_INTERNAL}
+            resources:
+              requests:
+                cpu: 100m
+                memory: 128Mi
+              limits:
+                memory: 1Gi
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+
+    service:
+      app:
+        controller: autobrr
+        type: ClusterIP
+        ports:
+          http:
+            port: *port
+
+    persistence:
+      data:
+        storageClass: ceph-block-akane-nvme
+        accessMode: ReadWriteOnce
+        size: 8Gi
+      documents:
+        existingClaim: documents
+      tmp:
+        type: emptyDir

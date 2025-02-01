@@ -1,0 +1,13 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: documents
+  namespace: paperless
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: fs-bridget-hdd
+  volumeMode: Filesystem
