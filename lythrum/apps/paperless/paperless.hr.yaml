@@ -79,6 +79,8 @@ spec:
                     key: secret_key
               PAPERLESS_URL: https://${SUBDOMAIN_PAPERLESS}.${DOMAIN_INTERNAL}
 
+              PAPERLESS_DISABLE_REGULAR_LOGIN: 'true'
+              PAPERLESS_REDIRECT_LOGIN_TO_SSO: 'true'
               PAPERLESS_APPS: allauth.socialaccount.providers.openid_connect
               PAPERLESS_SOCIALACCOUNT_PROVIDERS: >-
                 {
