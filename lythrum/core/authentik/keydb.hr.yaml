@@ -15,18 +15,9 @@ spec:
         namespace: flux-system
       version: '0.2.0'
   values:
-    architecture: replication
+    architecture: standalone
     global:
       storageClass: ceph-block-akane-nvme
-    replica:
-      replicaCount: 3
-      activeReplica: true
     master:
       podAnnotations:
         backup.velero.io/backup-volumes: data
-    metrics:
-      enabled: true
-      serviceMonitor:
-        enabled: true
-      prometheusRule:
-        enabled: true
