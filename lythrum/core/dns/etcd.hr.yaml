@@ -16,8 +16,6 @@ spec:
       version: '10.7.1'
   values:
     persistence:
-      enabled: true
-      storageClass: ceph-block-akane-nvme
-      size: 1Gi
+      enabled: false
     pdb:
       create: false
