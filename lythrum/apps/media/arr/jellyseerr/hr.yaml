@@ -31,8 +31,8 @@ spec:
         containers:
           app:
             image:
-              repository: fallenbagel/jellyseerr:latest
-              tag: v1.57.0
+              repository: fallenbagel/jellyseerr
+              tag: '2.3.0'
             ports:
               - name: http
                 containerPort: &port 5055
