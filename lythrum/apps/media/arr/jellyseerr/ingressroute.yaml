@@ -32,6 +32,6 @@ spec:
       priority: 10
       services:
         - name: jellyseerr
-          port: 7474
+          port: 5055
   tls:
     secretName: jellyseerr-tls
