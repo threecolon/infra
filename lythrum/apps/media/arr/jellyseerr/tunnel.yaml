@@ -1,0 +1,13 @@
+---
+apiVersion: networking.cfargotunnel.com/v1alpha1
+kind: TunnelBinding
+metadata:
+  name: jellyseerr-tunnel
+  namespace: media
+subjects:
+  - name: jellyseerr
+    spec:
+      fqdn: ${SUBDOMAIN_JELLYSEERR}.${DOMAIN_EXTERNAL}
+tunnelRef:
+  kind: ClusterTunnel
+  name: tunnel-external
