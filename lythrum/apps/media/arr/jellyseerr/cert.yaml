@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: jellyseerr-tls
   dnsNames:
-    - ${SUBDOMAIN_JELLYSEERR}.${DOMAIN_INTERNAL}
+    - ${SUBDOMAIN_JELLYSEERR}.${DOMAIN_EXTERNAL}
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod
