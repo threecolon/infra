@@ -21,3 +21,6 @@ spec:
       apiVersion: controller.config.cert-manager.io/v1alpha1
       kind: ControllerConfiguration
       enableGatewayAPI: true
+    extraArgs:
+      - --dns01-recursive-nameservers-only
+      - --dns01-self-check-nameservers=8.8.8.8:53,1.1.1.1:53
