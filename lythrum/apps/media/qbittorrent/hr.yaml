@@ -14,7 +14,7 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
-      version: '3.6.0'
+      version: "3.6.0"
   values:
     controllers:
       qbittorrent:
@@ -30,7 +30,7 @@ spec:
           app:
             image:
               repository: ghcr.io/onedr0p/qbittorrent
-              tag: '5.0.3'
+              tag: "5.0.3"
             ports:
               - name: web
                 containerPort: &qbtWebPort 8080
@@ -64,7 +64,7 @@ spec:
               requests:
                 cpu: 100m
               limits:
-                memory: 8Gi
+                memory: 16Gi
             securityContext:
               runAsUser: 1000
               runAsGroup: 1000
@@ -89,13 +89,13 @@ spec:
               WIREGUARD_PUBLIC_KEY: ${QBT_WG_PEER_PUBLIC_KEY}
               WIREGUARD_ENDPOINT_IP: ${QBT_WG_PEER_ENDPOINT_IP}
               WIREGUARD_ENDPOINT_PORT: ${QBT_WG_PEER_ENDPOINT_PORT}
-              VPN_PORT_FORWARDING: 'on'
+              VPN_PORT_FORWARDING: "on"
               VPN_PORT_FORWARDING_PROVIDER: protonvpn
               FIREWALL_INPUT_PORTS: *qbtWebPort
               FIREWALL_OUTBOUND_SUBNETS: 10.96.0.0/12,10.244.0.0/16
               DOT: "off"
               DNS_ADDRESS: "10.96.0.10"
-              PUBLICIP_ENABLED: 'true'
+              PUBLICIP_ENABLED: "true"
               PUBLICIP_API: ipinfo
             resources:
               limits:
@@ -108,7 +108,7 @@ spec:
           port-forward:
             image:
               repository: ghcr.io/bjw-s-labs/gluetun-qb-port-sync
-              tag: '0.0.2'
+              tag: "0.0.2"
             env:
               GLUETUN_CONTROL_SERVER_HOST: localhost
               GLUETUN_CONTROL_SERVER_PORT: 8000
