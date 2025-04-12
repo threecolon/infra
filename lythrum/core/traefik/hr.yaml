@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: traefik
         namespace: flux-system
-      version: '33.2.1'
+      version: "33.2.1"
   values:
     providers:
       kubernetesCRD:
@@ -56,10 +56,8 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.uid
-          resources:
-            limits:
-              squat.ai/tun: "1"
           securityContext:
+            privileged: true
             capabilities:
               add:
                 - NET_ADMIN
