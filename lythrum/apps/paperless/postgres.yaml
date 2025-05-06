@@ -7,7 +7,7 @@ spec:
   instances: 1
   storage:
     storageClass: ceph-block-akane-nvme
-    size: 40Gi
+    size: 50Gi
   backup:
     barmanObjectStore:
       wal:
